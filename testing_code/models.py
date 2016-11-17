@@ -1,12 +1,16 @@
 from django.db import models
+from unittest.util import _MAX_LENGTH
+
+
 
 
 class Course(models.Model):
     class Meta:
         db_table="courses"
+        
 
     course_name=models.CharField(max_length=255)
-    url=models.URLField("URL")
+    url=models.CharField("URL", max_length=255, blank=True)
 
     def __str__(self):
         return self.course_name

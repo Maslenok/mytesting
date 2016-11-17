@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url,  include
 from django.contrib import admin
+import testing_code
+from testing_code.views import course
+#from testing_code.models import Course
 
 urlpatterns = [
      url(r'^admin/', admin.site.urls),
-     url(r'^$', include('testing_code.urls')),
+     url(r'^course/(?P<course_url>[[A-Za-z]+)/?', course),
+     
+     url(r'^', include("testing_code.urls")),
+     
 ]
