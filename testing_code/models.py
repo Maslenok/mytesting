@@ -1,6 +1,7 @@
 from django.db import models
 from unittest.util import _MAX_LENGTH
-
+from unidecode import unidecode
+from django.template.defaultfilters import slugify
 
 
 
@@ -9,8 +10,13 @@ class Course(models.Model):
         db_table="courses"
         
 
-    course_name=models.CharField(max_length=255)
-    url=models.CharField("URL", max_length=255, blank=True)
+    course_name=models.CharField(max_length=255,)   
+    slug = models.SlugField(max_length=50, unique=False, blank=True)
+    
+    def save(self):
+        self.slug = str(self.id) + '_' + slugify(unidecode(self.course_name))         
+        super(Course, self).save()###
+           
 
     def __str__(self):
         return self.course_name

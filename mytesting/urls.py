@@ -21,7 +21,7 @@ from testing_code.views import course
 
 urlpatterns = [
      url(r'^admin/', admin.site.urls),
-     url(r'^course/(?P<course_url>[[A-Za-z]+)/?', course),
+     url(r'^course/(?P<course_url>/?[[A-Za-z]+)/?', course),
      
      url(r'^', include("testing_code.urls")),
      

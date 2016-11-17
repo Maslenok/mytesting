@@ -11,9 +11,9 @@ def index(request):
     return render(request, 'testing_code/index.html', context)
 
 def course(request,course_url):
-    course_id=Course(url=course_url).id
     course=get_object_or_404(Course, url=course_url)
-    test_list=Test.objects.filter(curse_id=course_id)
-    context={'test_list': test_list, 'url_page' : course_url }
+    course_odj=Course.objects.get(url=course_url)
+    test_list=Test.objects.filter(curse_id=course_odj.id)
+    context={'test_list': test_list, 'url_page' : course_url, 'url_course': course_odj.id }
     return render(request, 'testing_code/course.html', context)
  
