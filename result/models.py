@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from testing_code.models import Question,Course,Test, Answer
+from testing_code.models import Question,Course, Answer
 
 class Result(models.Model):
     class Meta:
@@ -11,7 +11,7 @@ class Result(models.Model):
     result_value=models.IntegerField(default=0)
     users=models.ForeignKey(User, on_delete=models.CASCADE)
     course=models.ForeignKey(Course, on_delete=models.CASCADE)
-    tests=models.ForeignKey(Test, on_delete=models.CASCADE)
+
 
 
 class UsersAnswer(models.Model):
@@ -20,7 +20,6 @@ class UsersAnswer(models.Model):
 
     users=models.ForeignKey(User, on_delete=models.CASCADE)
     course=models.ForeignKey(Course, on_delete=models.CASCADE)
-    test=models.ForeignKey(Test, on_delete=models.CASCADE)
     question=models.ForeignKey(Question, on_delete=models.CASCADE)
     answers_list=models.TextField()
     result=models.ForeignKey(Result, on_delete=models.CASCADE)
