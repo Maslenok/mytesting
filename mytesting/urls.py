@@ -17,6 +17,8 @@ from django.conf.urls import url,  include
 from django.contrib import admin
 import testing_code
 from testing_code.views import course
+from django.conf import settings
+from django.conf.urls.static import static
 #from testing_code.models import Course
 
 urlpatterns = [
@@ -25,4 +27,8 @@ urlpatterns = [
      
      url(r'^', include("testing_code.urls")),
      
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+#if settings.DEBUG:
+  #  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    

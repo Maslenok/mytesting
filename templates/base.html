@@ -1,0 +1,162 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="uk" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="uk" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="uk" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="uk" xmlns="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ПАКЕТИ ДЛЯ ШКІЛ - УЦПА </title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+
+  <meta name="viewport" content="width=980" />
+  <link rel="stylesheet" href="static/css/style.css" />
+  <script src="static/js/libs/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body class="inner faq" id="ucpa">
+{% load staticfiles %}
+  <div class="wrapper">
+      <header>
+	<div class="logo"><a href="/index"><span><img alt="УКРАЇНСЬКИЙ ЦЕНТЕР ПIДГОТОВКИ АБIТУРIЄНТIВ" src="{% static "/img/logo.jpg" %}"></span></a></div>
+	 <div class="login-block">
+		 <form action="#" method="post" class="login_form">
+            <fieldset>
+			<ul>
+				<li class="signin_username"><label for="login" class="spec">Логін:</label><input type="text" id="login" name="login" placeholder="yourmail12345@mail.com" /></li>				
+                <li class="signin_password">
+					<label for="pass" class="spec" >Пароль:</label><input type="password" id="pass" name="password"  />				
+					<input type="submit" class="btn_login" value="Вхід" title="Вхід">
+				</li>				
+                <li>
+					<p class="forgotPassword"><a title="Забули пароль?" href="/">Забули пароль?</a></p>
+					<p class="registration"><a title="Зареєструватися" href="/">Зареєструватися</a></p>
+				</li>
+                </ul>
+            </fieldset>
+        </form>
+	 </div>
+	 
+	 
+	 
+	
+	 
+	 <div class="header-block">
+      <nav>
+	  <ul class="nav">
+	  	<li><a href="index.html">головна</a></li>
+	  	<li class="active"><a href="#">курси та тести</a></li>	  	
+	  	<li><a href="#">новини зно</a></li>
+	  	
+      
+	  </ul>
+      </nav>
+	  <form method="POST" action="#" class="search-form">
+                <fieldset>
+                    <input type="text"  name="search" id="search">
+                    <input type="submit" id="btn_search" title="Пошук" value="Пошук">
+                </fieldset>
+      </form>
+	 </div>
+    </header>
+
+
+
+	 <div class="content" role="main">
+      <section>
+	  <div class="txt-content">
+			<div class="hgroup">
+				<h1> </h1>
+			</div>
+			<div class="txt_test">
+				<div class="b-price">
+      
+       
+<div class="b-priceTable">      
+
+
+    {% block index %}
+
+    {% endblock %}
+
+
+
+
+</div>
+
+		
+			</div>	
+		</div>
+      </section>
+
+    </div>
+    
+    
+   
+   
+    
+    <aside>
+
+    </aside>
+    <footer>
+		 <div class="vcard">
+			 <span class="adr">Адреса:
+				<span class="localty">Харьков,</span> <span class="street-address">вул.Василия Челомбитько 145, офис 45</span> 
+			 </span> 
+			 <span class="tel">
+				<span class="type">Телефон: </span>(057) 777-77-77
+			</span>
+			<span class="tel">
+				<span class="type">Факс: </span>(057) 777-77-77
+			</span>
+			<span>Email: <a href="mailto:nashemylo@ukr.net" target="_blank" class="email">nashemylo@ukr.net</a></span>
+		   
+		 </div>
+    </footer>
+	<div id="bottom" class="bottom">
+	<a href="#" class="btn-bottom">наші партнери</a>
+		<div class="bottom-rel">
+			<dl class="rel">
+				<dt>ми приймаємо:</dt>
+				<dd><img src="{% static "/img/rel_1.png"%}" alt="" /></dd>
+				<dd><img src="{% static "/img/rel_2.png"%}" alt="" /></dd>
+				<dd><img src="{% static "/img/rel_3.png"%}" alt="" /></dd>
+				<dd><img src="{% static "/img/rel_4.png"%}" alt="" /></dd>
+			</dl>
+		</div>
+		<address>&copy; <span class="copyrights">2011  <span class="fn org">Український центр підготовки абітурієнтів.</span><br /> Усі права захищено.</span></address>
+	</div>
+  </div> <!--! end of #container -->
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
+  <!-- scripts concatenated and minified via ant build script-->
+  	
+	<script  src="js/plugins.js"></script>
+	<script  src="js/script.js"></script>
+
+
+  <!-- end scripts-->
+
+  <!-- Change UA-XXXXX-X to be your site's ID -->
+  <script>
+    window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
+    Modernizr.load({
+      load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+    });
+  </script>
+
+
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+</body>
+</html>

@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+
+{% block index %}
+
 {% if course_list %}
     <ul>
     {% for course in course_list %}
@@ -7,3 +11,9 @@
 {% else %}
     <p>No course are available.</p>
 {% endif %}
+
+{% endblock %}
+
+
+
+

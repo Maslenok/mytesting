@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+TEMPALATES_DIRS = (
+    "/home/maslenok/venv/django_project/git/mytesting/templates" , 
+    "/home/maslenok/venv/django_project/git/mytesting/testing_code/templates/testing_code/",
+    )
 
 # Application definition
 
@@ -124,5 +128,16 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

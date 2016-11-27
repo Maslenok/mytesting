@@ -1,0 +1,1877 @@
+/*
+ * HTML5 ✰ Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ *
+ * Detailed information about this CSS: h5bp.com/css
+ * /
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*
+ * ==|== normalize ==========================================================
+ * /
+/* =============================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+audio:not([controls]) { display: none; }
+[hidden] { display: none; }
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+
+/*
+ * 1. Correct text resizing oddly in IE6/7 when body font-size is set using em units
+ * 2. Force vertical scrollbar in non-IE
+ * 3. Prevent iOS text size adjust on device orientation change, without disabling user zoom: h5bp.com/g
+ */
+
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body { margin: 0; font-size: 15px; line-height: 1.231;}
+
+body, button, input, select, textarea {  color: #373737; font-family: 'Trebuchet MS', Helvetica,  Garuda, san-serif;  }
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate
+ * Also: hot pink! (or customize the background color to match your design)
+ */
+
+::-moz-selection { background: #dfaf24; color: #fff; text-shadow: none; }
+::selection { background: #dfaf24; color: #fff; text-shadow: none; }
+
+  input:focus::input-placeholder { color:  #00689E}
+
+
+  *:-moz-placeholder:focus, placeholder {
+   color: #00689E ;
+   }
+*[autofocus]:-moz-placeholder:focus {
+   color: #00689E;
+   }
+
+*::-webkit-input-placeholder:focus {
+   color: #00689E;
+   }
+*[autofocus]::-webkit-input-placeholder {
+   color: #00689E;
+   }
+
+   ::-webkit-input-placeholder,
+   :input-placeholder{  color: #00689E}
+
+   /* styles for webkit */
+form::-webkit-input-placeholder { color:#00689E}
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+a { color: #7ACAFF; outline: none;}
+a:visited { color: #7ACAFF; }
+a:hover { color: #7ACAFF; text-decoration:none;}
+a:focus { outline: none;}
+
+/* Improve readability when focused and hovered in all browsers: h5bp.com/h */
+a:hover, a:active { outline: none; }
+
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+
+abbr[title] { border-bottom: 1px dotted; }
+
+b, strong { font-weight: bold; }
+
+blockquote { margin: 1em 40px; }
+
+dfn { font-style: italic; }
+
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+/* Redeclare monospace font family: h5bp.com/j */
+pre, code, kbd, samp { font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 1em; }
+
+/* Improve readability of pre-formatted text in all browsers */
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+
+q { quotes: none; }
+q:before, q:after { content: ""; content: none; }
+
+small { font-size: 85%; }
+
+/* Position subscript and superscript content without affecting line-height: h5bp.com/k */
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+
+/*
+ * 1. Improve image quality when scaled in IE7: h5bp.com/d
+ * 2. Remove the gap between images and borders on image containers: h5bp.com/e
+ */
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+/*
+ * Correct overflow not hidden in IE9
+ */
+
+svg:not(:root) { overflow: hidden; }
+
+
+/* =============================================================================
+   Figures
+   ========================================================================== */
+
+figure { margin: 0; }
+
+
+/* =============================================================================
+   Forms
+   ========================================================================== */
+
+form { margin: 0; }
+fieldset { border: 0; margin: 0; padding: 0; }
+
+/* Indicate that 'label' will shift focus to the associated form element */
+label { cursor: pointer; }
+
+/*
+ * 1. Correct color not inheriting in IE6/7/8/9
+ * 2. Correct alignment displayed oddly in IE6/7
+ */
+
+legend { border: 0; *margin-left: -7px; padding: 0; }
+
+/*
+ * 1. Correct font-size not inheriting in all browsers
+ * 2. Remove margins in FF3/4 S5 Chrome
+ * 3. Define consistent vertical alignment display in all browsers
+ */
+
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+
+/*
+ * 1. Define line-height as normal to match FF3/4 (set using !important in the UA stylesheet)
+ * 2. Correct inner spacing displayed oddly in IE6/7
+ */
+
+button, input { line-height: normal; *overflow: visible; }
+
+/*
+ * Reintroduce inner spacing in 'table' to avoid overlap and whitespace issues in IE6/7
+ */
+
+table button, table input { *overflow: auto; }
+
+/*
+ * 1. Display hand cursor for clickable form elements
+ * 2. Allow styling of clickable form elements in iOS
+ */
+
+button, input[type="button"], input[type="reset"], input[type="submit"] { overflow:visible; cursor: pointer; -webkit-appearance: button; }
+
+.btn_test{float:left; margin-bottom:15px;color:#ffffff; background: #006396; font-size:14px; padding:0 15px; height:28px ;line-height: 28px; text-decoration:none; text-transform: uppercase; border:none;  border-radius: 6px;  behavior: url(css/PIE.php); cursor:pointer;
+    position:relative; text-align:center;}
+.btn_close{display:none; float:left; margin-bottom:15px;color:#ffffff; background: #006396; font-size:14px; padding:0 15px; height:28px ;line-height: 28px; text-decoration:none; text-transform: uppercase; border:none;  border-radius: 6px;  behavior: url(http://ucpa.com.ua/css/PIE.php); cursor:pointer;  position:relative; text-align:center;}
+.btn_close:hover,
+.btn_test:hover{color:#E6B62A;}
+/*
+ * Consistent box sizing and appearance
+ */
+
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; }
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+
+/*
+ * Remove inner padding and border in FF3/4: h5bp.com/l
+ */
+
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+
+/*
+ * 1. Remove default vertical scrollbar in IE6/7/8/9
+ * 2. Allow only vertical resizing
+ */
+
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
+
+/* Colors for form validity */
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+h1 { color: #FFFFFF;  font-size: 24px;}
+h2 { color: #FFFFFF;  font-size: 19px; font-weight:normal;}
+h3{color:#88d7ff; font-size:21px;}
+h4{color:#88d7ff; font-size:17px;}
+
+p{margin:10px 0 20px;}
+/* ==|== primary styles =====================================================
+   Authors: Olga Zhivoglyad, Oleg Ivonin, Igor Zenich
+   ========================================================================== */
+
+/* html {height:100%; background:#001d3f url(../img/bg-top.jpg) center 0 no-repeat;}
+body {position: relative; min-height: 100%;  background: url(../img/bg-bottom.jpg) center bottom no-repeat;
+} */
+
+
+html {  background:#001D3F; height:100%;   }
+
+
+html:before{content:""; position:absolute; width:100%; height:785px; z-index:1; background:#001D3F;
+background-repeat:no-repeat;
+ background-image: -moz-radial-gradient(50% 9%, ellipse farthest-side, rgba(0, 114, 171, 0.9), #001d3f 100%);
+
+background-image: -webkit-radial-gradient(50% 9%, ellipse farthest-side, rgba(0, 114, 171, 0.9), #001d3f 100%);
+
+background-image: -o-radial-gradient(50% 9%, ellipse farthest-side, rgba(0, 114, 171, 0.9), #001d3f 100%);
+
+background-image: -ms-radial-gradient(50% 9%, ellipse farthest-side, rgba(0, 114, 171, 0.9), #001d3f 100%);
+
+background-image: radial-gradient(50% 9%, ellipse farthest-side, rgba(0, 114, 171, 0.9), #001d3f 100%)
+behavior: url(http://ucpa.com.ua/css/PIE.php);
+}
+body {position: relative; min-height:100%;  }
+body:after{content:""; position:absolute; width:100%; height:785px; bottom:0; z-index:1;
+background-repeat:no-repeat;
+
+background-image: -moz-radial-gradient(50% 100%, ellipse farthest-side, rgba(0, 114, 171, 0.9), rgba(0, 29, 63, 0) 100%);
+
+background-image: -webkit-radial-gradient(50% 100%, ellipse farthest-side, rgba(0, 114, 171, 0.9), rgba(0, 29, 63, 0) 100%);
+
+background-image: -o-radial-gradient(50% 100%, ellipse farthest-side, rgba(0, 114, 171, 0.9), rgba(0, 29, 63, 0) 100%);
+
+background-image: -ms-radial-gradient(50% 100%, ellipse farthest-side, rgba(0, 114, 171, 0.9), rgba(0, 29, 63, 0) 100%);
+
+background-image: radial-gradient(50% 100%, ellipse farthest-side, rgba(0, 114, 171, 0.9), rgba(0, 29, 63, 0) 100%)
+
+}
+html.ie:before,
+html.oldie:before {background:none; }
+html.ie,
+html.oldie{background: url("../img/bg-top.jpg") no-repeat  center 0 #001D3F; }
+html.ie body,
+html.oldie body{ background: url("../img/bg-bottom.png") no-repeat  center bottom  transparent;}
+.wrapper { width:980px;  margin: 0 auto;  position:relative; z-index:2;}
+
+/**
+* @section Header
+*/
+header {padding:180px 0 2px; position:relative; z-index:10;}
+
+
+div.txt_test ul{ margin-bottom:36px;}
+div.txt_test ul li{padding:0 0 0 20px; font-size:13px; margin: 0 0 8px; display:block; background: url(../img/arrow-h.png) 0 6px no-repeat; position: relative; z-index: 5;}
+
+body.course div.txt_test ul li{font-size:15px; background:none; padding-left:0;}
+
+/**
+* @subsection Logo
+*/
+.logo { position: absolute; top:2px; left: -17px; width: 220px; height: 177px;}
+.logo a, .logo span { position: absolute;top: 0; left: 0; display: block;  width: 100%;  height: 100%; outline:none; }
+.logo img{color:#fff; font-size:24px; text-indent:17px;}
+/**
+* @subsection Login-block
+*/
+#students-form-login ul{ margin-bottom:0;}
+#students-form-login  ul li input{margin-bottom:5px;}
+#students-form-login  ul li input.btn_login{ margin: 0 auto; width:98px; height:34px; padding:0;  top:18px  text-align:center; font-weight:bold; font-size:15px; text-decoration:none; line-height: 34px; text-transform: uppercase; color:#ffffff; text-shadow: 1px -1px 0 #A37D10; position:relative; background: url(../img/btn.png) 0 0 repeat-x; border:none;    border-radius: 20px;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+.login-block{ position: absolute; top:27px;margin-left:219px;}
+.login-block form.login_form ul{margin:0; padding:0;}
+.login-block form.login_form ul li {overflow:hidden;padding:11px 0 0 0;}
+    .login-block form.login_form ul li label.spec{ float:left;margin:0 9px 0 0; width:139px; color:#ffffff; text-align:right; font-size:16px; line-height: 25px;}
+    .login-block form.login_form ul li input{float:left; font-size:14px;}
+    .login-block form.login_form ul li input[type="text"],
+    .login-block form.login_form ul li input[type="password"]{position:relative;padding:3px 6px; border: 1px solid #fff; border-radius: 6px; font-family: Arial, Helvetica, san-serif;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+    .login-block form.login_form ul li.signin_username input{width:205px;}
+    
+    .login-block form.login_form ul li.registration-user {float: left;}
+    .login-block form.login_form ul li.signin_social {float: left;}
+    .login-block form.login_form ul li p.signin_vk{ margin: 0 0 0 14px;}
+    .login-block form.login_form ul li .signin_vkLink{display: block; width: 115px; height:30px; border-radius: 6px; background: url(../img/signin_vk-bg.jpg) repeat-x; color: #36638e; text-align: center; text-decoration: none; line-height: 30px;}
+    .login-block form.login_form ul li .signin_vkIcon{position: relative; display: inline-block; width: 18px; height: 18px;}
+    .login-block form.login_form ul li .signin_vkIcon:before{content:""; position: absolute; top:35%; left: 0; z-index: 1; width: 18px; height: 18px; background: url(../img/bg_signin_vk.png) no-repeat;}
+     form.login_form ul li.signin_password input{padding: 4px 8px; width: 113px;}
+
+    form.login_form  ul li input.btn_login{  display: block; margin: 4px 0 2px 6px; padding: 2px 0 5px; width: 85px;  height: 20px; border: none; background: url(../img/bg_submit.png) no-repeat 0 0; color: #000000;  font: 11px Arial, Helvetica, san-serif;  cursor: pointer;}
+    .login-block form.login_form ul li p.forgotPassword,
+    .login-block form.login_form ul li p.registration{margin: 0 0 0px 146px;}
+    .login-block form.login_form ul li p.forgotPassword{margin-top:-6px; }
+      .login-block form.login_form ul li p a{color:#ffffff;text-decoration:underline;font-size:11px; font-family:Arial, Helvetica, san-serif;}
+      .login-block form.login_form ul li p a:hover{text-decoration:none;}
+
+      form ul li input.btn_login{  display: block; margin: 4px 0 2px 6px; padding: 2px 0 5px; width: 85px;  height: 20px; border: none; background: url(../img/bg_submit.png) no-repeat 0 0; color: #000000;  font: 11px Arial, Helvetica, san-serif;  cursor: pointer;}
+
+      p.forgotPassword{margin:0 0 3px 0; }
+      p.registration{margin:0 0 3px 0; }
+      input.btn_pay{ position:relative;margin: 0 auto; padding:0 20px; height:30px; border:none; border-radius: 20px; background: url(../img/btn.png) 0 0 repeat-x; color:#ffffff;  text-align:center; text-decoration:none; text-transform: uppercase; text-shadow: 1px -1px 0 #A37D10; font-weight:bold; font-size:15px; line-height: 30px; behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+      div.txt_test ul.total li.btn_pay__sms{text-align:center; margin:15px 0 30px;}
+      .btn_pay__sms a.btn{ background:#E5B529; border: medium none; vertical-align:top; border-radius: 20px 20px 20px 20px;  color: #FFFFFF;  display: inline-block;  font-size: 30px; font-weight: bold; padding: 5px 20px; position: relative; text-align: center;  text-decoration: none; text-shadow: 1px -1px 0 #A37D10; text-transform: uppercase;}
+    .txt_test ul.total li{ background:none;}
+     .ie7 .btn_pay__sms a.btn{display:inline;}
+
+/* cart */
+header ul.cart{ position:absolute; top:1px; right:0; margin:0; padding:11px 0 18px 46px; width:213px; background: url(../img/icon-cart.png) 0 center no-repeat;}
+  header ul.cart li{ margin:0;padding:0; color:#ffffff; font-size:14px;line-height:18px;}
+  header ul.cart li span{float:left;margin:0 5px 0 0; width:110px;color:#ffffff; font-size:14px;line-height:18px;}
+    header ul.cart li var{font-style:normal;}
+
+/* registration */
+
+header  ul.registration{ position:absolute; top:22px; right:0; padding:17px 0 16px; width: 316px; border:3px solid #1880b7; border-radius: 8px; background:#006ba2; text-align:center;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+    header  ul.registration li dfn{ color:#ffffff; text-transform: uppercase; font-weight:bold; font-size:19px;}
+      header  ul.registration li dfn span{color:#77cffe;}
+
+  header  ul.registration li.btn-registration{ margin:0;padding:7px 0 0;}
+    header  ul.registration li.btn-registration a{
+    position:relative; display:block;margin: 0 auto; width:237px; height:32px; -webkit-border-radius: 15px; -khtml-border-radius: 15px;
+ border-radius: 15px; background: #e5b529 url(../img/btn.png) 0 0 repeat-x; color:#ffffff; text-align:center; text-decoration:none; text-transform: uppercase; text-shadow: 1px -1px 0 #A37D10; letter-spacing: 0.5px; font-weight:bold; font-size:14px; line-height: 28px;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+    header  ul.registration li.btn-registration a:hover{text-decoration:none;}
+
+/* Available Courses */
+header  ul.courses{ position:absolute; top:35px; right:0; float:left; margin:0;padding:12px 0 7px;  border:3px solid #1880b7;  border-radius: 8px; background:#006ba2;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+header  ul.courses li { overflow:hidden; margin:6px 0 0 67px; line-height: 1.2;}
+header  ul.courses li.available_courses{margin: 0 29px 10px 10px;  text-align: right;}
+  header  ul.courses li.available_courses a{color:#ffbd00; font-weight:bold; font-size:19px;}
+  header  ul.courses li dfn{ float:left; margin:0 10px 0 0;  color:#ffffff; font-weight:bold; font-size:17px;}
+  header  ul.courses li var{ color:#ffffff; font-weight:bold;font-style:italic; font-size:17px;}
+  header  ul.courses li.available_courses dfn{ float:none; display: inline-block; width:270px;color:#ffbd00; text-decoration:underline; text-transform: uppercase; font-size:19px;}
+header  ul.courses li.available_courses var{color:#ffbd00; text-decoration:underline; text-transform: uppercase; font-weight:bold; font-size:19px; }
+
+  /* header-block */
+header .header-block{clear:both; height:50px; border-radius: 6px;  background:#ececec url(../img/bg-header-block.png) repeat-x 0 0; background-color:#FFF;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+/**
+* @section nav
+*/
+nav{float:left;}
+  nav ul.nav{ padding:0 3px 0 3px;}
+
+    nav ul.nav li{float:left; margin:6px 0;}
+      nav ul.nav li ul li{float:left; margin:0 0; }
+    nav ul.nav li a{  position:relative;display:block;padding:0 17px; height:38px; border-radius: 6px; color:#005685; text-decoration:none; text-transform: uppercase;line-height: 38px;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+    nav ul.nav li a:hover,  nav ul.nav li.active a{ background: url(../img/hover-nav.png) 0 0 repeat-x;color:#ffffff; text-decoration:none;}
+
+/**
+* @section search-form
+*/
+.search-form{ float: right; padding: 13px 0 12px 16px;}
+  .search-form fieldset #search { position:relative; float: left; overflow:hidden; margin: 0 10px 0 0; padding: 3px 0; width:107px; height: 20px; border: none; border-radius: 6px;  box-shadow: 0 -2px 0 #ece5e5; text-indent: 14px; font-family: Arial, Helvetica, san-serif; behavior: url(http://ucpa.com.ua/css/PIE.php);}
+  .search-form fieldset #btn_search {margin:3px 16px 0 0;padding:0; width: 74px; height: 19px; border: none;  background: url(../img/btn-search.png) no-repeat 0 0; font:11px Arial,Helvetica,san-serif;}
+
+/**
+* @section breadcrumbs
+*/
+.breadcrumbs{ overflow:hidden; margin-bottom:23px;  color:#7ACAFF;}
+.breadcrumbs a{ margin-left:11px; padding-left:22px; background:url(../img/separator.png) 0 -11px no-repeat; color:#fff;  line-height:1.5;}
+.breadcrumbs a[href]{ float:left; margin-left:11px; padding-left:22px; background-position:0 9px; color:#7ACAFF;}
+.breadcrumbs a:first-child{margin-left:0; padding-left:0;background:none; }
+
+
+div.txt_test div.breadcrumbs a[href]{ position:relative;float:left; margin-bottom:15px; padding:0 15px; height:28px ; border:none; border-radius: 6px; background: #006396;color:#ffffff; text-align:center; text-decoration:none; text-decoration:none; text-transform: uppercase; font-size:14px;line-height: 28px; cursor:pointer;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+div.txt_test div.breadcrumbs ul{ overflow:hidden;margin-left:-20px;}
+div.txt_test div.breadcrumbs ul li{float:left; overflow:hidden; margin-left:20px; padding:0; background:none;}
+  div.txt_test div.breadcrumbs  ul li a[href]{ }
+
+/**
+* @section Content
+*/
+div.content{ position:relative; z-index:10; overflow: hidden;padding:10px 0 0;}
+body div.content{position:relative; z-index:10; overflow:visible;padding:10px 0 0;}
+
+/* Vertical Tabs */
+body.index div.content .txt-content .tabs{min-height:232px;}
+body.index div.content .txt-content{ position:relative; overflow:hidden;margin: 0 0 10px; padding:20px 20px 12px; border:1px solid #fff; border-radius: 6px; background-color:#fff; behavior: url(http://ucpa.com.ua/css/PIE.php);}
+  div.content .tabs ul.shadetabs{ float:left;margin:2px 0 0 0;  padding:0 0 71px;   width:334px; }
+  html.ie7 div.content .tabs ul.shadetabs{margin:0;}
+  body.index div.content .tabs ul.shadetabs li{ position:relative;margin:0;}
+    body.index  div.content .tabs ul.shadetabs li a{ display:block;padding:12px 24px 13px; color:#014979; text-decoration:none; font-size:23px; font-family: 'Trebuchet MS',Helvetica,Garuda,san-serif;}
+
+    body.index  div.content .tabs ul.shadetabs li:first-child { margin-top:0; padding-top:0;}
+
+ body.index  div.content .tabs ul.shadetabs li.ui-tabs-selected {
+ position:relative;display:block; margin-right:-5px; color:#fff; text-decoration:none; font-size:23px; font-family: 'Trebuchet MS',Helvetica,Garuda,san-serif;}
+ body.index   div.content .tabs ul.shadetabs li.ui-tabs-selected + li + li { position:relative; border-radius: 0;background:none; behavior:(css/PIE.php);}
+
+     body.index   div.content .tabs ul.shadetabs li.ui-tabs-selected a{ position:relative; display:block; border-radius: 6px 0 0 6px; background:#014979; color:#fff; text-decoration:none;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+     body.index   div.content .tabs ul.shadetabs li.ui-tabs-selected a span.ear_courses{position:absolute; right:5px; bottom:-7px; z-index:100; display:block; width:6px; height:7px; background: url(../img/tabs-border-right.png) 0 0 no-repeat;}
+
+     body.index   div.content .tabs ul.shadetabs li a:hover{text-decoration:none; }
+
+
+.ui-tabs .ui-tabs-hide {display: none !important;}
+
+ body.index div.content .tabs div.tab_wrapper{ position:relative; overflow:hidden; width:604px; height:281px;}
+ body.index  div.content .tabs div.tab_wrapper  div.tabcontent { position:relative; top: 2px; padding: 2px; height:281px; border-radius: 6px; background-color:#014979;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+/* icons */
+div.content .tabs div.tab_wrapper:after { clear:both; display:block; width:100%; height:1px; content:'';}
+div.content .tabs div.tab_wrapper  div.tabcontent ul { overflow:hidden;margin:2px 0 2px 2px; padding:0;}
+  div.content .tabs div.tab_wrapper div.tabcontent ul li.icons{ position:relative; display:inline-block;margin:0 -2px 1px 0; padding:0; width:297px; vertical-align:top; }
+
+  html.ie7 div.content .tabs div.tab_wrapper div.tabcontent ul li.icons{display:inline; margin-right:0; margin-left:1px; }
+
+  div.content .tabs div.tab_wrapper div.tabcontent ul li.icons:first-child,
+  div.content .tabs div.tab_wrapper div.tabcontent ul li.icons:first-child +li{ }
+
+  html.ie8 div.content .tabs div.tab_wrapper div.tabcontent ul li.icons:first-child,
+  html.ie8 div.content .tabs div.tab_wrapper div.tabcontent ul li.icons:first-child +li{margin-top:10px;}
+
+
+
+  div.content .tabs div.tab_wrapper div.tabcontent ul li.icons.active{ position:relative;}
+  div.content .tabs div.tab_wrapper div.tabcontent ul li.icons.active a{ background: #fff url(../img/hover-a.png) 0 bottom repeat-x;color:#000;}
+
+    div.content .tabs div.tab_wrapper div.tabcontent ul li.icons a{  position:relative; display:block; overflow:hidden;  padding:13px 13px 13px 18px; border-radius: 6px; background-color: #0079b2;color:#fff;font-size:16px;  behavior: url(http://ucpa.com.ua/css/PIE.php); }
+      div.content .tabs div.tab_wrapper div.tabcontent ul li.icons a:hover{background: #fff url(../img/hover-a.png) 0 bottom repeat-x;}
+
+    div.content .tabs div.tab_wrapper div.tabcontent ul li.icons a:hover{color:#000; text-decoration:none; }
+
+      div.content .tabs div.tab_wrapper div.tabcontent ul li.icon-other a img{float:left;  margin-top: -4px; margin-right:7px;}
+      div.content .tabs div.tab_wrapper div.tabcontent ul li.icon-other a span{display:block; overflow:hidden; line-height:1;}
+
+ body.index div.content .tabs ul.shadetabs li.courses{ position:relative; margin:0; padding-bottom: 31px; border-radius: 0; behavior:(css/PIE.php);}
+body.index div.content .tabs ul.shadetabs li.courses a{ position:relative; top:14px; display:block;margin:  0  20px 0; padding: 0; width:261px; height:39px; border-radius: 15px; background: url(../img/btn.png) 0 0 repeat-x; color:#ffffff; text-align:center; text-decoration:none; text-transform: uppercase; text-shadow: 1px -1px 0 #A37D10; font-weight:bold; font-size:19px; line-height:41px;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+
+body.index div.content .tabs {position:relative;}
+body.index div.content .tabs div.courses{position:absolute; bottom:0; left:0; margin:0; width:334px; height:82px; background:#fff; }
+
+body.index div.content .tabs div.courses a{ position:absolute; position:relative; top:14px; bottom:0; left:0; display:block;margin:  0  20px 0; padding: 0; width:261px; height:39px;  border-radius: 15px; background: url(../img/btn.png) 0 0 repeat-x; color:#ffffff; text-align:center; text-decoration:none; text-transform: uppercase; text-shadow: 1px -1px 0 #A37D10; font-weight:bold; font-size:19px; line-height:41px;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+
+/**
+* @subsection Slider
+*/
+.l-slider {position: relative; z-index: 1; overflow: hidden; width: 980px;}
+.b-slider {position: relative; margin: 0;}
+.b-slider__list {overflow: hidden; margin: 0; padding: 0; height: 303px; border: 1px solid #dedddb; border-radius: 10px; background: #fff; list-style: none; behavior: url(/css/PIE.php);}
+.b-slider__item {position: relative; width: 978px; height: 303px; border-radius: 10px; behavior: url(/css/PIE.php);}
+.b-slider__link {position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 10px; behavior: url(/css/PIE.php);}
+.b-slider__img {float: right; height: 100%; border-bottom: 1px solid #dedddb;}
+
+.b-slider__description {position: absolute; top: 0; left: 0; display: block; padding: 28px 25px 15px 42px; width: 536px;}
+.b-slider__item.-slide_1 .b-slider__description {width: 900px;}
+.b-slider__item.-slide_2 .b-slider__description {width: 345px;}
+.b-slider__item.-slide_3 .b-slider__description {width: 494px;}
+.b-slider__item.-slide_6 .b-slider__description {width: 508px;}
+
+.b-slider__header {color: #2c4085; font: bold italic 36px 'Trebuchet MS', Helvetica, Garuda, sans-serif;}
+.b-slider__item.-slide_1 .b-slider__header {font-size: 40px;}
+.b-slider__item.-slide_3 .b-slider__header {font-size: 25px;}
+.b-slider__item.-slide_4 .b-slider__header {font-size: 25px;}
+.b-slider__item.-slide_5 .b-slider__header {font-size: 32px;}
+
+.b-slider__text {padding: 0 0 0 18px; color: #0079b2; font: italic 25px/1.3em 'Trebuchet MS', Helvetica, Garuda, sans-serif;}
+.b-slider__text p {margin: 0;}
+.b-slider__text ul {margin: 0; padding: 0;}
+.b-slider__text ul li {margin: 0; padding: 0 0 0 20px; background: url(../img/bull-sld.png) 0 18px no-repeat;}
+
+.b-slider__pager {position: absolute; bottom: 37px; left: 38px; z-index: 50; width: 402px;}
+.b-slider__pager a {display: inline-block; margin: 0 1px; width: 9px; height: 9px; background: url(../img/slide-pager.png) no-repeat 0 0; font-size: 0;}
+.b-slider__pager .activeSlide {background-position: -11px 0;}
+
+
+/**
+* @section Tips
+*/
+div.tips{
+  position:relative; overflow:hidden;margin:10px 0 27px; padding:20px 20px 17px; border:1px solid #186fa2;  border-radius: 6px; background:#00436f; behavior: url(http://ucpa.com.ua/css/PIE.php);}
+div.tips .block_mybook{ float:left; width:435px !important;}
+
+div.tips h2{  position: relative; top: -5px;   overflow: hidden;padding:0 0 3px 30px; color:#fff;font-weight:normal; font-size:24px; }
+div.tips div#scrollbarY{ overflow: hidden; height:188px; }
+div.tips div#scrollbarY ul{ margin:0;padding:0 0 0 30px; }
+div.tips div#scrollbarY ul li{ margin:0 0 8px 10px;padding:0 0 0 0;}
+div.tips div#scrollbarY ul li a{ position: relative; z-index: 5; display:block; margin:0;padding:0 0 0 20px; background: url(../img/arrow-h.png) 0 center no-repeat; color:#fff; font-size:13px;}
+
+
+#scrollbarY .customScrollBox{position:relative;overflow: hidden; height:187px; }
+#scrollbarY  .customScrollBox .container{position:relative;  top:0; }
+#scrollbarY .customScrollBox .content{clear:both;   padding: 0;}
+#scrollbarY  .customScrollBox .content p{ margin:10px 0;padding:10px 5px; color:#09C; font-size:13px; font-family:Verdana, Geneva, sans-serif; line-height:20px;}
+#scrollbarY  .dragger_container{position:absolute;  top: 0; right: 10px; z-index:20;  margin:0 0 0 15px; width:0px; height:182px; border-left:3px solid #96a6cf; cursor:pointer;}
+#scrollbarY  .dragger{position:absolute; overflow:hidden; margin-left:-7px; width:11px; height:11px; border-radius:18px; background:#f0f0f0; text-align:center; cursor:pointer;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+#scrollbarY  .dragger_pressed{position:absolute; overflow:hidden; margin-left:-5px; width:9px; height:9px; background:#09C; cursor:s-resize;}
+
+
+/**
+* @section News
+*/
+div.news-block {float: left; }
+div.news-block h3{margin: 0 22px 17px; color:#fff; font-size:15px;}
+div.news-block ul.news{float:left; margin:0;}
+div.news-block ul.news li{float:left; margin:0 0 30px 40px; width:181px;}
+div.news-block ul.news li:first-child{margin-left:0;}
+div.news-block ul.news li dl dt {overflow:hidden; margin-bottom: 7px;}
+div.news-block ul.news li dl dt var{ float:left;margin:0 0 0 0;padding:1px 6px; background-color:#04578e; color:#fff; font-size:10px;}
+div.news-block ul.news li dl dd{  overflow:hidden;margin:0 0 0 0;}
+div.news-block ul.news li dl dd p{margin: 0 0 10px; color:#fff; font-size:13px; line-height: 1.2;}
+div.news-block ul.news li dl dd a.readmore { float: right;  display: block;  margin-top: -8px; padding: 0 0 0 15px;  height: 15px; background: url(../img/bull_arrow.png) no-repeat  5px 6px; color: #7acaff; font: 12px/15px "Trebuchet MS";}
+div.news-block ul.news li dl dd a.readmore:hover {text-decoration:none;}
+
+/* guest */
+div.guest{float:right; width: 274px;}
+div.guest h3{margin:0  0 7px;}
+
+div.guest blockquote {
+  position:relative; margin:0 0 11px;padding:14px 16px; width:220px;
+  border:1px solid #186fa2; border-radius: 6px;background:#005889;  line-height: 1;   behavior: url(http://ucpa.com.ua/css/PIE.php);}
+div.guest blockquote cite { display:block;margin:0 0 10px 0; color: #0189AD; color:#fff;  font-style: normal; font-size:11px;}
+div.guest blockquote  q{color:#fff; font-style:italic; font-size:13px;}
+span.fict{ position: absolute; bottom: -26px;right: 165px; display: block;  width: 26px; height: 26px;  background: url(../img/bg-span-fict.png) no-repeat 0 0;}
+ a.btn-guest{ position:relative; float:right;margin: 0 20px 0 0; padding: 0 8px; width:140px; height:25px; border-radius: 15px; background: url(../img/btn.png) 0 0 repeat-x; color:#ffffff; text-align:center; text-decoration:none; text-transform: uppercase; text-shadow: 1px -1px 0 #A37D10; font-weight:bold; font-size:13px; line-height: 25px;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+
+ /**
+* @section inner
+*/
+header  ul.singup{ margin: 3px 0 0 41px; padding:0;width:358px; text-align:center;}
+header  ul.singup li{margin: 0 0 5px 0;}
+header  ul.singup li span{ color:#fff;font-size:22px;}
+header  ul.singup li a{ color:#ffbd00;font-size:22px;}
+
+ul.account-user{padding:0; margin:0;}
+header  ul.singup li.btn-profile{ float:left; margin-left:37px;padding:27px 0 0;}
+header  ul.singup li.btn-profile a{ position:relative; display:block; width:132px; height:26px;  border-radius: 15px; background: url(../img/btn.png) 0 0 repeat-x; color:#ffffff; text-align:center; text-decoration:none; text-transform: uppercase; text-shadow: 1px -1px 0 #A37D10; font-weight:bold; font-size:13px; line-height: 26px; behavior: url(http://ucpa.com.ua/css/PIE.php);}
+header  ul.singup li.btn-singout{ float:left; margin-left:15px;padding:27px 0 0;}
+header  ul.singup li.btn-singout a{ position:relative; display:block;margin: 0 auto; width:132px; height:26px;  border-radius: 15px; background: url(../img/btn.png) 0 0 repeat-x; color:#ffffff; text-align:center; text-decoration:none; text-transform: uppercase; text-shadow: 1px -1px 0 #A37D10; font-weight:bold; font-size:13px; line-height: 26px; behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+body.login  div.content{padding:0;}
+body.inner  .hgroup{margin:0 0 16px;}
+body.inner  .hgroup h1{ color:#fff; text-transform:uppercase;font-size:24px;}
+body.inner  .hgroup h2{ color:#9cd9fa; text-transform:uppercase;font-size:14px;}
+
+
+/* training */
+div.training{overflow:hidden;}
+div.training ul.training-list{float:left;margin:0 52px 0 0; padding:0;}
+div.training ul.training-list li{overflow: hidden; padding: 0 0 10px 0; color:#fff; }
+div.training ul.training-list li a{ display:block;padding:0 9px; width:259px; height: 61px;
+border:1px solid #186fa2; border-radius: 6px; background: url(../img/bg_step2.png) 0 0 repeat-x; color:#fff;text-align:center; text-decoration:none; font-style:italic; font-size:23px; line-height: 46px;
+  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+div.training ul.training-list li.step-1 a{color:#5291b8;}
+div.training ul.training-list li.step-2 a{color:#eab92d;}
+div.training ul.training-list li a span{ position: relative; top: -27px;display:block; margin:0; font-size:12px;}
+
+ div.training div.training-content{ overflow:hidden; padding:0 20px; height:568px;  border-radius: 6px; background:#fff;  behavior: url(http://ucpa.com.ua/css/PIE.php); }
+ div.training div.theory{ padding:0;}
+ div.training div.training-content p{line-height:1.4;}
+  div.training div.training-content div.bottom-training{margin:22px 0 0 6px; text-align:center; font-style:italic;}
+/**
+* @section Footer
+*/
+footer{  clear: both; margin-top: 22px; margin-bottom:27px;}
+body.inner footer{margin-top:10px; margin-bottom:27px;}
+
+ /**
+* @subsection vcard
+*/
+footer div.vcard{ position:relative;  height:38px; border:1px solid #ffffff;  border-radius: 6px; background:#FFF url(../img/bg-vcard.png) 0 0 repeat-x; white-space: nowrap;line-height:33px; behavior: url(http://ucpa.com.ua/css/PIE.php);}
+footer div.vcard span{padding-left:30px; color:#001d3f; font-size:12px; }
+footer div.vcard span.adr {padding-left: 29px;}
+footer div.vcard span.adr span{ padding: 0; color:#0079b2; font-style:italic; font-size:13px;}
+
+footer div.vcard span.tel { padding:0 12px 0 27px ;color:#0079b2;font-style:italic; }
+footer div.vcard span.tel + span.tel{padding-right:12px;}
+footer div.vcard span.tel span.type{padding:0; color:#001d3f; font-style:normal; font-size:12px;}
+footer div.vcard span a.email{padding:0; color:#c89911;font-style:italic;  font-size:13px;}
+footer div.vcard span a.email:hover{text-decoration:none;}
+.partners{float:left; }
+ a.btn-bottom{ position:relative; float:left; display:block;margin:0 20px 0 0; padding: 0; width:189px; height:44px; border-radius: 6px; background: url(../img/btn.png) 0 0 repeat-x; color:#ffffff; text-align:center; text-decoration:none; text-transform: uppercase; font-size:17px; font-family:Arial, Helvetica, san-serif; line-height: 44px;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+div.bottom {overflow:hidden; padding-bottom:40px; }
+div.bottom div.bottom-rel{float:left; }
+div.bottom-rel dl.rel{overflow:hidden;}
+div.bottom-rel dl.rel dt{margin:0 0 5px 0; color:#fff;  text-transform: uppercase; font-size:11px;}
+div.bottom-rel dl.rel dt{margin:0 0 4px; color:#fff;  text-transform: uppercase; font-size:11px;}
+div.bottom-rel dl.rel dt + dd{margin-left:0;}
+div.bottom-rel dl.rel dt + dd +dd{margin:0 0 0 10px;}
+div.bottom-rel dl.rel dd{float:left;margin:0 0 0 10px;color:#fff; font-size:11px;}
+
+div.bottom address{float:right; width:302px; color:#fff; text-align:right; font-size:12px; }
+div.bottom address{margin:8px 17px 0 0; }
+
+
+ /**
+* @section Course page
+*/
+body.course .content h1 {margin-top:-8px;}
+
+ /**
+* @subsection table_list
+*/
+div.table_list{ margin:16px 0 25px; }
+.oldie div.table_list{width:980px;}
+body.course .content div.table_list {margin-top:-3px; position:relative; z-index:100; }
+  div.table_list table {width:100%; }
+      div.table_list table  tr td{ vertical-align:middle; }
+
+    div.table_list table thead tr{text-align:left;}
+      div.table_list table thead tr td{ color:#000;text-align:left; font-size:15px; position:relative;}
+
+          div.table_list  div.tbl_head{ position:relative; top:0; left:0; padding:7px 10px 7px 33px; border-radius: 6px 6px 0 0; background-color:#eab92d;color:#fff;  overflow:hidden;}
+
+          .headerTable{position:relative; }
+         .oldie     div.table_list  div.tbl_head{background:none;}
+         .oldie   .headerTable{ background: url(../img/bgTableHeader.png) 0 0 no-repeat; }
+      div.table_list table thead tr td{text-align:left;  height:40px;}
+      div.table_list table thead tr + tr td:first-child{ }
+      div.table_list table thead tr + tr td{ padding:5px 17px 8px 20px; width:74px;background-color:#eab92d; text-align:left; vertical-align:bottom;}
+
+    a.payment_system{color: blue; font-size: 10px; line-height: 1; display: block; text-align: center; }
+    a.payment_system img{margin-bottom: 5px; }
+      div.table_list table tbody tr td{ padding:9px 10px 10px 10px; background-color:#fff; color:#001d3f; font-size:13px;}
+      div.table_list table tbody tr td +td{ }
+      div.table_list table tbody tr td +td+td{ }
+      div.table_list table tbody tr td:first-child{ padding-right:0;padding-left:30px; }
+
+      div.table_list table  tr.odd td{ background-color:#f1f6f9; }
+
+
+      div.table_list table tfoot tr td{  color:#001d3f; font-size:15px;}
+
+        div.table_list table tr td span.test{ display:block; width: 672px; color:#001d3f; font-weight:bold; font-style:italic; font-size:14px; }
+        div.table_list table tr td span.test2{ display:block; width: 672px; color:#001d3f; font-weight:bold; font-style:italic; font-size:16px; }
+        div.table_list table tr td span.free_pay{ display:block; color:#c91c00; text-align:center; font-weight:bold; font-size:17px;}
+
+          div.table_list table tr td span.free_pay span.pay{text-decoration:none;}
+            div.table_list table tr td span.free_pay a{  color:#c91c00; text-align:center; font-weight:bold; font-size:17px;}
+            div.table_list table tr td span.free_pay a:hover{  color:#c91c00; text-decoration:none;}
+
+        div.table_list table tr td span.pay{ display:block; white-space: nowrap; color:#0079b2; font-weight:bold; font-size:17px;}
+         div.table_list table tr td div.pay_system{position:relative;  margin-right:14px;}
+  /**
+* @subsection pay_system
+*/
+          div.table_list table tr td  .pay_system__block{position:absolute; display:none; z-index:100; margin-top:12px;right:10px; padding:10px 10px; width:184px;   background:#fff; border-radius: 20px; border:1px solid #8ab9ec;  z-index:1000;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+          div.table_list table tr td .pay_system__block  .pay_system__headr{width:160px; margin-bottom:12px; color:#000; font:12px Tahoma, "Geneva CY", sans-serif;;}
+         div.table_list table tr td .pay_system__block .sub_pay__system{padding:0; margin:0; overflow:hidden;}
+            div.table_list table tr td .pay_system__block .sub_pay__system  .pay_system__item{float:left;  margin:0 0 0 20px;}
+            div.table_list table tr td .pay_system__block .sub_pay__system  .paySystemItemBlock{text-align:center;}
+
+
+                          div.table_list table tr td .pay_system__block .sub_pay__system  .pay_system__item a.pay_system__sms_link{display:block; width:58px;  overflow:hidden; border:1px solid #adadad;}
+                          div.table_list table tr td .pay_system__block .sub_pay__system  .pay_system__item a.pay_system__visa_link{display:block; width:58px;  overflow:hidden; border:1px solid #adadad;}
+
+                    .pay_system_link a{color: #0079B2;font-size:10px;}
+
+               div.table_list table tr td .pay_system__block .pay_system__block__ear{position:absolute;  z-index:100; display:block; top:-10px; right:30px; width:22px; height:11px; background: url(../img/pay_system__block__ear.png) 0 0 no-repeat;}
+
+              div.table_list table tr td .pay_system__block .pay_system__block__close{position:absolute;  z-index:100; display:block; top:8px; right:10px; width:22px; height:13px; background: url(../img/pay_system__block__close.png) 0 0 no-repeat; cursor:pointer;}
+              div.table_list table tr td .pay_system__block .pay_system__block__close:hover{background-position:0 bottom;}
+
+
+                      div.table_list table tr td div.pay_system  a.pay_system__btn{ display:block; color:#0079b2; text-decoration:none; width:83px; height:19px; font-size:11px; background:url(../img/pay_btn.png) 0 0 no-repeat; overflow:hidden; text-indent:100%;  position:relative; z-index:0; }
+
+
+        div.table_list table tr td span.continue{ display:block; color:#c91c00; text-align:center; font-weight:bold; font-size:17px;}
+        div.table_list table tr td span.begin{ display:block; color:#c91c00; text-align:center; font-weight:bold; font-size:17px;}
+
+        div.table_list table tfoot tr td {padding:17px 0 0 10px; background:#FFF; }
+        div.table_list table tfoot tr td:first-child {padding-left:30px; font-weight:bold; font-size:17px;}
+        div.table_list table tfoot tr + tr td{padding:0 !important; background:none;}
+
+          div.table_list table tfoot tr td span{background-color:#FFF;}
+          div.table_list table tfoot tr td span.all_courses{ display:block; color:#001d3f; font-weight:bold; font-weight:bold; font-size:17px; }
+            div.table_list table tfoot tr td span.all_courses em{font-size:15px;}
+
+          div.table_list table tfoot tr td div.bottom{position:relative;  display:block; padding:0;  height:30px; border-radius: 0 0 6px 6px; background-color:#FFF; color:#001d3f; font-weight:bold; font-size:15px;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+/**
+* @subsection add_materials
+*/
+ div.add_materials{ position:relative; margin:12px 0 0;  border-radius:8px;  background-color:#FFF; behavior: url(http://ucpa.com.ua/css/PIE.php); }
+  div.add_materials ul{overflow:hidden;margin-top: 0; margin-bottom:0; padding:10px 0 10px; }
+  div.add_materials ul li{display:inline-block; margin:0 25px 0 0;  padding: 10px 0 10px; height:auto !important; width:108px; vertical-align:top; font-size:11px;}
+  html.ie7 div.add_materials  ul li.arrow_mycarousel ul li{ width:113px;}
+  html.ie7 div.add_materials ul li{display:inline; zoom:1;}
+      div.add_materials ul li > span{display:block;margin-top:5px; text-align:center;}
+
+    div.add_materials ul li a{display:block; color:#00284d; text-align:center; text-decoration:none;}
+    div.add_materials ul li a:hover{text-decoration:underline;}
+      div.add_materials ul li img { }
+      div.add_materials ul li a span{display:block; margin:7px 0;letter-spacing:-0.3px; font-size:12px; line-height:1; }
+
+
+      div.add_materials .carousel{position:relative; overflow:hidden; height:163px;}
+      .oldie div.add_materials .carousel{width:980px;}
+      div.add_materials .carousel { overflow:hidden; margin:0 42px 0 44px; padding:0; width:895px !important; height:194px; }
+      div.add_materials .carousel > li > ul{  padding:0; }
+      div.add_materials .carousel > li > ul li{  padding:10px 0 18px;  height:160px;}
+      div.add_materials  ul li.arrow_mycarousel{position:absolute; top:50%; z-index:1000; margin:-15px 0 0 0; padding:0; width:30px; height:30px;}
+      div.add_materials  .prev{left:10px;}
+      div.add_materials  .next{right:10px;}
+        div.add_materials  .arrow_mycarousel a{ display:block;width:28px; height:30px; outline:none; background-image:url(../img/arrow_mycarousel.png); background-repeat:no-repeat; text-indent:-9999em;}
+        div.add_materials .prev a{background-position:0 0;}
+        div.add_materials .next a{background-position:right 0;}
+
+body.course h2{margin: 20px 0 10px; text-transform:uppercase; font-size:24px;}
+
+/**
+* @section Login_2 page
+*/
+body.login_2 div.content { padding-top: 2px; }
+body.login_2 h1 { text-align: center; text-transform: uppercase; font-weight: normal; }
+body.login_2 h1 span { display: block; margin-top: 20px; text-transform: none; font-weight: normal; font-size: 19px; }
+body.login_2 .header { margin-bottom: 27px; }
+body.login_2 .header .test { margin: 19px 0 0 42px; color: #fff; }
+body.login_2 .header .test  h2 { margin-bottom: 5px; color: #88d7ff; text-align: center; text-transform: none; font-size: 21px; }
+body.login_2 .header .test h3 { margin-bottom: 2px; color: #88d7ff; text-align: center; text-transform: none; font-size: 17px; }
+body.login_2 .header .test p { margin: 0 0 14px; color: #e3e3e3; text-transform: none; font-size: 13px; }
+body.login_2 .header .test strong.test_passed { display: block; margin: 0 0 10px; color: #88d7ff; text-align: center; text-transform: none; font-size: 31px; }
+body.login_2 .header .test em.test_passed { display: block; margin: 0 0 10px; color: #e9b92d; text-align: center; text-transform: none; font-weight: bold; font-style: italic; font-size: 24px; }
+div.txt_test { overflow: hidden; padding: 13px 25px 13px 27px; height: 100%; min-height: 250px; border-radius: 6px; background: #fff; behavior: url(http://ucpa.com.ua/css/PIE.php); }
+body.login_2 div.txt_test ol { margin: -13px -28px 26px; padding: 0 ; counter-reset: point; }
+body.login_2 div.txt_test span.task { display: block; padding: 22px 26px 10px 57px; }
+body.login_2 div.txt_test ol > li { margin: 22px 26px 10px 71px; padding: 0; background: none; color: #3591d1; list-style: decimal; vertical-align: top; text-align: center; font-weight: bold; font-size: 19px; }
+body.login_2 div.txt_test ol > li div.item_test { float: left; }
+body.login_2 div.txt_test ol > li.h_list { position: relative; overflow: hidden; margin-bottom: 1px; padding: 27px 26px 20px 64px; background: none; color: #3591d1; vertical-align: top; text-align: left; font-weight: bold; font-size: 19px; }
+
+  html.ie7 body.login_2 div.txt_test ol { position: relative; z-index: 100;
+  z-index: expression(
+    runtimeStyle.zIndex = 1,
+    function(node) {
+      var list = node.childNodes, i = list.length;
+        while(i--) {
+          if(list[i].nodeType == 1) {
+            list[i].insertAdjacentHTML('afterBegin', '<div class="list">'+(i+1)+'.</div>');
+          }
+        }
+      }(this));
+    )
+  }
+  html.ie7 body.login_2 div.txt_test ol > li div.list { position: absolute; left: 43px; top: 22px; }
+   html.ie7  body.login_2 div.txt_test ol li + li + li + li + li + li + li + li + li+ li div.list{left:33px;}
+
+  html.ie7 body.login_2 div.txt_test ol > li:first-child div.list{top: 28px;}
+
+
+  body.login_2 div.txt_test ol > li:first-child:before{top:26px;}
+ body.login_2 div.txt_test ol > li:first-child{padding-top:26px; }
+
+
+   body.login_2 div.txt_test ol > li h3{margin:0 0 12px 0px; text-align:left !important; clear:both; color:#3591D1;}
+    body.login_2 div.txt_test ol > li  ul li span +div{display:inline;}
+   body.login_2 div.txt_test ol > li div{text-align:left !important;}
+   body.login_2 div.txt_test ol > li h3 p{color:#3591d1; text-align:left !important; color:#3591d1;  font-size:19px;font-weight:bold; }
+   body.login_2 div.txt_test ol > li h3 + p{color:#373737; font-weight:normal;}
+   body.login_2 div.txt_test ol > li h3  p +p{color:#373737; font-weight:normal;}
+   body.login_2 div.txt_test ol li + li + li + li + li + li + li + li + li+ li h3{margin-left:10px;}
+   body.login_2 div.txt_test ol li + li + li + li + li + li + li + li + li+ li + li+ span + li h3{margin-left:10px;}
+    html.ie7 body.login_2 div.txt_test ol li + li + li + li + li + li + li + li + li+ li h3{margin-left:13px;}
+
+
+      div.txt_test ol > li fieldset{font-size:17px; font-weight:normal; color:#001d3f; text-align:left; clear:both;}
+
+        body.login_2 div.txt_test ol li.h_list ul li{  padding:0; display:inline-block; vertical-align:top;}
+         div.txt_test ol li.h_list ul li input[type="checkbox"],
+         div.txt_test ol li.h_list ul li input[type="radio"]{ vertical-align:middle;}
+
+
+         html.ie7 body.login_2 div.txt_test ol li.h_list ul li{display:inline;  }
+
+          html.ie7 body.login_2 div.txt_test ol > li ul >li{ min-height:auto;}
+
+
+          body.login_2 div.txt_test ol > li ul.graf li span{padding-right:10px;}
+          body.login_2 div.txt_test ol > li.v_list ul li span{padding-right:10px;}
+        body.login_2 div.txt_test ol li img{display: inline; margin: 0 6px; background-color: #fff;}
+        html.ie7 body.login_2 div.txt_test ol li img{margin-left:-12px; display:inline;}
+  div.txt_test ol li img.graf{ display:block; margin:0 auto;}
+
+  div.txt_test div.btn{border-top:1px solid #0079b4; padding:29px 0 0; margin: 0 12px 30px; position:relative; z-index:50;}
+    div.txt_test div.btn input{margin: 0 auto; height:32px; width:236px; display:block; text-align:center; font-weight:bold; font-size:15px; text-decoration:none; line-height: 26px; text-transform: uppercase; color:#ffffff; text-shadow: 1px -1px 0 #A37D10; position:relative; background: url(../img/btn.png) 0 0 repeat-x; border:none;  border-radius: 15px; behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+body.login_2 div.txt_test ol > li ul {margin: 0; padding: 0;}
+body.login_2 div.txt_test ol > li.v_list ul {margin: 0; padding: 0; text-align: left;}
+body.login_2 div.txt_test ol > li ul li ul {margin: 0; padding: 0; background: #e3f1f9;
+  background: -moz-linear-gradient(top, #e3f1f9 0%, #c5e0ef 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e3f1f9), color-stop(100%,#c5e0ef));
+  background: -webkit-linear-gradient(top, #e3f1f9 0%,#c5e0ef 100%);
+  background: -o-linear-gradient(top, #e3f1f9 0%,#c5e0ef 100%);
+  background: -ms-linear-gradient(top, #e3f1f9 0%,#c5e0ef 100%);
+  background: linear-gradient(top, #e3f1f9 0%,#c5e0ef 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e3f1f9', endColorstr='#c5e0ef',GradientType=0 );
+}
+body.login_2 div.txt_test ol > li ul > li {overflow: hidden; margin: 1px 0 0; padding-left: 0; min-height: 20px; background:none;}
+body.login_2 div.txt_test ol > li.v_list ul > li {padding: 6px 0;}
+body.login_2 div.txt_test ol > li.h_list ul > li {margin-left: 20px; padding: 6px 7px;}
+
+ div.txt_test ol > li ul > li ul > li {overflow: hidden; margin-bottom: 0; padding: 10px 5px 10px 20px; border-top: 1px solid #fff; color: #001d3f; font-size: 17px;}
+
+body.login_2 div.txt_test ol > li ul > li:first-child {border-top: none;}
+body.login_2 div.txt_test ol > li ul.test > li.left {display: inline-block; margin: 22px 0; padding-left: 0; width: 554px; border-right: 1px solid #fff; vertical-align: middle;}
+body.login_2 div.txt_test ol > li ul.test > li.right {display: inline-block; margin-right: 14px; margin-left: -5px; padding-left: 0; width: 324px; vertical-align: middle;}
+
+  body.login_2 div.txt_test ol > li ul.test{margin:0 0 0 -10px; clear:both;}
+  body.login_2 div.txt_test ol > li ul.test li{margin:0;padding:10px 0px 10px 20px; text-align:left; left:0;}
+body.login_2 div.txt_test ol > li ul.left-full > li.right{width:100%;}
+    body.login_2 div.txt_test ol > li p{margin:0; font-size:15px; color:#001D3F; font-weight:normal;}
+      div.txt_test ol > li ul >li b{float:left; padding-right:10px;}
+      div.txt_test ol > li ul >li label{font-size:17px; font-weight:normal;  padding-left: 3px;}
+
+  html.ie7 body.login_2 div.txt_test ol > li ul.test > li.left,
+  html.ie7 body.login_2 div.txt_test ol > li ul.test > li.right {display:inline; margin-left:0;}
+
+
+div.txt_test ol li a img{border:1px solid #808080;  overflow:hidden;}
+div.txt_test ol li.v_list img{vertical-align: middle; position:relative; z-index:1;}
+div.txt_test ol li a img:hover{border:1px solid #0072aa;}
+div.txt_test ol li a.graf{display:inline-block;  margin-left:15px; clear:both; vertical-align:top; position:relative;z-index:1;}
+div.txt_test ol li.h_list a.graf{vertical-align:middle; margin-bottom:15px;}
+div.txt_test ol li.v_list fieldset label {}
+div.txt_test ol li.v_list fieldset ul li input{margin-top: 3px;}
+div.txt_test ol li.v_list fieldset a.graf{}
+div.txt_test ol li a.graf:after,
+div.txt_test ol li a.graf span.block-after  {content:''; display:block;width:29px; height:29px; position:absolute; z-index:100; bottom:1px; right:13px; background: url(../img/bg_zoom.png) right bottom no-repeat;}
+
+html.ie7 div.txt_test ol li a.graf {zoom:1;
+   scrollbar-face-color: expression(document.getElementById("bottom") ? (
+    this.runtimeStyle.scrollbarFaceColor = "#fff",
+    insertAdjacentHTML('afterBegin','<span class="block-before"></span>'),
+    insertAdjacentHTML('beforeEnd', '<span class="block-after"></span>')) : '#fff'
+   )
+}
+body.login_2 div.txt_test ol li h4{color:#777777; font-size:13px; font-weight:normal; text-align:center; margin:20px 0; font-style:italic; clear: both;}
+ div.txt_test ol > li img.qimg{display:block; border: 1px solid #808080; margin:18px auto 18px;}
+
+.table_1 { height: 150px; margin:0 auto;}
+.table_1 td { font-size: 18px;  font-weight: normal;  text-align: center;}
+tbody.answer tr  td,
+tbody.answer2 tr  td  {height:57px; height: 45px; vertical-align:middle;}
+div.txt_test ol li tbody.answer tr td label,
+div.txt_test ol li tbody.answer2 tr td label {display:block; float:none; height:35px; padding:10px 1px 1px; vertical-align:middle;}
+
+
+    body.login_2 div.txt_test ol > li ul > li.not_right_test .graf img{border:4px solid #ffbfb7; margin:0 0 1px 0;}
+    html.ie7 body.login_2 div.txt_test ol > li ul > li.not_right_test .graf img{margin:0 0 1px -10px;}
+    body.login_2 div.txt_test ol > li ul > li.right_test .graf img{border:4px solid #d5f3b0;margin:0 12px 1px 0;}
+    body.login_2 div.txt_test ol > li ul > li.not_time .graf img{border:4px solid #c3dbe9; margin:0 12px 1px 0;}
+
+    body.login_2 div.txt_test ol > li ul > li.not_right_test {background:#ffbfb7;}
+    body.login_2 div.txt_test ol > li ul > li.right_test {background:#d5f3b0;}
+    body.login_2 div.txt_test ol > li ul > li.not_time {background:#c3dbe9;}
+    body.login_2 div.txt_test ol > li ul > li p{display:inline;}
+
+    body.login_2 table tbody tr td label.not_right_test {background:#ffbfb7;}
+    body.login_2 table tbody tr td label.right_test {background:#d5f3b0;}
+    body.login_2 table tbody tr td label.not_time {background:#c3dbe9;}
+
+    body.login_2 div.txt_test ol > li ul.graf > li.not_time {background:none;}
+    body.login_2 div.txt_test ol > li ul.graf > li.right_test {background:none;}
+    body.login_2 div.txt_test ol > li ul.graf > li.not_right_test {background:none;}
+
+tbody.answer tr + tr td { background: #e3f1f9; border:1px solid #fff;  padding: 0; height: 45px;  width: 57px;vertical-align: middle;}
+
+tbody.answer tr + tr td:first-child {width:27px; height: 45px; vertical-align:middle; background:none; border:none;}
+
+
+body.login_2 footer{margin-top:30px;}
+
+/**
+* @subsection time_fixed
+*/
+.time_fixed{ position:absolute; top:18px; right:17px; width:192px; margin-top:0; margin-left:-500px; padding:4px 20px; background:#e6b62a;  border-radius: 10px;  behavior: url(http://ucpa.com.ua/css/PIE.php);  z-index:1000;}
+.timeout { display:none;  position:fixed; left:50%; top:50%; margin-left:-100px; background:#fff; width:200px; padding:15px; box-shadow:4px 4px 30px #130507; z-index:100; border-radius: 6px;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+.timeout div { width:100%; text-align:center; margin:0 0 15px; font-size:23px; }
+
+.popup_body {  display:none;  background:#000; left:0; top:0; position:fixed; width:100%; height:100%; opacity:0.5; z-index:100; }
+html.ie7 ul.time{padding-bottom:0;}
+#result_testing span.close{position:absolute; right:6px; top:6px; width:16px; height:16px; display:block; cursor:pointer; background: url(../img/close.png) 0 0 no-repeat;}
+#result_testing span.test_passed{ margin: 0 0 15px;  text-align: center;  font-size: 16px; }
+#result_testing em.test_passed{  display:block;  margin: 0 0 15px; font-size:20px; }
+
+div.txt_test  .time_fixed li{ overflow:hidden;padding:6px 0 ; border-top:1px dotted #FFFFFF; background:none; color:#fff;text-shadow: 1px -1px 0 #A37D10; font-size:18px;}
+  ul.time_fixed li:first-child{ border-top:none;}
+    ul.time_fixed li span.txt_time{float:left;}
+    ul.time_fixed li span.numb_time{float:right;}
+    #result_testing { margin-left:-189px; padding-bottom:20px;width:378px;}
+    #result_testing  strong.test_passed{ display: block;  padding: 6px;color:#005685; text-align: center;  font-weight: bold; font-size:22px;}
+    #result_testing  .test_passed var{color:#FFBD00;}
+    #result_testing   span{color:#C91C00; font-size:17px;}
+
+/**
+* @subsection fancybox
+*/
+.fancybox-tmp iframe, .fancybox-tmp object {
+  vertical-align: top;
+  padding: 0;
+  margin: 0;
+}
+
+.fancybox-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1002;
+}
+
+.fancybox-outer {
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  color: #444;
+  text-shadow: none;border-radius: 4px; behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+.fancybox-opened {
+  z-index: 1003;
+}
+
+.fancybox-opened .fancybox-outer {
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      behavior: url(http://ucpa.com.ua/css/PIE.php);
+}
+
+.fancybox-inner {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  outline: none;
+  overflow: hidden;
+}
+
+.fancybox-error {
+  color: #444;
+    font: 14px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 10px;
+}
+
+.fancybox-image, .fancybox-iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  vertical-align: top;
+}
+
+.fancybox-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#fancybox-loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -21px;
+  margin-left: -21px;
+  width: 42px;
+  height: 42px;
+  background: url('../img/fancybox_loading.gif');
+  opacity: 0.8;
+  cursor: pointer;
+  z-index: 1010;
+}
+
+.fancybox-close, .fancybox-prev span, .fancybox-next span {
+  background-image: url('../img/fancybox_sprite.png');
+}
+
+.fancybox-close {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  z-index: 1004;
+}
+
+.fancybox-prev, .fancybox-next {
+  position: absolute;
+  top: 0;
+  width: 40%;
+  height: 100%;
+  cursor: pointer;
+  background: transparent url('../img/blank.gif');
+  z-index: 1003;
+}
+
+.fancybox-prev {
+  left: 0;
+}
+
+.fancybox-next {
+  right: 0;
+}
+
+.fancybox-prev span, .fancybox-next span {
+  position: absolute;
+  top: 50%;
+  left: -9999px;
+  width: 36px;
+  height: 36px;
+  margin-top: -18px;
+  cursor: pointer;
+  z-index: 1003;
+}
+
+.fancybox-prev span {
+  background-position: 0 -36px;
+}
+
+.fancybox-next span {
+  background-position: 0 -72px;
+}
+
+.fancybox-prev:hover, .fancybox-next:hover {
+  visibility: visible;
+}
+
+.fancybox-prev:hover span {
+  left: 20px;
+}
+
+.fancybox-next:hover span {
+  left: auto;
+  right: 20px;
+}
+
+.fancybox-tmp {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  padding: 0;
+  overflow: visible;
+  visibility: hidden;
+}
+
+/* Overlay helper */
+
+#fancybox-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: none;
+  z-index: 1001;
+  background: #000;
+}
+
+/* Title helper */
+
+.fancybox-title {
+  visibility: hidden;
+  font: normal 13px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  position: relative;
+  text-shadow: none;
+  z-index: 1005;
+}
+
+.fancybox-opened .fancybox-title {
+  visibility: visible;
+}
+
+.fancybox-title-float-wrap {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  margin-bottom: -35px;
+  z-index: 1003;
+  text-align: center;
+}
+
+.fancybox-title-float-wrap .child {
+  display: inline-block;
+  margin-right: -100%;
+  padding: 2px 20px;
+  background: transparent;
+  background: rgba(0, 0, 0, 0.8);
+      border-radius: 15px;
+      behavior: url(http://ucpa.com.ua/css/PIE.php);
+  text-shadow: 0 1px 2px #222;
+  color: #FFF;
+  font-weight: bold;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.fancybox-title-outside-wrap {
+  position: relative;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.fancybox-title-inside-wrap {
+  margin-top: 10px;
+}
+
+.fancybox-title-over-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  padding: 10px;
+  background: #000;
+  background: rgba(0, 0, 0, .8);
+}
+
+
+/**
+* @section  Registration page
+*/
+div.content input[type="text"],div.content input[type="password"],div.content input[type="email"], div.content input[type="tel"],div.content textarea  {position:relative;  background:#00689e; border-width:1px; border-style: solid; border-color:#005d8d  #08618f #08618f #00689e; height:23px; border-radius: 6px 6px 6px 6px;  behavior: url(http://ucpa.com.ua/css/PIE.php);  color:#fff;}
+
+ul.form_list {margin: 20px -27px 0; padding: 0;}
+.tab_wrapper ul.form_list {margin: -13px -19px 0;}
+div.txt_test ul.form_list li {position: relative; overflow: hidden; padding: 5px 20px; margin: 0; background: #fff;}
+  ul.form_list li:first-child {padding-top: 0; padding-bottom: 11px;}
+  div.txt_test ul.form_list li.odd {background: #f1f6f9;}
+  body.registration .txt_test ul.form_list li span{position:relative;  width:auto; font-size:15px !important;}
+  body.registration .txt_test ul.form_list li span label{color:#fff; font-size:15px !important;  width:auto !important;  }
+
+  div.txt_test ul.form_list li.question_field{margin:30px 0 0; padding-top:25px; border-top:1px solid #93C9E4}
+
+div.txt-content div.txt_test ul.registration_user { padding:0;}
+div.txt-content div.txt_test ul.registration_user li{background:none; padding:0; text-align:center; }
+    ul.form_list li label{float:left; width:274px; padding-right:6px;  text-align:right; font-size:14px; color:#001d3f;line-height:2;}
+    ul.form_list li label.required_field:after{content:"*";}
+    html.ie7 ul.form_list li label.required_field{ padding-right:6px; background: url(../img/separt_important.png) right 9px no-repeat;}
+
+
+    div.txt-content  ul.form_list li input[type="text"],
+    div.txt-content ul.form_list li input[type="password"],
+    div.content input[type="email"],
+    div.content input.email,
+    div.content textarea{overflow:hidden; width:388px;  font-size:15px;}
+div.content textarea{ height:120px;}
+
+    ul.form_list li span.name-user {display:block; overflow:hidden; line-height: 2;}
+
+      ul.form_list li span.note{display:block; text-align:center; color:#3591d1; font-size:14px; margin:7px 78px 7px 19px; line-height:1;}
+      ul.form_list li:first-child span.note{display:block;  text-align:left; margin:0 0 0 276px; line-height:1;}
+
+    div.txt_test li.btn{ padding:27px 0 0; margin: 0 14px 38px;text-align:center;}
+      div.txt_test .btn input{margin: 0 auto; height:40px; padding:0 32px;  text-align:center; font-weight:bold; font-size:15px; text-decoration:none; line-height: 40px; text-transform: uppercase; color:#ffffff; text-shadow: 1px -1px 0 #A37D10; position:relative; background: url(../img/btn.png) 0 0 repeat-x; border:none;    border-radius: 20px;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+  div.txt_test  ul.form_list li >ul.fieldset{overflow:hidden; padding:0; margin:5px 0;}
+  div.txt_test  ul.form_list li >ul.fieldset li{padding:0; background:none; float:left;}
+    div.txt_test  ul.form_list li >ul.fieldset li.captcha-img  img{ float:left; margin-right:10px; border:1px solid #00689E;}
+    div.txt_test  ul.form_list li >ul.fieldset li.captcha-img  a{ float:left; }
+    div.txt_test  ul.form_list li >ul.fieldset li.captcha-img input[type="text"]{ display:block; margin-left: 132px; margin-top: 21px; width: 152px;}
+    div.txt_test  ul.form_list li >ul.fieldset li.captcha-img div.capture-text{ font-size: 10px; margin-left: 132px;}
+
+/**
+* @subsection  guestbook
+*/
+  div.txt_test  ul.news-comments {padding:0;}
+    div.txt_test  ul.news-comments li.hentry{padding:0; background:none;}
+    div.txt_test  ul.news-comments li.hentry{padding:0; background:none;}
+
+          div.txt_test  ul.news-comments li.hentry dl dt var {padding: 0 3px; background-color: #04578E; border: 1px solid #04578E; color: #FFFFFF;font-size: 10px;font-weight: bold; }
+          div.txt_test  ul.news-comments li.hentry dl dt em {color: #04578E; font-size: 19px; font-style: italic; font-weight: bold;}
+
+        div.txt_test  ul.news-comments li.hentry dl dd.entry-summary { margin:0 0 0 74px;}
+        div#fill_form ul li{background:none;}
+          div#fill_form ul li strong{color:#C91C00;}
+        div.content ul.form_list li.error #falseimg{display:inline !important;}
+        div.content ul.form_list li.error #trueimg{display:none !important;}
+        div.content ul.form_list li.ok #trueimg{display:inline !important;}
+        div.content ul.form_list li.error  input[type="text"],
+        div.content ul.form_list li.error  input[type="password"],
+        div.content ul.form_list li.error  textarea {border:1px solid #C91C00; }
+
+  body.registration h2{margin: 20px 0 10px; font-size:24px; text-transform:uppercase;}
+  body.registration div.content{padding-top:2px;}
+
+/**
+* @section  Test Course page
+*/
+body.test_course div.content{padding-top:3px;}
+body.test_course .hgroup{margin-bottom:14px;}
+  body.test_course div.txt_test{min-height:100%; padding-top:24px; padding-bottom:24px;}
+
+    #accordion h2{padding:11px 0 10px; margin:0 14px 0 12px; color:#000; font-size:19px; outline:none; border-top:1px solid #93c9e4; overflow:hidden;}
+      #accordion h2:first-child{ border-top:none;}
+    #accordion h2.ui-state-active + div + h2{border-top:none;}
+
+      #accordion h2 span.ui-icon{float:left; padding:0 8px 0 0; width:9px; height:23px; color:#000; font-size:19px;  background: url(../img/min_plus.png) 0 7px no-repeat; }
+      #accordion h2.ui-state-active span.ui-icon{background-position:0 -49px;}
+
+        #accordion h2 a{color:#000;font-size:19px; text-decoration:none; overflow:hidden; }
+        #accordion h2 a:hover{ text-decoration:underline; color: #2C4085; }
+        #accordion h2.ui-state-active a{color: #2C4085; }
+      #accordion .description {overflow:hidden;}
+        #accordion .description ul{padding:0; margin:0;}
+            #accordion .description ul li{margin:3px 9px 9px 30px; padding:0 0 0 18px; display:inline-block; vertical-align:top; width:337px; background: url(../img/bull.png) 0 5px no-repeat; }
+            html.ie7 #accordion .description ul li{display:inline;}
+              #accordion .description ul li a{  font-size:19px; color:#2793ca;  font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;}
+
+
+/**
+* @section  FAQ page
+*/
+body.faq div.content {padding-top: 3px;}
+body.faq .hgroup {margin-bottom: 14px;}
+body.faq div.txt_test {min-height: 100%; padding-top: 24px; padding-bottom: 17px;}
+
+.faq_txt h2{padding:11px 0 10px; margin:0 14px 0 12px; color:#2793ca; font-size:19px; outline:none; border-top:1px solid #93c9e4; overflow:hidden;}
+.faq_txt h2:first-child{ border-top:none;}
+div.txt_test .faq_txt h2 a {padding: 0 0 0 18px; background: url(../img/bull.png) 0 5px no-repeat; color: #2793ca; text-decoration: none; font-size: 19px; font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;}
+div.txt_test .faq_txt h2 a:hover {color: #2c4085; text-decoration: underline;}
+div.txt_test .faq_txt p {margin: 10px 0 20px 11px; line-height: 1.4;}
+
+div.txt_test .faq_txt ul.back {padding: 0; margin: 11px 0 23px 12px;}
+div.txt_test .faq_txt ul.back li {padding: 0; margin: 0; background: none;}
+div.txt_test .faq_txt ul.back a {padding: 0 0 0 18px; background: url(../img/bull.png) 0 5px no-repeat; color: #2793ca; text-decoration: underline; font-size: 15px; font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif; }
+div.txt_test .faq_txt ul.back a:hover {text-decoration: none;}
+
+
+/**
+* @section  Our Partners page
+*/
+body.our_partners div.content{padding-top:3px;}
+body.our_partners .hgroup{margin-bottom:14px;}
+  body.our_partnersdiv .txt_test{min-height:100%; padding-top:24px; padding-bottom:17px;}
+  div.txt_test .content_our_partners ul{  margin:0 0 0 -20px; overflow:hidden; position:relative; padding-left:0; background: url(../img/bg_bdr.gif) 469px 0 repeat-y;}
+    div.txt_test .content_our_partners ul li{display:inline-block; background:none; vertical-align:top; width:427px; margin-left:20px; margin-right:20px;  position:relative; padding:14px 0 17px 12px;}
+
+      div.txt_test .content_our_partners ul li.hentry:before,
+      div.txt_test .content_our_partners ul li.hentry span.block-before {position: absolute; left: 0; top: -1px; width:901px; height:1px; content:""; display:block;  background: url(../img/bg_bdr.gif) 0 0 repeat-x ;}
+
+
+      html.ie7 div.txt_test .content_our_partners ul li.hentry{display:inline;}
+      html.ie7 div.txt_test .content_our_partners ul li.hentry{
+         scrollbar-face-color: expression(document.getElementById("bottom") ? (
+          this.runtimeStyle.scrollbarFaceColor = "#fff",
+          insertAdjacentHTML('afterBegin','<span class="block-before"></span>'),
+          insertAdjacentHTML('beforeEnd', '<span class="block-after"></span>')) : '#fff'
+         )
+      }
+
+      .content_our_partners ul li img{ float:left; margin:0 14px 0 0;}
+      .content_our_partners ul li .entry-summary{overflow:hidden; color:#434343; font-size:12px; }
+        .content_our_partners ul li .entry-summary p{color:#434343; font-size:12px; margin:0 0 0 1px;}
+          .content_our_partners ul li  a{padding-left:0; color:#0079b2;font-size:12px;}
+
+.txt_test h2{color:#0079B2;}
+
+ div.txt_test ol{ padding:0 ;  counter-reset: point;  margin:-13px -28px 26px;}
+ div.txt_test ol > li{position:relative; vertical-align:top; margin: 10px 26px 1px 44px; padding: 0; color:#373737; font-weight:normal; }
+
+div.txt_test ol > li + li + li + li + li + li + li + li + li+ li:before{left:30px;}
+  html.ie7  div.txt_test ol {
+  z-index: expression(
+    runtimeStyle.zIndex = 1,
+    function(node) {
+      var list = node.childNodes, i = list.length;
+        while(i--) {
+          if(list[i].nodeType == 1) {
+            list[i].insertAdjacentHTML('afterBegin', '<div class="list">'+(i+1)+'.</div>');
+          }
+        }
+      }(this));
+    )
+  }
+  html.ie7 div.txt_test ol > li div.list { position: absolute; left: 27px; top: 1px; }
+   html.ie7  div.txt_test ol li + li + li + li + li + li + li + li + li+ li div.list{left:15px;}
+   html.ie7 div.txt_test ol li + li + li + li + li + li + li + li + li+ li h3{margin-left:0;}
+  html.ie7  div.txt_test ol > li:first-child div.list{/* top: 27px; */}
+
+
+div.txt_test ol > li:first-child:before{top:26px;}
+div.txt_test ol > li:first-child{padding-top:26px; }
+  div.txt_test ol > li p{margin:0 0 20px 0;}
+
+ div.txt_test h3{color:#373737; font-size:16px; margin:30px 0 12px 0;  text-align:left; font-weight: bold;}
+
+div.txt_test ol > li  ol  {margin-left:20px; font-size:13px}
+div.txt_test ol > li  ol  li{margin: 0 0 8px; }
+div.txt_test ol > li  ol li:before { background: url(../img/bg_dot_li.png) no-repeat right 11px;}
+
+  div.txt_test em {font-style:italic;}
+  div.txt_test i {font-style:italic;}
+  div.txt_test strong {font-style:italic;}
+  div.txt_test figure{margin:30px 0 12px 7px;}
+  div.txt_test figure img{display:block; margin:0 auto 0; border:1px solid #515151;}
+  div.txt_test figure figcaption{ text-align:center;  margin:10px auto 20px;}
+  div.txt_test figure  + .alert{margin-top:-10px;}
+  div.txt_test ul  + .alert{margin-top:-12px;}
+  div.txt_test a{color:#005685}
+
+.alert {  position:relative;  margin: 10px 60px  18px 60px; padding: 8px 35px 8px 14px; border-radius:4px 4px 4px 4px;text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+.alert-info { border-color: #BCE8F1; background-color: #D9EDF7; color:#3A87AD;font-size:13px;}
+
+/**
+* @section  News page
+*/
+body.news div.content {padding-top: 3px;}
+body.news .hgroup {margin-bottom: 14px;}
+body.news .txt_test {padding-top: 24px; padding-bottom: 17px; min-height: 100%;}
+div.txt_test ul.news {position: relative; overflow: hidden; margin: 0 14px 0 -24px; padding-left: 0; background: url(../img/bg_bdr.gif) 483px 0 repeat-y;}
+div.txt_test ul.news li {position: relative; display: inline-block; margin: 0 1px 0 36px; padding: 14px 0 17px; width: 428px; background: none; vertical-align: top;}
+div.txt_test ul.news li.hentry:before,
+div.txt_test ul.news li.hentry span.block-before {position: absolute; top: -1px; left: 0; display: block; width: 901px; height: 1px; background: url(../img/bg_bdr.gif) repeat-x; content: '';}
+
+  html.ie7 div.txt_test ul.news li.hentry {display: inline;}
+  html.ie7 div.txt_test ul.news li.hentry {
+    scrollbar-face-color: expression(document.getElementById("bottom") ? (
+      this.runtimeStyle.scrollbarFaceColor = "#fff",
+      insertAdjacentHTML('afterBegin','<span class="block-before"></span>'),
+      insertAdjacentHTML('beforeEnd', '<span class="block-after"></span>')) : '#fff'
+    )
+  }
+body.news div.content {padding-top: 3px;}
+div.txt_test ul.news {min-height: 720px;}
+ul.news li .entry-summary {overflow: hidden; color: #434343; font-size: 12px;}
+ul.news li .entry-summary p {margin: 10px 0 10px 1px; color: #434343; font-size: 12px;}
+ul.news li a {padding-left: 0; color: #0079b2; font-size: 12px;}
+ul.news li dd.entry-summary {margin: 0;}
+div.txt_test ul.news li var{padding: 0 3px; border: 1px solid #04578e; background-color: #04578e; color: #fff; font-size: 10px; font-weight: bold;}
+div.txt_test ul.news li a.readmore{float:right; margin:-6px 0 0;  padding:0 0 0 12px;  background: url(../img/bull_arrow.png) 0 7px no-repeat;}
+
+div.pagination{margin-bottom: 25px; padding: 10px 0 0; text-align: center;}
+div.txt_test div.pagination ul {display: inline; line-height: 2.2;}
+div.pagination ul li a {background-color: #fff;}
+div.txt_test div.pagination ul li {display: inline; padding: 0; background: none;}
+
+div.txt_test .news ul.back {padding: 0; margin: 11px 0 23px 12px;}
+div.txt_test .news ul.back li {padding: 0; margin: 0; background: none;}
+div.txt_test .news ul.back a {padding: 0 0 0 18px; background: url(../img/bull.png) 0 5px no-repeat; color: #2793ca; text-decoration: underline; font-size: 15px; font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif; }
+div.txt_test .news ul.back a:hover {text-decoration: none;}
+
+/**
+* @section  Certificate page
+*/
+body.certificate div.content {padding-top: 3px;}
+.block_certificate{margin-right:35px;padding-bottom:20px; overflow:hidden; background: url(../img/bg_certificate.jpg) center 176px no-repeat; min-height:720px;}
+  .logo-block{text-align:center;}
+
+    .block_certificate  h2{ font-size:30px; color:#2C4085;}
+    .block_certificate .txt_certificate{font-size:24px; text-align:center; line-height:1.6; margin-top:56px;}
+
+    .block_certificate .note{ text-align:center;}
+    .block_certificate .note p{font-size:19px;}
+      .block_certificate .logo-block h2{margin-top:34px;}
+      .block_certificate .logo-block img{display:block; margin:5px auto 0; width:199px; height:184px; overflow:hidden;}
+      .block_certificate .logo-block p{font-size:19px; color:#434343; margin-top:19px;}
+
+      .block_certificate .txt_certificate h2{font-style:italic;margin-bottom:20px;}
+
+          .block_certificate .table_list {margin:46px 0 31px 11px;}
+          .block_certificate .table_list table{border-top:1px solid #93c9e4;}
+          .block_certificate .table_list table tr td{padding:14px 2px 14px;font-style:italic; font-size:21px; color:#2c4085; border-bottom:1px solid #93c9e4;}
+          .block_certificate div.table_list table tbody tr td + td + td {padding-right: 21px; text-align: right;}
+          .block_certificate .table_list table tr td:first-child{font-style:normal; width:42px; padding-left:20px; padding-right: 20px;}
+            .block_certificate .table_list table tr td span{font-weight:bold; color:#434343; background:none;}
+
+          .block_certificate .table_list table tfoot tr td{padding:13px 12px 14px 0; font-size:26px; font-weight:bold;}
+          .block_certificate .table_list table  tfoot tr td span{font-size:21px;}
+
+          div.txt_test .block_certificate div.btn{border:none; margin:57px -36px 40px 0; padding:0;}
+          .block_certificate div.btn a{margin: 0 auto; height:41px; width:256px; display:block; text-align:center; font-weight:bold; font-size:19px; text-decoration:none; line-height: 41px; text-transform: uppercase; color:#ffffff; text-shadow: 1px -1px 0 #A37D10; position:relative; background: url(../img/btn.png) 0 0 repeat-x; border:none;  border-radius: 15px;  behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+ /**
+* @section  Booklet
+*/
+  .booklet{ position:relative; overflow:visible !important; margin:0 auto 10px;width:300px; height:600px; background:#fff; cursor:pointer;}
+    .booklet .b-page  { position:absolute; top:0;left:0; overflow:hidden; padding:0;}
+
+/**
+* @subsection  Page Wrappers
+*/
+  .booklet .b-wrap       { position:absolute;top:0; height:203px !important; }
+  .booklet .b-wrap  img     {margin:-10px; height:203px !important;  }
+  .booklet .b-wrap  p     { margin-right:10px; margin-left:13px;color:#091433; font-style:italic; font-size:15px;}
+  .booklet .b-wrap-left  {background:#fff;}
+  .booklet .b-wrap-right {background:#fff;}
+
+/**
+* @subsection  Custom Page Types
+*/
+  .booklet .b-page-blank  {padding:0; width:100%; height:100%;}
+  .booklet .b-page-cover  {padding:0; width:100%; height:100%; background:#925C0E;}
+  .booklet .b-page-cover h3  {color:#fff; text-shadow:0px 1px 3px #222;}
+
+/**
+* @subsection  Page Numbers
+*/
+  .booklet .b-counter { position:absolute;bottom:6px; display:block; padding:5px 0 0; width:13px; height:13px;  color:#444; text-align:center;  font-size:10px; font-family:Arial, Helvetica, 'Nimbus Sans L',  sans-serif;}
+  .booklet .b-wrap-left  .b-counter  {left:5px;}
+  .booklet .b-wrap-right .b-counter {right:5px;}
+   .b-load img{position:relative; z-index:1;}
+
+/**
+* @subsection  Page Shadows
+*/
+  .booklet .b-shadow-f  {   position:absolute; top:0;right:0;  background:url("../img/b-next.png"); background-position:100% 0; background-repeat:repeat-y;}
+  .booklet .b-shadow-b  { position:absolute;   top:0;left:0;  background-image:url("../img/b-prev.png"); background-position:0 0;    background-repeat:repeat-y;}
+
+/**
+* @subsection  Overlay Controls
+*/
+.booklet .b-overlay { position:absolute;top:0; width:50%; height:100%;}
+  .booklet .b-overlay-prev {left:1px;}
+  .booklet .b-overlay-next {right:0; display:block !important;}
+
+.shadowBlock { position: absolute; top: 20px; left: 211px;  z-index: 50; width: 54px; height: 217px;background: url("../img/block-shadow.png") no-repeat 0px 0;}
+
+/* @z-index fix (needed for older IE browsers)
+----------------------------------------*/
+    .b-menu  {z-index:100;}
+    .b-selector {z-index:100;}
+    .booklet {z-index:10;}
+    .b-pN {z-index:10;}
+    .b-p0 {z-index:10;}
+    .b-p1 {z-index:10;}
+    .b-p2 {z-index:10;}
+    .b-p3   {z-index:10;}
+    .b-p4 {z-index:10;}
+    .b-next  {z-index:40;}
+    .b-prev  {z-index:40;}
+    .b-counter {z-index:40;}
+
+
+.select {position: absolute !important;  overflow: hidden;padding: 5px 27px 1px 5px; margin-left:0 !important; width: 358px !important; height: 21px;  border-radius: 6px; background:#00689E url(../img/bg-styled-select.png) right 0 no-repeat; color: #fff; font-size:15px;  behavior: url(http://ucpa.com.ua/css/PIE.php); }
+select.styled{height:26px; opacity:0; }
+html.oldie select.styled{filter: alpha(opacity = 0); }
+
+/**
+* @subsection  Information
+*/
+.tabs_information{margin:-3px -7px 0 -8px;  }
+div.txt_test .tabs_information > ul{ display: table;overflow:hidden; margin:0; padding:0; width:100%; background:#fff;}
+html.ie7 div.txt_test .tabs_information > ul{display: block;}
+div.txt_test .tabs_information > ul li{display: table-cell; margin:0; padding:0; background:0;}
+html.ie7 div.txt_test .tabs_information > ul li{ float:left;display:block;  width: 232px;}
+div.txt_test .tabs_information > ul li a.tab-a{display:block; margin:0 0 0 1px; padding:15px 10px; outline:none;  border:1px solid #014979; border-bottom:none; border-radius: 8px 8px 0 0; background:#fff; text-align:center; text-decoration:none; font-weight:bold; font-size:22px; behavior: url(http://ucpa.com.ua/css/PIE.php);}
+div.txt_test .tabs_information > ul li:first-child a.tab-a{margin-left:0;}
+div.txt_test .tabs_information > ul li.ui-state-active,
+div.txt_test .tabs_information > ul li.ui-state-active a.tab-a,
+div.txt_test .tabs_information li.active a.tab-a{ background:#014979;color:#fff;}
+div.txt_test .tabs_information > ul li{margin-left:1px;}
+
+html.oldie .txt_test .tabs_information > ul li{ }
+html.oldie .txt_test .tabs_information > ul li:first-child{width:235px;  }
+    .txt_test .tabs_information  #accordion h2.ui-state-active a{color:#fff;}
+    .txt_test .tabs_information  #accordion h2 a{color:#fff;}
+  .txt_test  .tabs_information #accordion h2 span.ui-icon { background: url(../img/min_plus_white.png) no-repeat  0 7px ;}
+  .txt_test  .tabs_information #accordion h2.ui-state-active span.ui-icon {background-position: 0 -49px;}
+.txt_test  .tabs_information  #accordion h2{border-top:none;}
+
+.tabs_information  .block_certificate{ margin:0 9px; padding:0; min-height:100%; background:none;}
+.tabs_information .block_certificate .table_list{margin:0 0 23px;}
+.tabs_information .block_certificate .table_list table thead tr th{    padding: 4px 2px 9px; color: #fff; text-align:center;  font-style: normal; font-size: 20px;}
+.tabs_information .block_certificate .table_list table{border-top:none;}
+.tabs_information .block_certificate .table_list table tr td{ padding:12px 5px 13px;
+    border-top: 1px solid #93C9E4; border-bottom: 0; text-align:left; font-style:italic;font-size:15px; line-height:1;}
+
+    .tabs_information  .block_certificate .table_list table tr td table tr td:first-child { padding-right: 10px;}
+
+    .tabs_information  .block_certificate .table_list table tr td  table tr td table tr td{ padding-top:0;border:none;}
+
+    .tabs_information  .block_certificate .table_list table tbody tr td table tbody tr:first-child td{border:none;}
+    .tabs_information  .block_certificate .table_list table tbody tr td table tbody tr td.name_td{ padding-right:10px; width:318px;}
+
+    .tabs_information  .block_certificate  .table_list table tbody tr td.course_td{  padding-left:20px;width: 120px; }
+    .tabs_information  .block_certificate .table_list table tbody tr td.td_certificate{width:50px;}
+
+      .tabs_information  .block_certificate  .table_list table tbody tr td table.sub_table{width:619px;}
+        .tabs_information  .block_certificate .table_list table  table.tbl_result tbody tr td.test-result{ padding-left:0;width:144px;white-space: nowrap;}
+          div.table_list table tbody tr td table tbody tr td table.tbl_result tbody tr td.test-date{width:106px;}
+          div.table_list table tbody tr td table tbody tr td table.tbl_result tbody tr td.test-count{width:25px;}
+
+
+
+.tabs_information  .block_certificate .table_list table tfoot tr td { padding: 13px 12px 14px 0; width:auto; white-space: nowrap; font-weight: bold; font-size: 26px;}
+.tabs_information  .block_certificate .table_list table tfoot tr td  p{ margin:0 0 0 259px;  padding:0;  white-space: nowrap;}
+
+
+.tabs_information  .block_certificate .table_list table tbody tr  td + td +td{width:151px;}
+.tabs_information  .block_certificate .table_list table tbody tr  td + td +td +td{ padding-right:10px;width:auto;}
+    div.txt_test .back_course { margin-top:6px;text-align:center;}
+    div.txt_test .back_course a{ position:relative;  display:inline-block; padding:6px 24px; border-radius: 15px; background: url(../img/btn.png) 0 0 repeat-x; color:#ffffff; text-align:center; text-decoration:none; text-transform: uppercase; text-shadow: 1px -1px 0 #A37D10; font-weight:bold; font-size:13px; line-height: 26px; behavior: url(http://ucpa.com.ua/css/PIE.php);}
+    html.ie7 div.txt_test .back_course a{display:inline; padding:2px 24px;}
+
+    .tabs_information .tab_wrapper{ position:relative;padding:14px 20px 30px; border-radius: 0 0 8px 8px; background:#014979; behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+
+.errorMessage{ margin-top: 5px; color: red; font-size: 0.9em;}
+#students-form-login .errorMessage{ text-align:center; clear:both; margin-top:7px;}
+#students-form-login p{ text-align:center; clear:both; margin-top:7px;}
+
+.good-notification{ color: green; text-align:center;  font-size: 0.9em;}
+
+.additional_question{ clear:both;display:none; margin-bottom:10px;}
+div.txt_test form.profile input.btn{ position:relative; padding:0 16px;height:27px; border:none; border-radius: 20px; background: url(../img/btn.png) 0 0 repeat-x; color:#ffffff;  text-align:center; text-decoration:none; text-transform: uppercase; text-shadow: 1px -1px 0 #A37D10; font-weight:bold; font-size:15px; line-height: 27px; behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+/**
+* @section  Search
+*/
+.txt_test .search-block h2 {margin-bottom: 20px;}
+  .search-block input[type="submit"]{ position:relative; padding:0 16px;height:27px; border:none; border-radius: 20px; background: url(../img/btn.png) 0 0 repeat-x; color:#ffffff;  text-align:center; text-decoration:none; text-transform: uppercase; text-shadow: 1px -1px 0 #A37D10; font-weight:bold; font-size:15px; line-height: 27px; behavior: url(http://ucpa.com.ua/css/PIE.php);}
+
+    div.txt_test .search-block  ul.search-result{ margin:20px 0 10px; padding:0;}
+      div.txt_test .search-block  ul.search-result li.hentry{ padding:0;background:none;}
+        div.txt_test .search-block  ul.search-result li.hentry dl dt {float:left;}
+        div.txt_test .search-block  ul.search-result li.hentry dl dd {overflow:hidden; margin:0;}
+          div.txt_test .search-block  ul.search-result li.hentry dl dt var { padding: 0 3px; color: #04578E; font-weight: bold; font-size: 12px;}
+
+
+
+.result-overlay{  position:absolute; top:0; left:0; z-index:11;display:block; width:100%; height:100%; background: #000; opacity: 0.4;}
+html.ie8 .result-overlay{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";}
+html.ie7 .result-overlay{filter: alpha(opacity = 40);}
+
+/**
+* @section  sms-pay
+*/
+div.sms-pay h2{margin-bottom:1em;}
+div.sms-pay h4 { display: inline;}
+div.sms-pay var.product { color: #8C8B8B; font-weight:bold;}
+div.sms-pay  .summary {
+    font: 1em Arial;
+    margin: 15px 0 0;color:#2EACF4;
+    font-size:14px;
+}
+div.sms-pay  .payform .btn .btn_ok{height: auto; padding: 0 21px; line-height: 28px;}
+div.sms-pay  .summary var{font-size: 19px;
+    font-weight: bold;}
+.mob-text var {
+    color: #BB5757;
+    font-size: 1.126em;
+}
+.additionally {
+    color: #4F4F4F;
+    font-size: 11px;
+
+}
+.valid{margin-top:20px;}
+.mob-text {
+    color: #4F4F4F;
+    font-weight: bold;
+    margin: 15px 0;
+    padding-left: 25px;
+}
+.mob-text .sms-code,
+.mob-text .code  {
+    color: #BB5757;
+    font-size: 1.126em;
+    white-space: nowrap;
+    text-decoration:none;
+}
+.tips-details{display:none;}
+.block-blockquote{display:none;}
+
+div.txt_test .content_our_partners ul li{background:none; padding-left:0;}
+div.training div.theory{position:relative;}
+ .list-menu-pdf{ position: relative;   width:100%; height:85px; background:#fff; overflow:hidden; padding:0; margin:0; text-align:center;/*  z-index:100; */}
+  .list-menu-pdf li{display:inline-block;  text-align:left; vertical-align:middle; margin:20px 10px 20px; }
+  .list-menu-pdf li span{display:block; width:64px; height:64px; font-size:24px; text-indent:100%; overflow:hidden; text-align:center; cursor:pointer; background:#FFF url(../img/icon-pdf.png) 0 0 no-repeat;}
+  .list-menu-pdf li.plus span{background-position:0 0; }
+  .list-menu-pdf li.minus span{background-position:0 -64px;}
+  .list-menu-pdf li.fullscrin span{background-position:0 -129px;}
+
+ .training-content-scroll{ height: 505px; overflow:auto; text-align:center;}
+   .training-content-scroll img{width:640px;}
+    .theory-full{display:block; width:100%;  background:#fff;  z-index:100; position:relative;}
+    #scrollable2 { padding: 0 15px;  width: 610px;}
+    .sub__scrollable{position:relative;   height:414px;  overflow:scroll-x;}
+
+.body-menu{/* z-index:1000; position:relative; */}
+html.pdf{overflow:hidden !important; height:100%;}
+html.pdf body{overflow:visible !important; min-height:100%; }
+html.pdf body:after{z-index:-1; position:absolute; height:0;}
+html.pdf:before{z-index:-1; position:absolute; height:0;}
+
+
+
+
+  .tbl_head  input[type="submit"]{ position:relative; padding:2px 16px 0; height:auto; font-size:17px;  margin: 0 0 2px 6px; color: #000000;  cursor: pointer;  font: 12px Arial, Helvetica, san-serif;   border-radius: 6px; border:1px solid #6f6f6f;  behavior: url(http://ucpa.com.ua/css/PIE.php);
+    background: #dfdfdf; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+
+background: -moz-linear-gradient(top,  #dfdfdf 0%, #fefefe 50%, #eaeaea 51%, #fdfdfd 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dfdfdf), color-stop(50%,#fefefe), color-stop(51%,#eaeaea), color-stop(100%,#fdfdfd)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #dfdfdf 0%,#fefefe 50%,#eaeaea 51%,#fdfdfd 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #dfdfdf 0%,#fefefe 50%,#eaeaea 51%,#fdfdfd 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #dfdfdf 0%,#fefefe 50%,#eaeaea 51%,#fdfdfd 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #dfdfdf 0%,#fefefe 50%,#eaeaea 51%,#fdfdfd 100%); /* W3C */
+}
+ div.content .tbl_head  input[type="text"]{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 6px 6px 6px 6px;
+    color: #001D3F;
+    font-family: Arial,Helvetica,san-serif;
+    height: auto;
+    padding: 0 6px;
+    position: relative;
+  }
+    div.content .tbl_head  input[type="text"]:-moz-placeholder:focus,
+.login-block form.login_form ul li.signin_username input:-moz-placeholder:focus,
+.login-block form.login_form ul li input[type="text"]:-moz-placeholder:focus,
+ .login-block form.login_form ul li input[type="password"]:-moz-placeholder:focus    {color: #fff;}
+    div.content .tbl_head  input[type="text"]::-webkit-input-placeholder:focus {color: #fff;}
+  .scratch-code-info{float:left; margin-top:5px; position:relative;}
+  .head-table{float:left; margin-right:10px; width:383px;}
+  .head2-table{float:right; width:278px; margin-right:10px; text-align:right;}
+  .div.content .tbl_head input[type="text"]{color:#ffffff;}
+
+  .block_authorization{}
+  .block_authorization .note{color: #3591D1;
+    display: block;
+    font-size: 14px;
+    line-height: 1;
+    margin: 7px 78px 7px 19px;
+    text-align: center;}
+
+/**
+* @section Main Site Footer
+*/
+.b-share {margin: 0 0 20px;}
+.b-share__list {margin: 0 !important; padding: 0 !important; list-style: none !important; text-align: right !important;}
+.b-share__item {display: inline-block !important; margin: 0 !important; padding: 0 !important; background: none !important; vertical-align: middle !important;}
+.b-share__item.-type_vk {}
+
+/**
+* @section Main Site price
+*/
+.b-price__txt{color:#373737; font:  15px/21px 'Trebuchet MS',Helvetica,Garuda,san-serif;}
+.b-priceForm__control-group{overflow:hidden;}
+.b-priceForm__controls{float:left; margin:0 10px 0 0;}
+.b-priceForm__label{float:left; margin:0 5px 0 0; color:#0079b2; font: bold 15px/27px 'Trebuchet MS',Helvetica,Garuda,san-serif;}
+  .b-priceForm__input{padding:1px 5px; width:310px;}
+  .b-priceForm__btns{float:left; }
+    .b-priceForm__btn{margin: 0 auto; padding:0 20px; height:27px;  display:block; text-align:center; font-weight:bold; font-size:15px; text-decoration:none; line-height: 27px; text-transform: uppercase; color:#ffffff; text-shadow: 1px -1px 0 #A37D10; position:relative; background: url(../img/btn.png) 0 0 repeat-x; border:none;  border-radius: 15px; behavior: url(http://ucpa.com.ua/css/PIE.php);}
+    
+.b-priceTable{margin:40px 0 23px;}
+
+
+.b-pricetable{ border-collapse: separate; font-family:'Trebuchet MS',Helvetica,Garuda,san-serif;}
+.b-side{}
+th.b-side { border-bottom:3px solid #fff; width:165px; }
+td.b-side {border-top:1px solid #cecece; border-right:3px solid #fff;  padding:10px 3px 10px 32px; width:165px; color:#888; vertical-align:middle; font:bold 16px 'Trebuchet MS',Helvetica,Garuda,san-serif;background-color:#f5f5f5; background: #f5f5f5 url(../img/bg_td_side.png)0 bottom no-repeat;}
+
+div.txt_test .b-pricetable a{font-weight:normal;  color:#0079b2; font-size:12px;}
+
+.b-th { width:209px; vertical-align:middle;	color:#fff;	background:url(../img/bg_td_2.png) repeat-y  100% 0 #D4D4D4;  	}
+thead tr:first-child .b-th {background-color:#FFF; height:30px;}
+thead tr:first-child + tr .b-th {border-bottom:3px solid #fff; }
+.b-th.-type_1{color:#fff; font:bold 20px 'Trebuchet MS',Helvetica,Garuda,san-serif; text-shadow: 1px -1px 0 #00263f; background:transparent url(../img/bg_th_1.png) no-repeat bottom left;}
+.b-td.-type_1{text-shadow: 1px -1px 0 #00263f;background-color:#0063a4; background: url(../img/b-bd_bg-3.png) 50% 0 no-repeat, #0063a4 url(../img/bg_td_1.png) repeat-y bottom left;}
+tr:last-child .b-td.-type_1{}
+ 
+.b-td {  padding:16px 10px; text-align:center; vertical-align:middle; background: url(../img/b-bd.png) 50% 0 no-repeat, #d4d4d4 url(../img/bg_td_2.png) 100% 0 repeat-y; color:#fff;	width:108px;	}
+
+.b-th.-type_2{ color:#0066a6; text-shadow: 1px -1px 0 #fff; font:bold 20px 'Trebuchet MS',Helvetica,Garuda,san-serif;}
+.b-td.-type_2{ color:#0066a6; text-shadow: 1px -1px 0 #fff; font-size:18px; background-color:#d4d4d4; background: url(../img/b-bd.png) 50% 0 no-repeat, #d4d4d4 url(../img/bg_td_2.png) 100% 0 repeat-y; }
+.tr__last-child .b-td.-type_2{ }
+
+
+th.on { padding-bottom:9px; width:301px; font:bold 32px 'Trebuchet MS',Helvetica,Garuda,san-serif; background: #e5a31b url(../img/bg_th_on.png) repeat-x 0 0;}
+td.on { background:#e5a31b; text-shadow: 1px -1px 0 #BF8B00;}
+tbody td.on {height:50px; background:#e5a31b url(../img/b-bd_bg-2.png) 50% 0 no-repeat;}
+tfoot td{padding:0; height:30px;}
+tfoot td.on{padding:0; height:30px;}
+
+.b-priceTable__name{display:block; line-height:16px;}
+.b-priceTable__name a{display:block; vertical-align:top;}
+.b-header{}
+.b-th.on .b-header{margin:40px 0 20px; text-shadow: 1px -1px 0 #BF8B00; }
+.b-th.on {border-bottom:3px solid #FFFFFF;}
+.b-timeTable.-type_1{font-size:18px; }
+.b-timeTable.-type_2{font-size:28px; font-weight:bold;}
+.b-timeTable.-type_3{font-size:18px;}
+.b-time{font-weight:bold; font-size:24px;}
+.b-minute{font-size: 15px; left: -5px; top: -11px;}
+
+.b-seats.-type_1{font-size:24px; font-weight:bold;}
+.b-seats.-type_2{font-size:40px; font-weight:bold;}
+.b-seats.-type_3{font-size:24px; font-weight:bold;}
+.b-bonus.-type_1{font-size:44px;}
+
+.b-priceTable__btn.-type_1{position:relative; bottom:0; display:inline-block; vertical-align:middle; color:#a07700; min-width:160px; height:61px; font:normal 20px/61px 'Trebuchet MS',Helvetica,Garuda,san-serif;text-shadow: 1px -1px 0 #fff; background:#FFF url(../img/b-priceTable__btn-bg_1.png) 0 0 repeat-x; border-radius: 6px; cursor:pointer; behavior: url(http://ucpa.com.ua/css/PIE.php); }
+.b-priceTable__btn.-type_1:hover{background:#f8f8f8;}
+.b-priceTable__btn.-type_1:active{bottom:-1px;}
+.b-priceTable__price{font-weight:bold;}
+
+.b-priceTable__btn.-type_2{position:relative; bottom:0; display:inline-block; vertical-align:middle; color:#0066a6; min-width:129px; height:39px; font:normal 16px/39px 'Trebuchet MS',Helvetica,Garuda,san-serif; text-shadow: 1px -1px 0 #fff; background:#FFF url(../img/b-priceTable__btn-bg_2.png) 0 0 repeat-x; border-radius: 6px; cursor:pointer; behavior: url(http://ucpa.com.ua/css/PIE.php); }
+.b-priceTable__btn.-type_2:hover{background:#f8f8f8;}
+.b-priceTable__btn.-type_2:active{bottom:-1px;}
+
+.b-priceTable__btn.-type_3{position:relative; padding:34px 37px; bottom:0; display:inline-block; vertical-align:middle; color:#0066a6; width:88px; height:54px; font:bold 20px/21px 'Trebuchet MS',Helvetica,Garuda,san-serif; background:#FFF url(../img/b-priceTable__btn-bg_3.png) 0 0 repeat-x; border-radius: 6px; cursor:pointer; behavior: url(http://ucpa.com.ua/css/PIE.php); }
+.b-priceTable__btn.-type_3:hover{background:#f8f8f8;}
+.b-priceTable__btn.-type_3:active{bottom:-1px;}
+.b-bonus{line-height:21px;}
+
+.b-packages__btns{margin:30px 0; overflow:hidden;}
+.txt_test .b-packages__btn{ position:relative; float:left; display:block; margin:0; padding: 0 24px; min-width:160px; height:44px; border-radius: 6px; background: url(../img/btn.png) 0 0 repeat-x; color:#ffffff; text-align:center; text-decoration:none; text-transform: uppercase; font-size:17px; font-family:Arial, Helvetica, san-serif; line-height: 44px;  behavior: url(http://ucpa.com.ua/css/PIE.php);  text-shadow: 1px -1px 0 #A37D10;}
+
+nav ul.nav .b-packages__item{margin:-6px 0; height:62px;  }
+nav ul.nav .b-packages__item a{position:relative; bottom:0; display:block; height:100%; width:174px; color:#fff; padding:0; text-align:center; font:italic bold 15px/62px  'Trebuchet MS',Helvetica,Garuda,san-serif; background: url(../img/b-packages__item-bg.png) 0 0 no-repeat;}
+nav ul.nav .b-packages__item a:hover{ background: url(../img/b-packages__item-bg.png) 0 0 no-repeat; }
+nav ul.nav .b-packages__item a:active{ background: url(../img/b-packages__item-bg.png) 0 0 no-repeat; }
+.header-block:before, .header-block:after,
+.nav:before, .nav:after { content: ""; display: table; }
+.header-block:after,
+.nav:after { clear: both; }
+.header-block,
+.nav { zoom: 1; }
+
+/* ==|== non-semantic helper classes ========================================
+   Please define your styles before this section.
+   ========================================================================== */
+
+/* For image replacement */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden { display: none !important; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Contain floats: h5bp.com/q */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+
+
+/* ==|== media queries ======================================================
+   PLACEHOLDER Media Queries for Responsive Design.
+   These override the primary ('mobile first') styles
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 480px) {
+  /* Style adjustments for viewports 480px and over go here */
+
+}
+
+@media only screen and (min-width: 768px) {
+  /* Style adjustments for viewports 768px and over go here */
+
+}
+
+/* ==|== print styles =======================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* h5bp.com/t */
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+     header,
+ body.inner div.slider,
+ body.inner div.slider .slider-content,
+ .pager a,
+  body.inner footer,
+  div.txt_test .block_certificate div.btn,
+  body.inner div.promo,
+  div.bottom,
+  body.inner .hgroup h1{display:none; height:0; overflow:hidden;}
+  .block_certificate .logo-block h2{text-align:center;}
+  div.txt_test{min-height:100%;}
+}
+
