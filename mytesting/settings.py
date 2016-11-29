@@ -27,10 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-TEMPALATES_DIRS = (
-    "/home/maslenok/venv/django_project/git/mytesting/templates" , 
-    "/home/maslenok/venv/django_project/git/mytesting/testing_code/templates/testing_code/",
-    )
+#TEMPALATES_DIRS = (
+ #   "/home/maslenok/venv/django_project/git/mytesting/templates" , 
+ #   "/home/maslenok/venv/django_project/git/mytesting/testing_code/templates/testing_code/",
+  #  )
 
 # Application definition
 

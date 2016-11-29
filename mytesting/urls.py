@@ -15,17 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import url,  include
 from django.contrib import admin
-import testing_code
-from testing_code.views import course
+#import testing_code
+from testing_code.views import index, course
+from result.views import result
 from django.conf import settings
 from django.conf.urls.static import static
 #from testing_code.models import Course
 
 urlpatterns = [
      url(r'^admin/', admin.site.urls),
-     url(r'^course/(?P<course_url>/?[[A-Za-z]+)/?', course),
-     
-     url(r'^', include("testing_code.urls")),
+     # url(r'^(?P<question_id>[0-9]+)/$', views.detail, name='detail'),
+     url(r'^course/$', course),
+     url(r'^course/', include("testing_code.urls")),
+     url(r'^statistics/$', result),
+     url(r'^', index),
      
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

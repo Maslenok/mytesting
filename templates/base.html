@@ -5,22 +5,29 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="uk" xmlns="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>ПАКЕТИ ДЛЯ ШКІЛ - УЦПА </title>
+  <title>Мой тестовый проект </title>
   <meta name="description" content="" />
   <meta name="keywords" content="" />
 
   <meta name="viewport" content="width=980" />
-  <link rel="stylesheet" href="static/css/style.css" />
-  <script src="static/js/libs/modernizr-2.0.6.min.js"></script>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <script src="/static/js/libs/modernizr-2.0.6.min.js"></script>
 </head>
 
 <body class="inner faq" id="ucpa">
 {% load staticfiles %}
+
   <div class="wrapper">
       <header>
 	<div class="logo"><a href="/index"><span><img alt="УКРАЇНСЬКИЙ ЦЕНТЕР ПIДГОТОВКИ АБIТУРIЄНТIВ" src="{% static "/img/logo.jpg" %}"></span></a></div>
+	
+	
+	
+	
+	
 	 <div class="login-block">
 		 <form action="#" method="post" class="login_form">
+		 {% csrf_token %}
             <fieldset>
 			<ul>
 				<li class="signin_username"><label for="login" class="spec">Логін:</label><input type="text" id="login" name="login" placeholder="yourmail12345@mail.com" /></li>				
@@ -40,13 +47,16 @@
 	 
 	 
 	
+	
+	
+	 
 	 
 	 <div class="header-block">
       <nav>
 	  <ul class="nav">
-	  	<li><a href="index.html">головна</a></li>
-	  	<li class="active"><a href="#">курси та тести</a></li>	  	
-	  	<li><a href="#">новини зно</a></li>
+	  	<li {% ifequal main_menu "index" %} class="active" {%endifequal %}><a href="/">головна</a></li>
+	  	<li {% ifequal main_menu "course" %} class="active" {%endifequal %} ><a href="/course/">курси</a></li>	  	
+	  	<li {% ifequal main_menu "result" %} class="active" {%endifequal %}><a href="/statistics/">статистика</a></li>
 	  	
       
 	  </ul>
@@ -66,18 +76,18 @@
       <section>
 	  <div class="txt-content">
 			<div class="hgroup">
-				<h1> </h1>
+			
+				
+			
 			</div>
 			<div class="txt_test">
 				<div class="b-price">
       
        
 <div class="b-priceTable">      
+    {% block name %} {%endblock%}
 
-
-    {% block index %}
-
-    {% endblock %}
+    {% block index %} {% endblock %}
 
 
 

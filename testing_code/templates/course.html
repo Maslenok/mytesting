@@ -1,19 +1,23 @@
 {% extends "base.html" %}
 
-{% block index %}
+{% block name %} 
+
+<li> {{title_name}} </li>
+
+{% endblock%}
+
+
+
+{% block index%}
+
 
 {% if course_list %}
     <ul>
     {% for course in course_list %}
-        <li><a href="/course/{{ course.slug }}/">{{ course.course_name }}</a></li>
+        <li><a href="/course/{{ course.slug }}/">{{ course }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No course are available.</p>
 {% endif %}
-
 {% endblock %}
-
-
-
-
