@@ -27,10 +27,8 @@
 
 {% endif %}
 
-<form action="#" method="post">
-    {% csrf_token %}
-    <input type="submit" class="btn" value="Button" name="mybtn">
-</form>
 
+
+{{ request.session  }}
 
 {% endblock %}

@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url,  include
 from django.contrib import admin
 #import testing_code
-from testing_code.views import index, course
+from testing_code.views import index, course,logout
 from result.views import result
 from django.conf import settings
 from django.conf.urls.static import static
@@ -27,9 +27,9 @@ urlpatterns = [
      # url(r'^(?P<question_id>[0-9]+)/$', views.detail, name='detail'),
      url(r'^course/$', course),
      url(r'^course/', include("testing_code.urls")),
-     url(r'^statistics/$', result),
+     url(r'^statistics/$', result),     
+     url(r'^logout/$', logout),
      url(r'^', index),
-     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 #if settings.DEBUG:
