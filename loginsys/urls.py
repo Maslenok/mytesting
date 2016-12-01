@@ -1,13 +1,13 @@
 from django.conf.urls import url
-from .models import Course
+from loginsys.views import logout, login, RegisterFormView
 from django.conf import settings
 from django.conf.urls.static import static
 
-from . import views
 
 urlpatterns = [
-    url(r'^$', views.course),
-    url(r'^(\d+_[A-Za-z]+)/', views.tests),
+    url(r'^logout/$', logout),
+    url(r'^login/$', login),
+    url(r'^register/$', RegisterFormView),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #if settings.DEBUG:

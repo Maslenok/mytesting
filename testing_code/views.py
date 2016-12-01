@@ -13,18 +13,28 @@ def course(request):
     else:
         user_auth=None 
     main_menu = "course"
-    context = {'course_list': course_list, "title_name":title_name,"main_menu": main_menu , "user_auth": user_auth }
+    context = {'course_list': course_list, 
+               'title_name':title_name,
+               'main_menu': main_menu , 
+               'user_auth': user_auth, 
+               }
     return render(request, 'course.html', context)
 
 def tests(request,course_name):
     course=get_object_or_404(Course, slug=course_name)    
     list_question=course.question_set.all()
-    main_menu = "course"
     if request.user.is_authenticated():
         user_auth= True 
     else:
         user_auth=None 
-    context={'test_list': list_question ,  "title_name":"Содержание курса:  ", "course":course, "main_menu": main_menu , "user_auth": user_auth }
+    main_menu = "course"
+    title_name="Содержание курса"    
+    context={'test_list': list_question ,  
+             'title_name': title_name, 
+             'course' : course, 
+             'main_menu': main_menu , 
+             'user_auth': user_auth, 
+             }
     return render(request, 'tests.html', context)
 
 def index(request):
@@ -35,14 +45,18 @@ def index(request):
         user_auth= True 
     else:
         user_auth=None           
-    context = {'text': text, "title_name":title_name, "main_menu": main_menu , "user_auth": user_auth }
+    context = {'text': text, 
+               'title_name':title_name,
+               'main_menu': main_menu , 
+               'user_auth': auth.get_user(request).username,
+                }
     return render(request, 'index.html', context)
 
- 
+'''
 def logout (request):
     auth.logout(request)
     return HttpResponseRedirect("/")
-    
+'''   
 '''
 def course(request, course_name):
     now=course_name

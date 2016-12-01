@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'result',
-    'testing_code'
+    'testing_code',
+    'loginsys',
 ]
 
 MIDDLEWARE = [

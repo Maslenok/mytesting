@@ -20,7 +20,8 @@
   <div class="wrapper">
       <header>
 	<div class="logo"><a href="/index"><span><img alt="УКРАЇНСЬКИЙ ЦЕНТЕР ПIДГОТОВКИ АБIТУРIЄНТIВ" src="{% static "/img/logo.jpg" %}"></span></a></div>
-	
+
+{% if not login_error %}	
 	
 {% if user_auth%}
 	
@@ -30,7 +31,7 @@
       <li><a href="/index">{{request.user}}</a></li>
       <li>
         <ul class="account-user">
-          <li class="btn-profile"><a href="/logout/">Выйти</a></li>
+          <li class="btn-profile"><a href="/auth/logout/">Выйти</a></li>
           <li class="btn-singout"><a href="/logout/">Таки Выйти</a> </li>
         </ul>
       </li>
@@ -42,18 +43,20 @@
    
 			
 	 <div class="login-block">
-		 <form action="#" method="post" class="login_form">
+		 <form action="/auth/login/" method="post" class="login_form">
 		 {% csrf_token %}
             <fieldset>
 			<ul>
-				<li class="signin_username"><label for="login" class="spec">Логін:</label><input type="text" id="login" name="login" placeholder="yourmail12345@mail.com" /></li>				
+				<li class="signin_username"><label for="/auth/login/" class="spec">Логін:</label><input type="text" id="login" name="login" placeholder="yourmail12345@mail.com" /></li>				
                 <li class="signin_password">
 					<label for="pass" class="spec" >Пароль:</label><input type="password" id="pass" name="password"  />				
+					
 					<input type="submit" class="btn_login" value="Вхід" title="Вхід">
-				</li>				
-                <li>
+				</li>	
+			
+                <li>					
 					<p class="forgotPassword"><a title="Забули пароль?" href="/">Забули пароль?</a></p>
-					<p class="registration"><a title="Зареєструватися" href="/">Зареєструватися</a></p>
+					<p class="registration"><a title="Зареєструватися" href="/auth/register/">Зареєструватися</a></p>
 				</li>
                 </ul>
             </fieldset>
@@ -62,7 +65,7 @@
 	 
 {% endif%}
 	 
-	 
+{% endif %}  
 	
 	
 	
@@ -71,7 +74,7 @@
 	 <div class="header-block">
       <nav>
 	  <ul class="nav">
-	  	<li {% ifequal main_menu "index" %} class="active" {%endifequal %}><a href="/">головна</a></li>
+	  	<li {% ifequal main_menu "index" %}  class="active" {%endifequal %}><a href="/">головна</a></li>
 	  	<li {% ifequal main_menu "course" %} class="active" {%endifequal %} ><a href="/course/">курси</a></li>	  	
 	  	<li {% ifequal main_menu "result" %} class="active" {%endifequal %}><a href="/statistics/">статистика</a></li>
 	  	
