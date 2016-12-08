@@ -13,7 +13,6 @@ class Course(models.Model):
 
     course_name=models.CharField("Название курса" ,max_length=255,)   
     slug = models.SlugField(max_length=50, unique=False, blank=False)
-    
 
     def question_course(self): 
               
