@@ -1,12 +1,12 @@
-from django.shortcuts import get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
 from .models import Course ,   Question, Answer
 from result.models import Result
 from django.contrib import auth
 from django.template.context_processors import csrf
 from result.models import UsersAnswer
-from django.db.models import Min, Max
+from django.db.models import  Max
 
 
 
@@ -47,7 +47,8 @@ def tests(request,course_name):
     if request.user.is_authenticated():
         user_auth= True 
     else:
-        user_auth=None 
+        user_auth=None
+
     main_menu = "course"
     title_name="Содержание курса"    
     context={'test_list': list_question ,  
@@ -70,7 +71,7 @@ def question(request,course_name):
         user_auth = True
         user_question = auth.get_user(request)
     else:
-        user_auth = None
+        return redirect("/auth/login/")
 
 
 
@@ -80,12 +81,24 @@ def question(request,course_name):
         question_next_id = Question.get_next_question_id(course, question_cur_id)
 
 
+
+
+
         if question_next_id == None: # проверка на то что вопрос был посленим . None если последним
             result_end=Result.objects.get(id=result)
             result_end.is_complete=True
             result_end.save()
 
+            UsersAnswer(users=user_question,
+                        course=course,
+                        question=Question.objects.get(id=question_cur_id),
+                        result=Result.objects.get(id=result)).save()
+
+
             # тут бедет среднее и переход на  страницу результатов
+
+
+
 
             context = {
                 "course": course,
@@ -113,15 +126,13 @@ def question(request,course_name):
 
 
 
-
-        if Result.objects.get(users=user_question, course=course, is_complete=False).id > 0 :  # если уже отвечали
+        try:
+            Result.objects.get(users=user_question, course=course, is_complete=False)  # если уже отвечали
             question_cur_id = list_question.aggregate(Max('question'))["question__max"]
             question_next_id = Question.get_next_question_id(course, question_cur_id)
             result_id=Result.objects.get(users=user_question, course=course, is_complete=False).id
 
-
-
-        else:   # если зашли в первый раз
+        except ObjectDoesNotExist:
             question_cur_id = 0
             question_next_id = Question.get_next_question_id(course, question_cur_id)
             Result_new = Result(users=user_question, course=course)
