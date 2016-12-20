@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block name %}
+
+    <li> Отвечаем на набор тестов :  {{course}}  </li>
+
+{% endblock%}
+
+
+
+{% block index%}
+
+    <li>{{result}}</li>
+
+
+<form action="/course/{{course.slug}}/testing/" method="post">
+				{% csrf_token %}
+               <input type="hidden" name="question_cur" value="{{question_cur_id}}" >
+	           <input type="hidden" name="result" value="{{result}}" >
+	           <h3> Id question :  {{question_cur_id}} </h3>
+	           <h3> Вопрос звучит так {{question}} </h3>
+	           <ol>
+					<li class="v_list">
+
+							<fieldset>
+								<ul>
+                                 {% for answer in answer_list %}
+
+                                    <li> <input type="checkbox" id="test_1"  name="test_1" />
+									<label for="test_1" >  {{answer }}</label></li>
+
+
+
+                                   {% endfor %}
+
+								</ul>
+							</fieldset>
+
+					</li>
+
+
+
+
+
+
+
+
+				</ol>
+				<div class="btn"><input type="submit" value="прийняти вiдповiдi" /></div>
+			</form>
+
+
+
+
+
+
+
+{% endblock %}
+
+

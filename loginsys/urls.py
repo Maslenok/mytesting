@@ -9,7 +9,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^logout/$', logout),
     url(r'^login/$', login),
-    #url(r'^register/$', register),
+    #url(r'^register/$', register_user),
     url(r'^register/$', loginsys.views.RegisterFormView.as_view()),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -6,7 +6,7 @@ class Result(models.Model):
     class Meta:
         db_table="result"
 
-    date_created=models.DateTimeField('date published')
+    date_created=models.DateTimeField(auto_now_add=True)
     is_complete=models.BooleanField(default= False)
     result_value=models.IntegerField(default=0)
     users=models.ForeignKey(User, on_delete=models.CASCADE)
@@ -23,5 +23,6 @@ class UsersAnswer(models.Model):
     question=models.ForeignKey(Question, on_delete=models.CASCADE)
     answers_list=models.TextField()
     result=models.ForeignKey(Result, on_delete=models.CASCADE)
+
 
 

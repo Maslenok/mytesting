@@ -36,8 +36,8 @@ class CourseAdmin(admin.ModelAdmin):
     
     
 
-    list_display=( 'course_name', 'slug', 'question_course')  
-    list_display_links=('slug', 'question_course',)
+    list_display=( 'course_name', 'slug')
+  #  list_display_links=('slug')
     fieldsets = (
         ("Курсы", {
             'fields': ('course_name',  )

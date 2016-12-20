@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block index %}
+
+<html>
+  <head>
+    <title>Регистрация</title>
+  </head>
+  <body>
+
+         <form action="/auth/register/" method="post">
+			{% csrf_token %}
+             <fieldset>
+							<ul class="form_list">
+							<li><span class="note">* - Обов'язкові поля </span></li>
+								<li class="odd"><label for="id_username">Логин:</label><input type="text" id="id_username"  name="username"  /></li>
+                                {% if form.errors.username %} <ul class="errorlist"><li>{{form.errors.username}}</li></ul> {% endif%}
+                                <li><label for="id_password1">Пароль:</label><input type="password" id="id_password1"  name="password1" /></li>
+								{% if form.errors.password1 %} <ul class="errorlist"><li>{{form.errors.password1}}</li></ul> {% endif%}
+                                <li class="odd"><label for="id_password2">Підтвердження паролю:</label><input type="password" id="id_password2"  name="password2" /></li>
+                                {% if form.errors.password2 %} <ul class="errorlist"><li>{{form.errors.password2}}</li></ul> {%endif%}
+
+
+
+								<li class="btn"><input type="submit" value="продовжити" /></li>
+							</ul>
+			</fieldset>
+
+
+			</form>
+
+
+
+
+
+  </body>
+</html>
+{% endblock %}

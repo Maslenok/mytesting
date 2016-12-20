@@ -1,13 +1,13 @@
 from django.contrib import auth
-from django.http import HttpResponse, HttpResponseRedirect
 from django.template.context_processors import csrf
-from django.shortcuts import render,render_to_response, redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import FormView
-#from django import olforms
 
 
-# Create your views here.
+
+
+
 
 class RegisterFormView(FormView):
     form_class = UserCreationForm
@@ -18,9 +18,10 @@ class RegisterFormView(FormView):
 
     # Шаблон, который будет использоваться при отображении представления.
     template_name = "register.html"
-
+    #template_name = "register1.html"
     def form_valid(self, form):
-        # Создаём пользователя, если данные в форму были введены корректно.
+
+
         form.save()
 
         # Вызываем метод базового класса
@@ -33,26 +34,33 @@ class RegisterFormView(FormView):
 def login(request):
     context={}
     context.update(csrf(request))
-    return_path =request.META.get('HTTP_REFERER','/')
-    if request.POST:        
+    try:
+        request.session['return_url']
+        return_path=request.session['return_url']
+    except:
+        return_path =request.META.get('HTTP_REFERER','/')
+
+
+    if request.POST:
         username=request.POST.get("username","")
         password=request.POST.get("password","")
         user=auth.authenticate(username=username, password=password)
         if user is not None and user.is_active:
-            auth.login(request,user)           
+            auth.login(request,user)
             return redirect(return_path)
         else:           
             request.session['return_url']=return_path
             context={
-                "login_error" : True,              
-                    }                               
+                "login_error" : True,
+                    }
             return render(request, 'login.html', context)
             
     else:
-        if "return_url" in request.session:
-            urls= request.session["return_url"]
-        else:
-            urls="/"    
+        try:
+            request.session['return_url']
+            urls = request.session["return_url"]
+        except:
+            urls = "/"
         return redirect(urls)
 
 

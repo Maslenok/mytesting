@@ -1,5 +1,5 @@
 from django.db import models
-from unittest.util import _MAX_LENGTH
+from django.db.models import Min, Max
 from unidecode import unidecode
 from django.template.defaultfilters import slugify
 
@@ -14,20 +14,9 @@ class Course(models.Model):
     course_name=models.CharField("Название курса" ,max_length=255,)   
     slug = models.SlugField(max_length=50, unique=False, blank=False)
 
-    def question_course(self): 
-              
-       # course_question=Course.objects.get(self)
-        list_question=self.question_set.all()[:5]
-        list=[]
-        for qustion in list_question:
-            list.append(qustion)
-       
-        return list
-    
-    
- #def question_course1(self):
-  #       course_question=Question.objects.filter(self)
-   #      return course_question
+    def questions_course(self):
+        list_question=self.question_set.all()
+        return list_question
 
    
     def save(self):     
@@ -38,18 +27,7 @@ class Course(models.Model):
     def __str__(self):
         return self.course_name
 
-"""
-class Test(models.Model):
-    class Meta:
-        db_table="tests"
 
-    test_name=models.CharField(max_length=255)
-    curse=models.ForeignKey(Course,  on_delete=models.CASCADE , related_query_name="tag")
-    
-
-    def __str__(self):
-        return self.test_name
-"""
 class Question(models.Model):
     class Meta:
         db_table="questions"
@@ -58,13 +36,30 @@ class Question(models.Model):
     curse=models.ForeignKey(Course,  on_delete=models.CASCADE)
     
     def course_question(self):
-        course_question=Course.objects.filter(course_name = self.curse)
-        #course_question=Course.objects.all()
-        return course_question[0]
-    
- 
-    
-    # entry__headline__contains
+        course_question=self.curse
+        return course_question
+
+
+    def get_next_question_id(course, question_cur_id):
+        if question_cur_id==0:
+            next_question=Course.questions_course(course).aggregate(Min('id'))
+            question_id=int(next_question["id__min"])
+            return question_id
+        else:
+            for question in Course.questions_course(course):
+                question_id = question.id
+                if  question_id> int(question_cur_id):
+                    question_id=question.id
+                    return question_id
+                if question_id == Course.questions_course(course).aggregate(Max('id'))["id__max"] :
+                    question_id = None
+                    return question_id
+
+
+
+
+
+
     
     def __str__(self):
         return self.question_text
@@ -80,6 +75,11 @@ class Answer (models.Model):
     
     def __str__(self):
         return self.answer_text
+
+    def answers_in_question(self):
+        answers_in_question =Question(id=self).answer_set.all()
+        return  answers_in_question
+
 
 
 

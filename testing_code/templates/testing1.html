@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block name %}
+
+    <li> Отвечаем на набор тестов :  {{course}} </li>
+
+{% endblock%}
+
+
+
+{% block index%}
+
+
+
+
+<form action="/{{course}}/testing_1/" method="post">
+				{% csrf_token %}
+                <ol>
+					<li class="v_list">
+
+							<h3>  {{question_name}} </h3>
+							<fieldset>
+								<p><select size="3" multiple name="hero[]">
+                                      <option disabled>Выберите героя</option>
+                                      <option value="Чебурашка">Чебурашка</option>
+                                      <option selected value="Крокодил Гена">Крокодил Гена</option>
+    <option value="Шапокляк">Шапокляк</option>
+    <option value="Крыса Лариса">Крыса Лариса</option>
+   </select></p>
+							</fieldset>
+
+					</li>
+
+
+
+
+	 <input type="hidden" name="question_cur" value="{{question}}" >
+
+
+
+				</ol>
+				<div class="btn"><input type="submit" value="прийняти вiдповiдi" /></div>
+			</form>
+
+
+
+
+  <input type="submit" value="login" />
+    <input type="hidden" name="next" value="{{ next|escape }}" />
+
+
+{% endblock %}
+
+
+	                                <li><input type="checkbox" id="test_2" name="test_1" />
+									<label for="test_2"> підрядний і сурядний зв’язок</label></li>
+
+									<li><input type="checkbox" id="test_3" name="test_1" />
+									<label for="test_3"> артикуляція звуків</label></li>
+
+									<li><input type="checkbox" id="test_4" name="test_1" />
+									<label for="test_4"> велика та мала літера</label></li>
+
+									<li><input type="checkbox" id="test_5" name="test_1" />
+									<label for="test_5"> дефіс, апостроф</label></li>
