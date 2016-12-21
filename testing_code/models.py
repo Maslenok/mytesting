@@ -48,7 +48,7 @@ class Question(models.Model):
         else:
             for question in Course.questions_course(course):
                 question_id = question.id
-                if  question_id> int(question_cur_id):
+                if  question_id > int(question_cur_id):
                     question_id=question.id
                     return question_id
                 if question_id == Course.questions_course(course).aggregate(Max('id'))["id__max"] :

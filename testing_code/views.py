@@ -79,6 +79,22 @@ def question(request,course_name):
         question_cur_id = int(request.POST.get("question_cur", ""))
         result = int(request.POST.get("result", ""))
         question_next_id = Question.get_next_question_id(course, question_cur_id)
+        answer_in_question=Answer.answers_in_question(question_cur_id)
+
+        correct_answer = False
+
+        for answer in answer_in_question:
+            answer_arr="answer_arr_" + str(answer.pk)
+            if int(request.POST.get(answer_arr, "")) == 1 :
+                correct_answer = True
+
+
+
+        UsersAnswer(users=user_question,
+                    course=course,
+                    question=Question.objects.get(id=question_cur_id),
+                    result=Result.objects.get(id=result),
+                    right=correct_answer).save()
 
 
 
@@ -89,17 +105,9 @@ def question(request,course_name):
             result_end.is_complete=True
             result_end.save()
 
-            UsersAnswer(users=user_question,
-                        course=course,
-                        question=Question.objects.get(id=question_cur_id),
-                        result=Result.objects.get(id=result)).save()
 
 
-            # тут бедет среднее и переход на  страницу результатов
-
-
-
-
+            # тут бедет среднее и переход на  страницу результата
             context = {
                 "course": course,
                 "main_menu": main_menu,
@@ -110,19 +118,13 @@ def question(request,course_name):
 
         else:  # если вопрос был не последним
 
-           # тут можно расчитать  провильный ли получился ответ
-
-            UsersAnswer(users=user_question,
-                        course=course,
-                        question=Question.objects.get(id=question_cur_id),
-                        result=Result.objects.get(id=result)).save()
             result_id=result
 
 
     else: # Если запрос  не пост
         list_question = UsersAnswer.objects.filter(users=request.user, course=course)
 
-
+    # Попробовать через if not object
 
 
 

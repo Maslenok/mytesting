@@ -13,7 +13,6 @@ class Result(models.Model):
     course=models.ForeignKey(Course, on_delete=models.CASCADE)
 
 
-
 class UsersAnswer(models.Model):
     class Meta:
         db_table="usersAnswers"
@@ -21,7 +20,7 @@ class UsersAnswer(models.Model):
     users=models.ForeignKey(User, on_delete=models.CASCADE)
     course=models.ForeignKey(Course, on_delete=models.CASCADE)
     question=models.ForeignKey(Question, on_delete=models.CASCADE)
-    answers_list=models.TextField()
+    right=models.BooleanField(default= False)
     result=models.ForeignKey(Result, on_delete=models.CASCADE)
 
 

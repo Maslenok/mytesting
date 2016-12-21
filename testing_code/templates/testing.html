@@ -10,7 +10,7 @@
 
 {% block index%}
 
-    <li>{{result}}</li>
+    <li> Результат {{result}}</li>
 
 
 <form action="/course/{{course.slug}}/testing/" method="post">
@@ -26,8 +26,9 @@
 								<ul>
                                  {% for answer in answer_list %}
 
-                                    <li> <input type="checkbox" id="test_1"  name="test_1" />
-									<label for="test_1" >  {{answer }}</label></li>
+                                    <li> <input type="checkbox" id="answer_arr_{{answer.id}}"  name="answer_arr_{{answer.id}}" value="1" />
+									<label for="answer_arr_{{answer.id}}" >  {{answer}}</label></li>
+                                    <li> Результат id {{answer.id}}</li>
 
 
 
