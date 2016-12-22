@@ -10,33 +10,41 @@
 
 {% block index%}
 
-
+    <li> Результат {{result}}</li>
 
 
 <form action="/course/{{course.slug}}/testing/" method="post">
 				{% csrf_token %}
                <input type="hidden" name="question_cur" value="{{question_cur_id}}" >
 	           <input type="hidden" name="result" value="{{result}}" >
-
+	           <h3> Id question :  {{question_cur_id}} </h3>
 	           <h3> Вопрос звучит так {{question}} </h3>
 	           <ol>
 					<li class="v_list">
 
 							<fieldset>
 								<ul>
-                                   {% for answer in answer_list %}
 
-                                    <li> <input type="checkbox" id="answer_arr_{{answer.id}}"  name="answer_id_list" value="{{answer.id}}" />
-									<label for="answer_arr_{{answer.id}}" >  {{answer}} </label></li>
 
-                                   {% endfor %}
+                                    <li> <input type="checkbox" id="answer_arr_id"  name="answer_arr" value="1" />
+									<label for="answer_arr_id" >  " Типо проверка Post "</label></li>
+
+
+
+
 								</ul>
 							</fieldset>
+
 					</li>
+
+
+
+
+
+
+
+
 				</ol>
-	            {% if error_message %}
-	            <li> {{error_message}}</li>
-	            {% endif %}
 				<div class="btn"><input type="submit" value="прийняти вiдповiдi" /></div>
 			</form>
 

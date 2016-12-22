@@ -22,6 +22,7 @@ class UsersAnswer(models.Model):
     question=models.ForeignKey(Question, on_delete=models.CASCADE)
     right=models.BooleanField(default= False)
     result=models.ForeignKey(Result, on_delete=models.CASCADE)
+    test_text=models.TextField()
 
 
 

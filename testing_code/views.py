@@ -80,24 +80,38 @@ def question(request,course_name):
         result = int(request.POST.get("result", ""))
         question_next_id = Question.get_next_question_id(course, question_cur_id)
         answer_in_question=Answer.answers_in_question(question_cur_id)
+        list_answers_right = []
 
-        correct_answer = False
-
-        for answer in answer_in_question:
-            answer_arr="answer_arr_" + str(answer.pk)
-            if int(request.POST.get(answer_arr, "")) == 1 :
-                correct_answer = True
+        for answer in Answer.objects.filter(question=question_cur_id, course=course, is_correct=True):
+            list_answers_right.append(answer.id)
 
 
+        valid_error_answer= False
 
-        UsersAnswer(users=user_question,
-                    course=course,
-                    question=Question.objects.get(id=question_cur_id),
-                    result=Result.objects.get(id=result),
-                    right=correct_answer).save()
+        if len(request.POST.getlist("answer_id_list")) == 0:
+            valid_error_answer=True
+            error_message=" Надо отметить как минимум  один ответ"
+
+        if len(request.POST.getlist("answer_id_list")) == len(answer_in_question):
+            valid_error_answer = True
+            error_message = " Все ответы не могут быть прравильные"
 
 
+        if request.POST.getlist("answer_id_list").sort() == list_answers_right.sort():
+            correct_answer=True
+        else:
+            correct_answer = False
 
+
+        if valid_error_answer == False:
+            UsersAnswer(users=user_question,
+                        course=course,
+                        question=Question.objects.get(id=question_cur_id),
+                        result=Result.objects.get(id=result),
+                        right=correct_answer,
+                        test_text=request.POST.getlist("answer_id_list").sort()).save()
+        else:
+            question_next_id=question_cur_id
 
 
         if question_next_id == None: # проверка на то что вопрос был посленим . None если последним
@@ -117,17 +131,10 @@ def question(request,course_name):
 
 
         else:  # если вопрос был не последним
-
             result_id=result
-
-
-    else: # Если запрос  не пост
+    else: # Если запрос  не Post
         list_question = UsersAnswer.objects.filter(users=request.user, course=course)
-
     # Попробовать через if not object
-
-
-
         try:
             Result.objects.get(users=user_question, course=course, is_complete=False)  # если уже отвечали
             question_cur_id = list_question.aggregate(Max('question'))["question__max"]
@@ -141,9 +148,13 @@ def question(request,course_name):
             Result_new.save()
             result_id = int(Result_new.id)
 
-    answer_list = Answer.answers_in_question(question_next_id)
 
-    context = {
+
+
+    answer_list = Answer.answers_in_question(question_next_id)
+    try:
+        error_message
+        context = {
             "course": course,
             "main_menu": main_menu,
             "question": Question.objects.get(id=question_next_id),
@@ -151,7 +162,20 @@ def question(request,course_name):
             "user_auth": user_auth,
             "answer_list": answer_list,
             "result": result_id,
-           }
-    return render(request, 'testing.html', context)
+            "error_message" : error_message,
+               }
+        return render(request, 'testing.html', context)
+    except:
+        context = {
+            "course": course,
+            "main_menu": main_menu,
+            "question": Question.objects.get(id=question_next_id),
+            "question_cur_id": question_next_id,
+            "user_auth": user_auth,
+            "answer_list": answer_list,
+            "result": result_id,
+
+        }
+        return render(request, 'testing.html', context)
 
 
