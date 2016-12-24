@@ -1,4 +1,3 @@
-from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
 from .models import Course ,   Question, Answer
@@ -77,7 +76,7 @@ def question(request,course_name):
 
     if request.POST.get("question_cur","") and user_auth :         # если запрос пришел из формы
         question_cur_id = int(request.POST.get("question_cur", ""))
-        result = int(request.POST.get("result", ""))
+        result_for_the_UsersAnswer= int(request.POST.get("result", ""))
         question_next_id = Question.get_next_question_id(course, question_cur_id)
         answer_in_question=Answer.answers_in_question(question_cur_id)
         list_answers_right = []
@@ -86,62 +85,78 @@ def question(request,course_name):
             list_answers_right.append(answer.id)
 
 
-        valid_error_answer= False
-
         if len(request.POST.getlist("answer_id_list")) == 0:
-            valid_error_answer=True
             error_message=" Надо отметить как минимум  один ответ"
 
         if len(request.POST.getlist("answer_id_list")) == len(answer_in_question):
-            valid_error_answer = True
             error_message = " Все ответы не могут быть прравильные"
 
 
-        if request.POST.getlist("answer_id_list").sort() == list_answers_right.sort():
-            correct_answer=True
+        if  "error_message" in locals():
+            question_next_id = question_cur_id
         else:
-            correct_answer = False
+            if len(request.POST.getlist("answer_id_list")) == len(list_answers_right):
+                for answer_id in request.POST.getlist("answer_id_list"):
+                    if list_answers_right.count(int(answer_id)) >= 1:
+                        correct_answer = True
+                    else:
+                        correct_answer = False
+                        break
+            else:
+                correct_answer = False
 
-
-        if valid_error_answer == False:
             UsersAnswer(users=user_question,
                         course=course,
                         question=Question.objects.get(id=question_cur_id),
-                        result=Result.objects.get(id=result),
+                        result=Result.objects.get(id=result_for_the_UsersAnswer),
                         right=correct_answer,
-                        test_text=request.POST.getlist("answer_id_list").sort()).save()
-        else:
-            question_next_id=question_cur_id
-
+                        ).save()
 
         if question_next_id == None: # проверка на то что вопрос был посленим . None если последним
-            result_end=Result.objects.get(id=result)
-            result_end.is_complete=True
+
+            all_users_answers=UsersAnswer.objects.filter(result=result_for_the_UsersAnswer,
+                                                             users=user_question,
+                                                             )
+
+            correct_users_answer= UsersAnswer.objects.filter(result=result_for_the_UsersAnswer,
+                                                             users=user_question,
+                                                             right=True)
+
+            result_value = int( (len(correct_users_answer)/len(all_users_answers)) *100)
+
+
+
+
+            result_end = Result.objects.get(id=result_for_the_UsersAnswer)
+            result_end.is_complete = True
+            result_end.result_value = result_value
             result_end.save()
 
-
-
-            # тут бедет среднее и переход на  страницу результата
+            main_menu = "result"
             context = {
+                "title_name": "Результаты тестирования ",
                 "course": course,
                 "main_menu": main_menu,
-                "user_auth": user_auth,
+                "user_auth": user_question,
+                "output_result" : True,
+                "result_value" : result_value,
+                'main_menu': main_menu,
             }
-            return render(request, 'testing_end.html', context)
-
+            return render(request, 'result.html', context)
 
         else:  # если вопрос был не последним
-            result_id=result
+            result_id=result_for_the_UsersAnswer
+
+
     else: # Если запрос  не Post
         list_question = UsersAnswer.objects.filter(users=request.user, course=course)
-    # Попробовать через if not object
-        try:
-            Result.objects.get(users=user_question, course=course, is_complete=False)  # если уже отвечали
+
+        if 'Result.objects.get(users=user_question, course=course, is_complete=False)' in locals():
             question_cur_id = list_question.aggregate(Max('question'))["question__max"]
             question_next_id = Question.get_next_question_id(course, question_cur_id)
             result_id=Result.objects.get(users=user_question, course=course, is_complete=False).id
 
-        except ObjectDoesNotExist:
+        else:
             question_cur_id = 0
             question_next_id = Question.get_next_question_id(course, question_cur_id)
             Result_new = Result(users=user_question, course=course)

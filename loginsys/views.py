@@ -17,7 +17,7 @@ class RegisterFormView(FormView):
     success_url = "/"
 
     # Шаблон, который будет использоваться при отображении представления.
-    template_name = "register.html"
+    template_name = "register1.html"    # "register"  для стандартного вывода формы регистрации Django
     #template_name = "register1.html"
     def form_valid(self, form):
 

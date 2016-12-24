@@ -3,6 +3,7 @@
 {% block name %} 
 
 <li> {{title_name}} </li>
+<li>    </li>
 
 {% endblock%}
 
@@ -10,10 +11,23 @@
 
 {% block index%}
 
+{% if output_result %}
+   <li> Уважаемый пользователь {{user_auth}} </li>
+   <li> Вы прошли тестирование по курсу  {{course}} </li>
+   <li> Ваш результат {{result_value}}  процентов </li>
 
-{{request.session }}
- 
+{%endif%}
 
-<li> Типо страница статистики </li>
+{% if error %}
+    {{error}}
+
+{% else %}
+   <li> Уважаемый пользователь {{user_auth}} Ваши результаты </li>
+   {% for result in list_result %}
+
+     <li> Результат по сурсу  {{result.course}} . Который Вы проходили - {{result.date_created}}. Равен : {{result.result_value}} </li>
+
+   {% endfor %}
+{% endif%}
 
 {% endblock %}
