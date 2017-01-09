@@ -149,19 +149,26 @@ def question(request,course_name):
 
 
     else: # Если запрос  не Post
+
+        course=Course.objects.get(slug=course_name)
         list_question = UsersAnswer.objects.filter(users=request.user, course=course)
 
-        if 'Result.objects.get(users=user_question, course=course, is_complete=False)' in locals():
+
+        try:
+            Result.objects.get(users=user_question, course=course, is_complete=False)
             question_cur_id = list_question.aggregate(Max('question'))["question__max"]
             question_next_id = Question.get_next_question_id(course, question_cur_id)
             result_id=Result.objects.get(users=user_question, course=course, is_complete=False).id
+            print("тест уже проходился")
 
-        else:
+
+        except:
             question_cur_id = 0
             question_next_id = Question.get_next_question_id(course, question_cur_id)
             Result_new = Result(users=user_question, course=course)
             Result_new.save()
             result_id = int(Result_new.id)
+            print("Тест проходим первый раз")
 
 
 
