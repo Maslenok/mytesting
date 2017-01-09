@@ -81,7 +81,7 @@ def question(request,course_name):
         answer_in_question=Answer.answers_in_question(question_cur_id)
         list_answers_right = []
 
-        for answer in Answer.objects.filter(question=question_cur_id, course=course, is_correct=True):
+        for answer in Answer.objects.filter(question=question_cur_id,  is_correct=True):
             list_answers_right.append(answer.id)
 
 

@@ -9,6 +9,7 @@ from django.views.generic.edit import FormView
 
 
 
+
 class RegisterFormView(FormView):
     form_class = UserCreationForm
 

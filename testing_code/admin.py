@@ -1,56 +1,61 @@
 from django.contrib import admin
-from .models import Course, Question, Answer
+from .models import Question, Course, Answer
+from django import forms
+from .form import QuestionAdminForm,  CourseAdminForm
 
-"""
 
-Django-admin-tools
+class AnswerOrderInlineFormset(forms.models.BaseInlineFormSet):
+    def clean(self):
+        # get forms that actually have valid data
+        count_is_correct = 0
+        count_is_answers = 0
 
-"""
+        for form in self.forms:
+            try:
+                if form.cleaned_data:
+                    count_is_answers +=1
+                    if form.cleaned_data.get("is_correct"):
+                        count_is_correct +=1
+            except AttributeError:
+                    # annoyingly, if a subform is invalid Django explicity raises
+                    # an AttributeError for cleaned_data
+                 pass
 
-class AnswerInline(admin.TabularInline):
+        if count_is_answers < 2 :
+            raise forms.ValidationError('Должно быть как минимум 2 ответа , и один из них корректный')
+
+        elif  count_is_correct ==0:
+            raise forms.ValidationError("Должен быть отмечен хоть один ответ")
+
+        elif count_is_correct == count_is_answers:
+            raise forms.ValidationError("Все ответы не могут быть корректными" )
+
+
+
+
+class AnswerInlines(admin.TabularInline):
     model = Answer
+    extra = 3
+    formset= AnswerOrderInlineFormset
+
+class QuestionInlines(admin.TabularInline):
+    model = Question
     show_change_link = True
+    extra = 3
+
+class QuestionAdmin(admin.ModelAdmin):
+    inlines = [AnswerInlines,]
+    model = Question
+    form = QuestionAdminForm
 
 
-class QuestioInLine(admin.TabularInline):
-    model =Question
-    #fields=("AnswerInLine",)
-    inlines=[AnswerInline,]
-    show_change_link = True
+class CourseAdmin(admin.ModelAdmin):
+     inlines = [QuestionInlines,]
+     form = CourseAdminForm
+     list_display = ("course_name","slug", )
 
 
-class QuestioAdnmin(admin.ModelAdmin):
-    inlines=[AnswerInline, ]
-    model= Question
-    
-    list_display=('question_text', 'curse' ,'course_question',)
-    
-    
-
-class CourseAdmin(admin.ModelAdmin):           
-    inlines=[QuestioInLine,AnswerInline,] 
-    
-    def course_list(self):
-        list=Course.objects.get(course_name='self_name')
-        return list
-    
-    
-
-    list_display=( 'course_name', 'slug')
-  #  list_display_links=('slug')
-    fieldsets = (
-        ("Курсы", {
-            'fields': ('course_name',  )
-        }),
-        ('Advanced options', {
-            'classes': ('collapse',),
-            'fields': ( ),
-        }),
-    )
-    
-
+admin.site.register(Question, QuestionAdmin)
 admin.site.register(Course, CourseAdmin)
-admin.site.register(Question, QuestioAdnmin)
 
 
-# Register your models here.

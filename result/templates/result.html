@@ -18,14 +18,18 @@
 
 {%endif%}
 
-{% if error %}
-    {{error}}
+
 
 {% else %}
+
+{% if error %}
+    {{error}}
+{% endif%}
+
    <li> Уважаемый пользователь {{user_auth}} Ваши результаты </li>
    {% for result in list_result %}
 
-     <li> Результат по сурсу  {{result.course}} . Который Вы проходили - {{result.date_created}}. Равен : {{result.result_value}} </li>
+     <li> Результат по Курсу  {{result.course}} . Который Вы проходили - {{result.date_created}}. Равен : {{result.result_value}} </li>
 
    {% endfor %}
 {% endif%}

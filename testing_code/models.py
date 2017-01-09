@@ -12,7 +12,7 @@ class Course(models.Model):
         verbose_name_plural ="Курсы"
 
     course_name=models.CharField("Название курса" ,max_length=255,)   
-    slug = models.SlugField(max_length=50, unique=False, blank=False)
+    slug = models.SlugField("Отображение в UrL",max_length=50, unique=False, blank=False)
 
     def questions_course(self):
         list_question=self.question_set.all()
@@ -31,9 +31,11 @@ class Course(models.Model):
 class Question(models.Model):
     class Meta:
         db_table="questions"
+        verbose_name = "Вопрос"
+        verbose_name_plural = "Вопросы"
 
-    question_text=models.TextField()
-    curse=models.ForeignKey(Course,  on_delete=models.CASCADE)
+    question_text=models.TextField("Вопрос")
+    curse=models.ForeignKey(Course,  on_delete=models.CASCADE, verbose_name="Курс")
     
     def course_question(self):
         course_question=self.curse
@@ -67,11 +69,13 @@ class Question(models.Model):
 class Answer (models.Model):
     class Meta:
         db_table="answers"
+        verbose_name = "Ответ"
+        verbose_name_plural = "Ответы"
 
-    answer_text=models.TextField()
-    is_correct=models.BooleanField(default=False)
-    question=models.ForeignKey(Question, on_delete=models.CASCADE)
-    course=models.ForeignKey(Course, on_delete=models.CASCADE)
+    answer_text=models.TextField("Текст ответа")
+    is_correct=models.BooleanField("Ответ правильный",default=False)
+    question=models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name="Относиться к вопросу")
+
     
     def __str__(self):
         return self.answer_text
