@@ -33,15 +33,18 @@ class AnswerOrderInlineFormset(forms.models.BaseInlineFormSet):
 
 
 
+
 class AnswerInlines(admin.TabularInline):
     model = Answer
-    extra = 3
+    extra = 4
     formset= AnswerOrderInlineFormset
 
 class QuestionInlines(admin.TabularInline):
     model = Question
     show_change_link = True
-    extra = 3
+    extra = 9
+    fields = ("question_text", "curse",)
+
 
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [AnswerInlines,]
@@ -49,9 +52,11 @@ class QuestionAdmin(admin.ModelAdmin):
     form = QuestionAdminForm
 
 
+
 class CourseAdmin(admin.ModelAdmin):
      inlines = [QuestionInlines,]
      form = CourseAdminForm
+
      list_display = ("course_name","slug", )
 
 

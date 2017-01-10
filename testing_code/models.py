@@ -57,6 +57,10 @@ class Question(models.Model):
                     question_id = None
                     return question_id
 
+    def save(self):
+        print("Сохранение вопроса")
+        super(Question.self).save()
+
 
 
 
@@ -75,6 +79,7 @@ class Answer (models.Model):
     answer_text=models.TextField("Текст ответа")
     is_correct=models.BooleanField("Ответ правильный",default=False)
     question=models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name="Относиться к вопросу")
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name="Относиться к курсу")
 
     
     def __str__(self):
