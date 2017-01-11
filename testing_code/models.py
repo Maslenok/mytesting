@@ -1,3 +1,4 @@
+from django.core import urlresolvers
 from django.db import models
 from django.db.models import Min, Max
 from unidecode import unidecode
@@ -23,6 +24,19 @@ class Course(models.Model):
         super(Course, self).save()
         self.slug = str(self.id) + '_' + slugify(unidecode(self.course_name))
         super(Course, self).save()
+
+    def changeform_link(self):
+        if self.id:
+            # Replace "myapp" with the name of the app containing
+            # your Certificate model:
+            changeform_url = urlresolvers.reverse(
+                'admin:testing_code_question_add', args=(self.id,)
+            )
+            return u'<a href="%s" target="_blank">Details</a>' % changeform_url
+        return u''
+
+    changeform_link.allow_tags = True
+    changeform_link.short_description = ''  # omit column header
 
     def __str__(self):
         return self.course_name
@@ -57,14 +71,19 @@ class Question(models.Model):
                     question_id = None
                     return question_id
 
+    def changeform_link(self):
+        if self.id:
+            # Replace "myapp" with the name of the app containing
+            # your Certificate model:
+            changeform_url = urlresolvers.reverse(
+                'admin:testing_code_question_change', args=(self.id,)
+            )
+            return u'<a href="%s" target="_blank">Details</a>' % changeform_url
+        return u''
 
+    changeform_link.allow_tags = True
+    changeform_link.short_description = ''  # omit column header
 
-
-
-
-
-
-    
     def __str__(self):
         return self.question_text
 

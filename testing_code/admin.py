@@ -40,28 +40,32 @@ class AnswerInlines(admin.TabularInline):
     extra = 4
     formset= AnswerOrderInlineFormset
 
-class QuestionInlines(admin.TabularInline):
-    model = Question
-    show_change_link = True
-    extra = 9
-    fields = ("question_text", "curse",)
-
-
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [AnswerInlines,]
     model = Question
     form = QuestionAdminForm
 
 
+admin.site.register(Question, QuestionAdmin)
+
+
+class QuestionInlines(admin.TabularInline):
+    model = Question
+    show_change_link = True
+    extra = 3
+    fields = ("question_text", "curse", "changeform_link")
+    readonly_fields = ('changeform_link',"question_text" )
+
 
 class CourseAdmin(admin.ModelAdmin):
      inlines = [QuestionInlines,]
-     form = CourseAdminForm
-
+     #form = CourseAdminForm
+     fields = ("course_name", "changeform_link")
+     readonly_fields = ("changeform_link",)
      list_display = ("course_name","slug", )
 
 
-admin.site.register(Question, QuestionAdmin)
+
 admin.site.register(Course, CourseAdmin)
 
 
