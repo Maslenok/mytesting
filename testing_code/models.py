@@ -19,10 +19,10 @@ class Course(models.Model):
         return list_question
 
    
-    def save(self):     
+    def save(self):
         super(Course, self).save()
-        self.slug = str(self.id) + '_' + slugify(unidecode(self.course_name)) 
-        super(Course, self).save() 
+        self.slug = str(self.id) + '_' + slugify(unidecode(self.course_name))
+        super(Course, self).save()
 
     def __str__(self):
         return self.course_name
@@ -57,9 +57,7 @@ class Question(models.Model):
                     question_id = None
                     return question_id
 
-    def save(self):
-        print("Сохранение вопроса")
-        super(Question.self).save()
+
 
 
 
@@ -79,7 +77,7 @@ class Answer (models.Model):
     answer_text=models.TextField("Текст ответа")
     is_correct=models.BooleanField("Ответ правильный",default=False)
     question=models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name="Относиться к вопросу")
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name="Относиться к курсу")
+    #course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name="Относиться к курсу")
 
     
     def __str__(self):

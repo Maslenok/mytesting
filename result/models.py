@@ -13,6 +13,10 @@ class Result(models.Model):
     course=models.ForeignKey(Course, on_delete=models.CASCADE)
 
 
+    def __str__(self):
+      return str(self.users)
+
+
 class UsersAnswer(models.Model):
     class Meta:
         db_table="usersAnswers"

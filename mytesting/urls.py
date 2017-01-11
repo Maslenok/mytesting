@@ -19,7 +19,7 @@ from testing_code.views import index
 from result.views import result
 from django.conf import settings
 from django.conf.urls.static import static
-#from testing_code.models import Course
+
 
 urlpatterns = [
      url(r'^admin/', admin.site.urls),
