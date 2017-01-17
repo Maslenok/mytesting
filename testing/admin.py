@@ -37,7 +37,7 @@ class AnswerOrderInlineFormset(forms.models.BaseInlineFormSet):
 
 class AnswerInlines(admin.TabularInline):
     model = Answer
-    extra = 4
+    extra = 2
     formset= AnswerOrderInlineFormset
 
 class QuestionAdmin(admin.ModelAdmin):
@@ -54,22 +54,13 @@ class QuestionInlines(admin.TabularInline):
     show_change_link = True
     extra = 3
     fields = ("questionText", "curse", )
-  #  readonly_fields = ('changeform_link', )
+    readonly_fields = ('questionText', )
 
 
 class CourseAdmin(admin.ModelAdmin):
-  #   inlines = [QuestionInlines,]
-     form = CourseAdminForm
-     #prepopulated_fields = {"slug": ("courseName",)}
-    # readonly_fields = ("slug",)
-
-   #  fields = ("courseName", )
-     #readonly_fields = ("changeform_link",)
-    # list_display = ("courseName","slug", )
-
-
+     inlines = [QuestionInlines,]
+     fields = (("courseName", "save_course_link","add_question_link"),)
+     readonly_fields = ("add_question_link","save_course_link",)
+# list_display = ("courseName","slug", )
 
 admin.site.register(Course, CourseAdmin)
-
-
-

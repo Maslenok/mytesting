@@ -13,7 +13,7 @@ class Course(models.Model):
 
     courseName = models.CharField("Название курса", max_length=255, )
     slug = models.SlugField("Отображение в UrL", max_length=50, unique=False, blank=False)
-    about=models.TextField("О курсе")
+    about=models.TextField("О курсе", blank=True)
 
     def questions_course(self):
         list_question = self.question_set.all()
@@ -24,18 +24,26 @@ class Course(models.Model):
         self.slug = str(self.id) + '_' + slugify(unidecode(self.courseName))
         super(Course, self).save()
 
-    def changeform_link(self):
+    def add_question_link(self):
         if self.id:
             # Replace "myapp" with the name of the app containing
             # your Certificate model:
-            changeform_url = urlresolvers.reverse(
-                'admin:testing_question_add', args=(self.id,)
-            )
-            return u'<a href="%s" target="_blank">Details</a>' % changeform_url
+            changeform_url ="/admin/testing/question/add/"
+            return u'<a href="%s" target="_blank">Добавить вопрос</a>' % changeform_url
         return u''
 
-    changeform_link.allow_tags = True
-    changeform_link.short_description = ''  # omit column header
+    add_question_link.allow_tags = True
+    add_question_link.short_description = ''
+
+
+    def save_course_link(self):
+        changeform_url= "/admin/testing/course/save/"
+        return u'<a href="%s" target="_blank">Сохранить курс</a>' % changeform_url
+
+    save_course_link.allow_tags = True
+    save_course_link.short_description = ''
+
+    # omit column header
 
     def __str__(self):
         return self.courseName
@@ -69,18 +77,6 @@ class Question(models.Model):
                     question_id = None
                     return question_id
 
-    def changeform_link(self):
-        if self.id:
-            # Replace "myapp" with the name of the app containing
-            # your Certificate model:
-            changeform_url = urlresolvers.reverse(
-                'admin:testing_code_question_change', args=(self.id,)
-            )
-            return u'<a href="%s" target="_blank">Details</a>' % changeform_url
-        return u''
-
-    changeform_link.allow_tags = True
-    changeform_link.short_description = ''  # omit column header
 
     def __str__(self):
         return self.questionText
@@ -95,7 +91,7 @@ class Answer(models.Model):
     answerText = models.TextField("Текст ответа")
     is_correct = models.BooleanField("Ответ правильный", default=False)
     question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name="Относиться к вопросу")
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name="Относиться к курсу")
+
 
     def __str__(self):
         return self.answerText
