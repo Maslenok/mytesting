@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block name %} 
+
+<li> {{title_name}} </li>
+
+{% endblock%}
+
+
+
+{% block index%}
+
+{% if test_list %}
+    <ul>
+    {% for question in test_list %}
+        <li>{{question}}</li>
+    {% endfor %}
+    {% if user.is_active %}
+         <form action="/course/{{course.slug}}/testing/" method="POST" >
+         {% csrf_token %}
+         <input type="submit" class="btn" value="Начать тест" name="mybtn">
+         </form>
+    {% else%}
+        <p>Вам надо войти на сайт.</p>
+    {% endif %}
+    </ul>
+{% else %}
+    <p>В курсе нет доступных вопросов.</p>
+    
+{% endif %}
+{% endblock %}

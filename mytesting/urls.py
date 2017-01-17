@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url,  include
 from django.contrib import admin
-from testing_code.views import index
+from testing.views import index
 from result.views import result
 from django.conf import settings
 from django.conf.urls.static import static
@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
      url(r'^admin/', admin.site.urls),
-     url(r'^course/', include("testing_code.urls")),
+     url(r'^course/', include("testing.urls")),
      url(r'^statistics/', result),     
      url(r'^auth/', include("loginsys.urls")),
      url(r'^', index),
