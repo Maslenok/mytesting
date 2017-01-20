@@ -19,31 +19,7 @@ class Course(models.Model):
         list_question = self.question_set.all()
         return list_question
 
-    def save(self):
-        super(Course, self).save()
-        self.slug = str(self.id) + '_' + slugify(unidecode(self.courseName))
-        super(Course, self).save()
 
-    def add_question_link(self):
-        if self.id:
-            # Replace "myapp" with the name of the app containing
-            # your Certificate model:
-            changeform_url ="/admin/testing/question/add/"
-            return u'<a href="%s" target="_blank">Добавить вопрос</a>' % changeform_url
-        return u''
-
-    add_question_link.allow_tags = True
-    add_question_link.short_description = ''
-
-
-    def save_course_link(self):
-        changeform_url= "/admin/testing/course/save/"
-        return u'<a href="%s" target="_blank">Сохранить курс</a>' % changeform_url
-
-    save_course_link.allow_tags = True
-    save_course_link.short_description = ''
-
-    # omit column header
 
     def __str__(self):
         return self.courseName

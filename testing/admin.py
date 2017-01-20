@@ -42,8 +42,25 @@ class AnswerInlines(admin.TabularInline):
 
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [AnswerInlines,]
-    model = Question
     form = QuestionAdminForm
+
+    def add_view(self, request, form_url='', extra_context=None):
+        print("Доавить вопрос")
+        print(request.POST)
+        extra_context = extra_context or {}
+        extra_context['add_question'] = False
+        print(extra_context)
+        return self.changeform_view(request, None, form_url, extra_context)
+
+    def change_view(self, request, object_id, form_url='', extra_context=None):
+        print("Редактировать вопрос")
+        print(request.POST)
+        print(object_id, self, extra_context)
+        extra_context = extra_context or {}
+        extra_context['add_question'] = True
+        extra_context['course_id'] = object_id
+        print(extra_context)
+        return self.changeform_view(request, object_id, form_url, extra_context)
 
 
 admin.site.register(Question, QuestionAdmin)
@@ -59,8 +76,27 @@ class QuestionInlines(admin.TabularInline):
 
 class CourseAdmin(admin.ModelAdmin):
      inlines = [QuestionInlines,]
-     fields = (("courseName", "save_course_link","add_question_link"),)
-     readonly_fields = ("add_question_link","save_course_link",)
+     fields = ("courseName", )
+
+
+
+     def add_view(self, request, form_url='', extra_context=None):
+         print("Доавить Курс")
+         print(request.POST)
+
+         return self.changeform_view(request, None, form_url, extra_context)
+
+
+     def change_view(self, request, object_id, form_url='', extra_context=None):
+         print("Редактировать курс")
+         print(request.POST)
+         print(object_id, self, extra_context)
+         extra_context = extra_context or {}
+         extra_context['add_batton'] = True
+         extra_context['course_id'] = object_id
+         return self.changeform_view(request, object_id, form_url, extra_context)
+
+
 # list_display = ("courseName","slug", )
 
 admin.site.register(Course, CourseAdmin)
