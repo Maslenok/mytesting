@@ -1,9 +1,19 @@
-from django.core import urlresolvers
 from django.db import models
 from django.db.models import Min, Max
 from unidecode import unidecode
 from django.template.defaultfilters import slugify
 
+class AboutPage(models.Model):
+    class Meta:
+        db_table = "about"
+        verbose_name = "О нас"
+        verbose_name_plural = "О нас"
+
+    about=models.TextField("О нас",)
+    is_active=models.BooleanField("Отоброжаемый текс", default=False)
+
+    def __str__(self):
+        return self.about
 
 class Course(models.Model):
     class Meta:
@@ -13,13 +23,22 @@ class Course(models.Model):
 
     courseName = models.CharField("Название курса", max_length=255, )
     slug = models.SlugField("Отображение в UrL", max_length=50, unique=False, blank=False)
-    about=models.TextField("О курсе", blank=True)
+    about=models.TextField("Описание курса ", blank=True)
 
     def questions_course(self):
         list_question = self.question_set.all()
         return list_question
 
+    def question_len(self):
+        course_Len= self.question_set.all().count()
+        return course_Len
+    question_len.allow_tags= True
+    question_len.short_description= "Количество вопросов"
 
+    def save(self):
+        super(Course, self).save()
+        self.slug = str(self.id) + '_' + slugify(unidecode(self.courseName))
+        super(Course, self).save()
 
     def __str__(self):
         return self.courseName
@@ -37,6 +56,8 @@ class Question(models.Model):
     def course_question(self):
         course_question = self.curse
         return course_question
+    course_question.allow_tags= True
+    course_question.short_description= "Название курса"
 
     def get_next_question_id(course, question_cur_id):
         if question_cur_id == 0:
@@ -76,4 +97,4 @@ class Answer(models.Model):
         answers_in_question = Question(id=self).answer_set.all()
         return answers_in_question
 
-# Create your models here.
+

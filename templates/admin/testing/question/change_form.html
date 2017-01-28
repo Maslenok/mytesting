@@ -55,6 +55,18 @@
 {% endfor %}
 {% endblock %}
 
+    {% if  add_question %}
+    {%else%}
+        {%if add %}
+        {%else%}
+        <div class="submit-row">
+                <input type="button" value="Добавить Вопрос к курсу" onclick="javascript:window.location='/admin/testing/question/add/?course={{question.curse.id}}'"/>
+                <input type="button" value="Редактировать курс" onclick="javascript:window.location='/admin/testing/course/{{question.curse.id}}/change/'" />
+            </div>
+
+        {%endif%}
+    {%endif%}
+
 {% block after_field_sets %}{% endblock %}
 
 {% block inline_field_sets %}
@@ -65,7 +77,34 @@
 
 {% block after_related_objects %}{% endblock %}
 
-{% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
+{% block submit_buttons_bottom %}
+
+    <input type="hidden" name="course" value="{{id_course}}" >
+
+    {% if add %}  <!-- Добавление -->
+          {% if  add_question %} <!-- Добавление при переходе с курса -->
+              <div class="submit-row">
+                 <input type="submit" value="Сохранить" name="_continue" />
+              </div>
+          {%else%}
+       <div class="submit-row">
+            <input type="submit" value="Сохранить" class="default" name="_save" />
+            <input type="submit" value="Сохранить и добавить другой Вопрос" name="_addanother" />
+            <input type="submit" value="Сохранить и продолжить редактирование" name="_continue" />
+       </div>
+          {%endif%}
+    {%endif %}
+
+    {% if change %} <!-- Редактирование из Вопросов -->
+           <div class="submit-row">
+                <input type="submit" value="Сохранить" class="default" name="_save" />
+                 <p class="deletelink-box"><a href="/admin/testing/question/{{question.id}}/delete/" class="deletelink">Удалить</a></p>
+                <input type="button" value="Добавить Вопрос к курсу" onclick="javascript:window.location='/admin/testing/question/add/?course={{question.curse.id}}'"/>
+                <input type="submit" value="Сохранить и продолжить редактирование" name="_continue" />
+                <input type="button" value="Редактировать курс" onclick="javascript:window.location='/admin/testing/course/{{question.curse.id}}/change/'" />
+            </div>
+    {%endif %}
+{% endblock %}
 
 {% block admin_change_form_document_ready %}
     <script type="text/javascript"

@@ -62,10 +62,10 @@
     <input type="submit" value="Сохранить" name="_continue" />
     <input type="submit" value="Новый курс" name="_addanother" />
 {% if add_batton %}
-   <form>
-	<input type="button" value="Добавить вопрос" onclick="javascript:window.location='/admin/testing/question/add/'"/>
+
+	<input type="button" value="Добавить вопрос" onclick="javascript:window.location='/admin/testing/question/add/?course={{course_id}}'"/>
      <p class="deletelink-box"><a href="/admin/testing/course/{{ course_id }}/delete/" class="deletelink">Удалить</a></p>
-   </form>
+
 
 {% endif%}
 
@@ -78,7 +78,6 @@
 
 {% block after_related_objects %}{% endblock %}
 
-<!-- {% block submit_buttons_bottom %}{% submit_row %}{% endblock %} -->
 
 {% block admin_change_form_document_ready %}
     <script type="text/javascript"
