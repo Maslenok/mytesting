@@ -62,7 +62,10 @@ class Question(models.Model):
     def get_next_question_id(course, question_cur_id):
         if question_cur_id == 0:
             next_question = Course.questions_course(course).aggregate(Min('id'))
-            question_id = int(next_question["id__min"])
+            if next_question["id__min"]:
+                question_id = int(next_question["id__min"])
+            else:
+                question_id= None
             return question_id
         else:
             for question in Course.questions_course(course):

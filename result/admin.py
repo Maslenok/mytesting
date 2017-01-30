@@ -7,6 +7,10 @@ class ResultAdmin(admin.ModelAdmin):
     list_filter = ["users", "course" ]
     fields = ("users", "course","resultValue", "dateCreated","is_complete" )
     readonly_fields = ("users", "course","resultValue", "dateCreated","is_complete" )
+    list_per_page=10
 
+    def has_add_permission(self, request):
+
+        return False
 admin.site.register(Result,ResultAdmin)
 

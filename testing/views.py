@@ -175,10 +175,17 @@ def question(request,course_name):
                }
         return render(request, 'testing.html', context)
     except:
+        question_null=False
+        if question_next_id == None:
+            question_null= True
+            question=None
+        else:
+            question= Question.objects.get(id=question_next_id)
         context = {
             "course": course,
             "main_menu": main_menu,
-            "question": Question.objects.get(id=question_next_id),
+            "question": question,
+            "question_null":question_null,
             "question_cur_id": question_next_id,
             "user_auth": user_auth,
             "answer_list": answer_list,

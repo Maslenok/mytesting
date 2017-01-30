@@ -10,15 +10,18 @@
 
 {% block index%}
 
+{% if question_null %}
+ <h3> К сожалению в курсе {{course}} нет сохраненных вопросов </h3>
+<input type="button" value="Вернуться к списку Курсов" onclick="javascript:window.location='/course/'"/>
 
-
+ {% else %}
 
 <form action="/course/{{course.slug}}/testing/" method="post">
 				{% csrf_token %}
                <input type="hidden" name="question_cur" value="{{question_cur_id}}" >
 	           <input type="hidden" name="result" value="{{result}}" >
 
-	           <h3> Вопрос звучит так {{question}} </h3>
+	           <h3> Вопрос звучит так :    {{question}} </h3>
 	           <ol>
 					<li class="v_list">
 
@@ -42,7 +45,7 @@
 
 
 
-
+{%endif%}
 
 
 

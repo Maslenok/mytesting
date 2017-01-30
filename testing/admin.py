@@ -27,7 +27,7 @@ class AnswerOrderInlineFormset(forms.models.BaseInlineFormSet):
 
 class AnswerInlines(admin.TabularInline):
     model = Answer
-    extra = 2
+    extra = 3
     formset= AnswerOrderInlineFormset
 
 class QuestionAdmin(admin.ModelAdmin):

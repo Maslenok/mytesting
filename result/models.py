@@ -6,6 +6,7 @@ class Result(models.Model):
     class Meta:
         db_table="result"
         verbose_name = "Результат тестирования"
+        verbose_name_plural = "Результаты тестирований"
     dateCreated=models.DateTimeField("Дата прохождения",auto_now_add=True)
     is_complete=models.BooleanField("Посностью окончил",default= False)
     resultValue=models.IntegerField("Результат",default=0)

@@ -50,26 +50,10 @@
 {% endif %}
 
 {% block field_sets %}
-    {% if add_question %}
-
-
-    <fieldset class="module aligned ">
-        <div class="form-row field-questionText">
-               <div>
-                        <label class="required" for="id_questionText">Вопрос:</label>
-                            <textarea class="vLargeTextField" cols="40" id="id_questionText" name="questionText" rows="10" required></textarea>
-
-                </div>
-        </div>
-
-    </fieldset>
-    <input type="hidden" name="curse" value="{{id_course}}" >
-
-    {%else%}
     {% for fieldset in adminform %}
-    {% include "admin/includes/fieldset.html" %}
+    {% include "admin/testing/question/fieldset.html" %}
     {%endfor%}
-    {%endif%}
+
 {%endblock%}
 
     {% if  add_question %}
@@ -78,7 +62,7 @@
         {%else%}
         <div class="submit-row">
                 <input type="button" value="Добавить Вопрос к курсу" onclick="javascript:window.location='/admin/testing/question/add/?course={{question.curse.id}}'"/>
-                <input type="button" value="Редактировать курс" onclick="javascript:window.location='/admin/testing/course/{{question.curse.id}}/change/'" />
+                <input type="button" value="Редактировать курс" onclick="javascript:window.location='/admin/testing/course/{{question.curse.id}}/'" />
             </div>
 
         {%endif%}
@@ -118,7 +102,7 @@
                  <p class="deletelink-box"><a href="/admin/testing/question/{{question.id}}/delete/" class="deletelink">Удалить</a></p>
                 <input type="button" value="Добавить Вопрос к курсу" onclick="javascript:window.location='/admin/testing/question/add/?course={{question.curse.id}}'"/>
                 <input type="submit" value="Сохранить и продолжить редактирование" name="_continue" />
-                <input type="button" value="Редактировать курс" onclick="javascript:window.location='/admin/testing/course/{{question.curse.id}}/change/'" />
+                <input type="button" value="Редактировать курс" onclick="javascript:window.location='/admin/testing/course/{{question.curse.id}}/'" />
             </div>
     {%endif %}
 {% endblock %}
