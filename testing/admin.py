@@ -48,7 +48,8 @@ class QuestionAdmin(admin.ModelAdmin):
         extra_context = extra_context or {}
         if request.GET.get("course"):
            extra_context['add_question'] = True
-        extra_context['id_course']= request.GET.get("course")
+           extra_context['id_course']= request.GET.get("course")
+           extra_context["curse"]= Course.objects.get(id=request.GET.get("course"))
         return self.changeform_view(request, None, form_url, extra_context)
 
     def change_view(self, request, object_id, form_url='', extra_context=None):

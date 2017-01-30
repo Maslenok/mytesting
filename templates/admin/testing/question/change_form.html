@@ -50,10 +50,27 @@
 {% endif %}
 
 {% block field_sets %}
-{% for fieldset in adminform %}
-  {% include "admin/includes/fieldset.html" %}
-{% endfor %}
-{% endblock %}
+    {% if add_question %}
+
+
+    <fieldset class="module aligned ">
+        <div class="form-row field-questionText">
+               <div>
+                        <label class="required" for="id_questionText">Вопрос:</label>
+                            <textarea class="vLargeTextField" cols="40" id="id_questionText" name="questionText" rows="10" required></textarea>
+
+                </div>
+        </div>
+
+    </fieldset>
+    <input type="hidden" name="curse" value="{{id_course}}" >
+
+    {%else%}
+    {% for fieldset in adminform %}
+    {% include "admin/includes/fieldset.html" %}
+    {%endfor%}
+    {%endif%}
+{%endblock%}
 
     {% if  add_question %}
     {%else%}
