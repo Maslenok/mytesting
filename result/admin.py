@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Result
+from .models import Result, UsersAnswer
 
 class ResultAdmin(admin.ModelAdmin):
     show_change_link = True
@@ -14,3 +14,9 @@ class ResultAdmin(admin.ModelAdmin):
         return False
 admin.site.register(Result,ResultAdmin)
 
+class UserAdmin(admin.ModelAdmin):
+    list_display = ("users", "course", "question", "right","result")
+    list_filter= ("users", "course", "question", "right","result")
+
+
+admin.site.register(UsersAnswer, UserAdmin)

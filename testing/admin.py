@@ -33,7 +33,7 @@ class AnswerInlines(admin.TabularInline):
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [AnswerInlines, ]
     show_change_link = True
-    list_display = ("questionText","course_question", )
+    list_display = ("questionText","course_question", "id")
     fields = ("questionText", "curse")
     list_filter=["curse",]
     list_per_page=10
