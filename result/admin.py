@@ -3,8 +3,8 @@ from .models import Result, UsersAnswer
 
 class ResultAdmin(admin.ModelAdmin):
     show_change_link = True
-    list_display = ("users", "course","resultValue", "dateCreated")
-    list_filter = ["users", "course" ]
+    list_display = ("users", "course","resultValue", "dateCreated","is_complete")
+    list_filter = ["users", "course","is_complete" ]
     fields = ("users", "course","resultValue", "dateCreated","is_complete" )
     readonly_fields = ("users", "course","resultValue", "dateCreated","is_complete" )
     list_per_page=10
@@ -14,9 +14,4 @@ class ResultAdmin(admin.ModelAdmin):
         return False
 admin.site.register(Result,ResultAdmin)
 
-class UserAdmin(admin.ModelAdmin):
-    list_display = ("users", "course", "question", "right","result")
-    list_filter= ("users", "course", "question", "right","result")
 
-
-admin.site.register(UsersAnswer, UserAdmin)

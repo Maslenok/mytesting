@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.contrib.admin import ModelAdmin
+
 from .models import Question, Course, Answer, AboutPage
 from django import forms
 
@@ -14,8 +16,7 @@ class AnswerOrderInlineFormset(forms.models.BaseInlineFormSet):
                     if form.cleaned_data.get("is_correct"):
                         count_is_correct +=1
             except AttributeError:
-                    # annoyingly, if a subform is invalid Django explicity raises
-                    # an AttributeError for cleaned_data
+
                  pass
 
         if count_is_answers < 2 :
@@ -33,16 +34,16 @@ class AnswerInlines(admin.TabularInline):
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [AnswerInlines, ]
     show_change_link = True
-    list_display = ("questionText","course_question", "id")
+    list_display = ("questionText","course_question", )
     fields = ("questionText", "curse")
     list_filter=["curse",]
     list_per_page=10
 
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == 'curse' and request.GET.get("course"):
-            kwargs['queryset'] = Course.objects.filter(id=request.GET.get("course"))
-            return db_field.formfield(**kwargs)
-        return super(QuestionAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+  #  def formfield_for_foreignkey(self, db_field, request, **kwargs):
+  #      if db_field.name == 'curse' and request.GET.get("course"):
+  #          kwargs['queryset'] = Course.objects.filter(id=request.GET.get("course"))
+  #          return db_field.formfield(**kwargs)
+  #      return super(QuestionAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
 
     def add_view(self, request, form_url='', extra_context=None):
         extra_context = extra_context or {}
@@ -87,6 +88,9 @@ class AboutPageAdmin(admin.ModelAdmin):
     fields = ("about", )
     ordering = ["-is_active",]
     list_editable=("is_active",)
+    def has_add_permission(self, request):
+
+        return True
 
 
 admin.site.register(AboutPage, AboutPageAdmin)
