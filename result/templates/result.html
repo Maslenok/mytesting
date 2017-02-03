@@ -12,7 +12,7 @@
 {% block index%}
 
 {% if output_result %}
-   <li> Уважаемый пользователь {{user_auth}} </li>
+   <li> Уважаемый пользователь {{request.user}} </li>
    <li> Вы прошли тестирование по курсу  {{course}} </li>
    <li> Ваш результат {{result_value}}  процентов </li>
 

@@ -39,12 +39,6 @@ class QuestionAdmin(admin.ModelAdmin):
     list_filter=["curse",]
     list_per_page=10
 
-  #  def formfield_for_foreignkey(self, db_field, request, **kwargs):
-  #      if db_field.name == 'curse' and request.GET.get("course"):
-  #          kwargs['queryset'] = Course.objects.filter(id=request.GET.get("course"))
-  #          return db_field.formfield(**kwargs)
-  #      return super(QuestionAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
-
     def add_view(self, request, form_url='', extra_context=None):
         extra_context = extra_context or {}
         if request.GET.get("course"):
@@ -84,14 +78,12 @@ class CourseAdmin(admin.ModelAdmin):
 
 class AboutPageAdmin(admin.ModelAdmin):
     show_change_link = True
-    list_display = ("about", "is_active",)
+    list_display = ("about", )
     fields = ("about", )
-    ordering = ["-is_active",]
-    list_editable=("is_active",)
-    def has_add_permission(self, request):
 
-        return True
+    def has_add_permission(self, request):  # из админки не разрешено создавать больше одной записи
 
+        return self.model.objects.all().count() <1
 
 admin.site.register(AboutPage, AboutPageAdmin)
 admin.site.register(Question, QuestionAdmin)

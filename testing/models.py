@@ -10,7 +10,6 @@ class AboutPage(models.Model):
         verbose_name_plural = "О нас"
 
     about=models.TextField("О нас",)
-    is_active=models.BooleanField("Отоброжаемый текс", default=False)
 
     def __str__(self):
         return self.about

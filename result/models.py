@@ -27,7 +27,7 @@ class UsersAnswer(models.Model):
 
 
     def __str__(self):
-        return (str(self.users)+"_"+str(self.question))
+        return ("Ответ на вопрос"+"_"+str(self.question))
 
 
 

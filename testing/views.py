@@ -11,7 +11,7 @@ def index(request):
     context = {
                'title_name'   :  "Информация о нас ",
                'main_menu'    :  "index",
-               'user_auth'    :  auth.get_user(request).username,
+
                }
     try:
        context["text"]= AboutPage.objects.all()[0]
@@ -27,27 +27,21 @@ def course(request):
                'course_list'  : Course.objects.order_by('courseName'),
                'title_name'   : "Доступные курсы",
                'main_menu'    : "course" ,
-               'user_auth'    : request.user.is_authenticated(),
+
                }
     return render(request, 'course.html', context)
 
 def tests(request,course_name):
     course=get_object_or_404(Course, slug=course_name)
-    list_question=course.question_set.all()
 
-    if request.user.is_authenticated():
-        user_auth= True
-    else:
-        user_auth=None
-    main_menu = "course"
-    title_name="Вы смотрите курс :  "
+
     context={
-             'test_list'     : list_question ,
-             'title_name'    : title_name,
+
+             'title_name'    : "Вы смотрите курс :  ",
              'course'        : course,
-             'main_menu'     : main_menu ,
-             'user_auth'     : user_auth,
-             "course_name"   : course_name,
+             'main_menu'     : "course" ,
+
+
              }
     return render(request, 'tests.html', context)
 
@@ -62,7 +56,6 @@ def question(request,course_name):
         context.update(csrf(request))
         context = {
                     "main_menu"  :  "course",
-                    "user_auth"  :  request.user.is_authenticated(),
                     "course"     :  course,
                   }
         if request.POST.get("question_cur", "") and request.user.is_authenticated() and not request.POST.get("add_new_result", ""):  # если метод POST, и мы проходим курс
