@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block name %} 
+
+<li> {{title_name}} </li>
+<li>    </li>
+
+{% endblock%}
+
+
+
+{% block index%}
+
+{% if output_result %}
+   <li> Уважаемый пользователь {{request.user}} </li>
+   <li> Вы прошли тестирование по курсу  {{course}} </li>
+   <li> Ваш результат {{result_value}}  процентов </li>
+
+
+
+
+{% else %}
+
+
+<li> Уважаемый пользователь {{user_auth}} Ваши результаты </li>
+
+{% if error %}
+    {{error}}
+{% else%}
+
+
+
+{% for result in list_result %}
+
+     <li> Результат по Курсу:    {{result.course}} .   Который Вы проходили -  {{result.dateCreated}}.   Равен   : {{result.resultValue}} </li>
+
+   {% endfor %}
+{%endif%}
+{% endif%}
+
+{% endblock %}

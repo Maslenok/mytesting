@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+from django.conf import settings
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
+
 #TEMPALATES_DIRS = (
  #   "/home/maslenok/venv/django_project/git/mytesting/templates" , 
  #   "/home/maslenok/venv/django_project/git/mytesting/testing_code/templates/testing_code/",
@@ -41,11 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-   # 'django.contrib.sites',
-    'result',
-    'testing',
-    'loginsys',
-
+    'core',
+    'app.result',
+    'app.testing',
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -57,6 +59,37 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+#if settings.DEBUG:
+#    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+
+
+#INTERNAL_IPS = ('127.0.0.1',)
+
+#INSTALLED_APPS += ('debug_toolbar', )
+
+
+# Настройка отправки писем и настройка почтового сервера
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL =    "  "       #'admin@enjoy-sa.ru'
+EMAIL_HOST = ""                    # 'smtp.fullspace.ru'
+EMAIL_HOST_USER =  ""              # 'admin@enjoy-sa.ru'
+EMAIL_HOST_PASSWORD = ""           #'alena2010'
+
+
+# TEMPLATE_CONTEXT_PROCESSORS
+
+# from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
+
+#TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+#    'django.core.context_processors.request',
+#    'core.context.site_setup',
+#    'apps.seo.context.seo_setup',
+#    'apps.ticket.context.travels',
+#)
+
 
 ROOT_URLCONF = 'mytesting.urls'
 
@@ -78,6 +111,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mytesting.wsgi.application'
+
+
+# расширение модели User
+AUTH_USER_MODEL = 'core.User'
 
 
 # Database
@@ -128,7 +165,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'Ru-ru'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'UTC'
 
@@ -136,21 +173,23 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    
+
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
-
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
