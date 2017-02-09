@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Min, Max
 from unidecode import unidecode
+from ckeditor.fields import RichTextField
 from django.template.defaultfilters import slugify
 
 class AboutPage(models.Model):
@@ -9,10 +10,19 @@ class AboutPage(models.Model):
         verbose_name = "О нас"
         verbose_name_plural = "О нас"
 
-    about=models.TextField("О нас",)
+    about=RichTextField(verbose_name=u'Текст')
+    title=models.CharField(max_length=100,help_text="О нас")
+   # slug = models.SlugField(max_length=100, verbose_name='Короткое имя', blank=True)
+
+  #  def save(self):
+   #     self.slug = slugify(self.title)
+   #     super(AboutPage, self).save()
 
     def __str__(self):
-        return self.about
+        return self.title
+
+    def __unicode__(self):
+        return self.title
 
 class Course(models.Model):
     class Meta:

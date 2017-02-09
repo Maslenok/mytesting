@@ -19,6 +19,7 @@ def index(request):
        context["text"]= AboutPage.objects.all()[0]
     except:
         pass
+
     return render(request, 'index.html', context)
 
 

@@ -1,5 +1,5 @@
 # coding=utf-8
-from annoying.decorators import ajax_request
+#from annoying.decorators import ajax_request
 from django.contrib import auth
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
@@ -26,7 +26,7 @@ def get_robots_txt(request):
     return robots_response
 
 
-@ajax_request
+#@ajax_request
 def landing_login(request):
     username = request.POST['username']
     password = request.POST['password']
@@ -45,7 +45,7 @@ def landing_login(request):
             'error': error
         }
 
-@ajax_request
+#@ajax_request
 def landing_registration(request):
     if request.method == 'POST':
         username = request.POST.get('username')

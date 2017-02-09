@@ -10,7 +10,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 #from imagekit.models import ImageSpecField
-from pilkit.processors import SmartResize
+#from pilkit.processors import SmartResize
 
 
 
@@ -67,7 +67,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(_('first name'), max_length=30, blank=True, null=True, default=u'')
     last_name = models.CharField(_('last name'), max_length=30, blank=True, null=True, default=u'')
     desc = models.TextField(verbose_name=u'Подпись', blank=True, null=True)
-    # patronymic = models.CharField(u'Отчество', max_length=50, blank=True, null=True, default=u'')
+    patronymic = models.CharField(u'Отчество', max_length=50, blank=True, null=True, default=u'')
     # phone = models.CharField(max_length=250, verbose_name=u'Телефон', null=True, blank=True, default=u'')
 
     is_staff = models.BooleanField(_('staff status'), default=False,

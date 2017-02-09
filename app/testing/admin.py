@@ -1,3 +1,4 @@
+from ckeditor.widgets import CKEditorWidget
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
 
@@ -76,14 +77,17 @@ class CourseAdmin(admin.ModelAdmin):
          extra_context['course_id'] = object_id
          return self.changeform_view(request, object_id, form_url, extra_context)
 
+
+
 class AboutPageAdmin(admin.ModelAdmin):
-    show_change_link = True
-    list_display = ("about", )
-    fields = ("about", )
+    #form=AboutForm
 
-    def has_add_permission(self, request):  # из админки не разрешено создавать больше одной записи
+    list_display = ("title",)
+  #  fields = ("about", 'title')
 
-        return self.model.objects.all().count() <1
+  #  def has_add_permission(self, request):  # из админки не разрешено создавать больше одной записи
+
+    #    return self.model.objects.all().count() <1
 
 admin.site.register(AboutPage, AboutPageAdmin)
 admin.site.register(Question, QuestionAdmin)
