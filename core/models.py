@@ -81,7 +81,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     # delivery_address = models.CharField(verbose_name=u'адрес доставки', max_length=512, blank=True, default=u'')
 
-    avatar = models.ImageField(verbose_name=u'Аватар', upload_to=get_photo_image_path, null=True, blank=True)
+   # avatar = models.ImageField(verbose_name=u'Аватар', upload_to=get_photo_image_path, null=True, blank=True)
   #  avatar_resize = ImageSpecField(
     #    [SmartResize(*settings.USER_AVATAR_SIZE)], source='avatar', format='JPEG', options={'quality': 94}
     #)

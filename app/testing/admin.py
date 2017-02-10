@@ -85,9 +85,8 @@ class AboutPageAdmin(admin.ModelAdmin):
     list_display = ("title",)
   #  fields = ("about", 'title')
 
-  #  def has_add_permission(self, request):  # из админки не разрешено создавать больше одной записи
-
-    #    return self.model.objects.all().count() <1
+    def has_add_permission(self, request):  # из админки не разрешено создавать больше одной записи
+        return self.model.objects.all().count() <1
 
 admin.site.register(AboutPage, AboutPageAdmin)
 admin.site.register(Question, QuestionAdmin)

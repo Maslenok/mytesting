@@ -6,4 +6,4 @@ from core.models import User
 class UserProfileForm(ModelForm):
     class Meta:
         model = User
-        fields = ('last_name', 'first_name', 'desc', 'avatar', 'email',)
+        fields = ('last_name', 'first_name', 'desc', 'email',)
