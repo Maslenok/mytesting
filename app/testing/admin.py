@@ -81,6 +81,8 @@ class CourseAdmin(admin.ModelAdmin):
 
 class AboutPageAdmin(admin.ModelAdmin):
     #form=AboutForm
+    #prepopulated_fields = {"slug": ("title",)}
+    readonly_fields = ("slug", )
 
     list_display = ("title",)
   #  fields = ("about", 'title')

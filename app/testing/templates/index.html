@@ -12,7 +12,7 @@
 {% block index%}
 
  {{ text.title}}
-{{text.about}}
+{{text.about|safe|default:'' }}
 
 
 

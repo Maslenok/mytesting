@@ -3,10 +3,16 @@ from django.db.models import  Max
 from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
 from django.template.context_processors import csrf
+#from django.views.generic import DetailView
+#from django.views.generic import ListView
 
 from app.result.models import Result
 from app.result.models import UsersAnswer
 from .models import Course ,   Question, Answer, AboutPage
+
+
+#class AboutPageList(DetailView):
+  #  model = AboutPage
 
 
 def index(request):

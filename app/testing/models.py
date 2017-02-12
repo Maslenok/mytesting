@@ -1,8 +1,11 @@
+import ckeditor
 from django.db import models
 from django.db.models import Min, Max
+from django.utils.text import slugify
+from django.views.generic import ListView
 from unidecode import unidecode
-import ckeditor.fields
-from django.template.defaultfilters import slugify
+from ckeditor.fields import RichTextField
+
 
 class AboutPage(models.Model):
     class Meta:
@@ -12,17 +15,22 @@ class AboutPage(models.Model):
 
     about=ckeditor.fields.RichTextField(verbose_name=u'Текст')
     title=models.CharField(max_length=100,help_text="О нас")
-   # slug = models.SlugField(max_length=100, verbose_name='Короткое имя', blank=True)
+    slug = models.SlugField(max_length=100, verbose_name='Короткое имя', blank=True)
 
-  #  def save(self):
-   #     self.slug = slugify(self.title)
-   #     super(AboutPage, self).save()
+    def save(self):
+        super(AboutPage, self).save()
+        self.slug = slugify(unidecode(self.title))
+        super(AboutPage, self).save()
+
+
 
     def __str__(self):
         return self.title
 
     def __unicode__(self):
         return self.title
+
+
 
 class Course(models.Model):
     class Meta:

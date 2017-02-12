@@ -13,17 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from app.testing.models import AboutPage
+
 from django.conf import settings
 from django.conf.urls import url,  include
 from django.conf.urls.static import static
 from django.contrib import admin
 from mytesting import settings
-
-from django.views.generic import ListView, DetailView
 from app.result.views import result
-from app.testing.views import index
-
+from app.testing.views import index      #, AboutPageList
 
 urlpatterns = [
      url(r'^admin/', admin.site.urls),
@@ -31,8 +28,8 @@ urlpatterns = [
      url(r'^statistics/', result),     
      url(r'^auth/', include("core.urls")),
      #url(r'^profile/', index1),.
-  #   url (r'^ckeditor/', include('ckeditor.urls')),
-     url(r'^about1/', ListView.as_view(model=AboutPage), name='list'),
+     url (r'^ckeditor/', include('ckeditor.urls')),
+    # url(r'^about1/', AboutPageList.as_view(), name='list'),
      url(r'^', index),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
