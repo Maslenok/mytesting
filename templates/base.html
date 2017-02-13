@@ -19,7 +19,7 @@
 
   <div class="wrapper">
       <header>
-	<div class="logo"><a href="/index"><span><img alt="УКРАЇНСЬКИЙ ЦЕНТЕР ПIДГОТОВКИ АБIТУРIЄНТIВ" src="{% static "/img/logo.jpg" %}"></span></a></div>
+	<div class="logo"><a href="/"><span><img alt="УКРАЇНСЬКИЙ ЦЕНТЕР ПIДГОТОВКИ АБIТУРIЄНТIВ" src="{% static "/img/logo.jpg" %}"></span></a></div>
 
 {% if not login_error %}	
 	
@@ -76,9 +76,10 @@
 	 <div class="header-block">
       <nav>
 	  <ul class="nav">
-	  	<li {% ifequal main_menu "index" %}  class="active" {%endifequal %}><a href="/">головна</a></li>
-	  	<li {% ifequal main_menu "course" %} class="active" {%endifequal %} ><a href="/course/">курси</a></li>	  	
-	  	<li {% ifequal main_menu "result" %} class="active" {%endifequal %}><a href="/statistics/">статистика</a></li>
+	  	<li {% ifequal request.path "/" %}  class="active" {%endifequal %}><a href="/">головна</a></li>
+	  	<li {% if "course" in  request.path  %} class="active" {%endif %} ><a href="/course/">курси</a></li>
+	  	<li {% ifequal request.path "/statistics/" %} class="active" {%endifequal %}><a href="/statistics/">статистика</a></li>
+
 	  	
       
 	  </ul>
@@ -102,7 +103,7 @@
       
        
 <div class="b-priceTable">      
-    {% block name %} {%endblock%}
+
 
     {% block index %} {% endblock %}
 

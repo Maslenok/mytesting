@@ -3,54 +3,29 @@ from django.db.models import  Max
 from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
 from django.template.context_processors import csrf
+from django.views.generic import DetailView
+from django.views.generic import ListView
 #from django.views.generic import DetailView
-#from django.views.generic import ListView
 
 from app.result.models import Result
 from app.result.models import UsersAnswer
 from .models import Course ,   Question, Answer, AboutPage
 
 
-#class AboutPageList(DetailView):
-  #  model = AboutPage
+class AboutPageList(DetailView):
+    model = AboutPage
+    def get_object(self):
+        object = AboutPage.objects.all()[0]
+        return object
 
 
-def index(request):
-    context = {
-               'title_name'   :  "Информация о нас ",
-               'main_menu'    :  "index",
-
-               }
-    try:
-       context["text"]= AboutPage.objects.all()[0]
-    except:
-        pass
-
-    return render(request, 'index.html', context)
-
-
-
-def course(request):
-
-    context = {
-               'course_list'  : Course.objects.order_by('courseName'),
-               'title_name'   : "Доступные курсы",
-               'main_menu'    : "course" ,
-
-               }
-    return render(request, 'course.html', context)
 
 def tests(request,course_name):
     course=get_object_or_404(Course, slug=course_name)
 
 
     context={
-
-             'title_name'    : "Вы смотрите курс :  ",
-             'course'        : course,
-             'main_menu'     : "course" ,
-
-
+             'course' : course,
              }
     return render(request, 'tests.html', context)
 
@@ -64,7 +39,6 @@ def question(request,course_name):
         context = {}
         context.update(csrf(request))
         context = {
-                    "main_menu"  :  "course",
                     "course"     :  course,
                   }
         if request.POST.get("question_cur", "") and request.user.is_authenticated() and not request.POST.get("add_new_result", ""):  # если метод POST, и мы проходим курс
@@ -123,7 +97,6 @@ def question(request,course_name):
                 result_end.save()
 
                 context["main_menu"]     =  "result"
-                context["title_name"]    =  "Результаты тестирования "
                 context["output_result"] =  True
                 context["result_value"]  =  result_value
 
@@ -158,3 +131,5 @@ def question(request,course_name):
         context["question"]        =   Question.objects.get(id=question_next_id)
 
         return render(request, 'testing.html', context)
+
+

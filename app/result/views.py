@@ -11,7 +11,7 @@ def result(request):
         title_name = " Результаты тестов которые Вы проходили"
         context = {"main_menu": main_menu,
                    "user_auth": user_result,
-                   "title_name": title_name
+
                    }
         if  Result.objects.filter(users=user_result, is_complete=True).count()>0:
             list_result = Result.objects.filter(users=user_result, is_complete=True)

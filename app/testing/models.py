@@ -14,7 +14,7 @@ class AboutPage(models.Model):
         verbose_name_plural = "О нас"
 
     about=ckeditor.fields.RichTextField(verbose_name=u'Текст')
-    title=models.CharField(max_length=100,help_text="О нас")
+    title=models.CharField("Заголовок",max_length=100,help_text="О нас")
     slug = models.SlugField(max_length=100, verbose_name='Короткое имя', blank=True)
 
     def save(self):

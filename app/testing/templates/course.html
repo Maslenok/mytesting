@@ -1,11 +1,5 @@
 {% extends "base.html" %}
 
-{% block name %} 
-
-<li> {{title_name}} </li>
-
-{% endblock%}
-
 
 
 {% block index%}
@@ -14,6 +8,9 @@
 
 
 {% if course_list %}
+
+<li> Список доступных курсов  </li>
+
     <ul>
     {% for course in course_list %}
         <li><a href="/course/{{ course.slug }}/">{{ course }}</a></li>

@@ -1,17 +1,9 @@
 {% extends "base.html" %}
 
-{% block name %} 
-
-<li> {{title_name}} </li>
-
-
-{% endblock%}
-
-
-
 {% block index%}
 
  {{ text.title}}
+
 {{text.about|safe|default:'' }}
 
 

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block index%}
+
+
+
+
+
+      {% if object_list %}
+        <li> Список доступных курсов  </li>
+        {% for object in object_list %}
+
+         <li><a href="/course/{{ object.slug|safe }}/">{{ object }}</a></li>
+        {% endfor %}
+      {% else %}
+          <p>Нет доступных курсов</p>
+      {% endif %}
+
+
+
+
+
+{% endblock %}

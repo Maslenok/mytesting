@@ -1,14 +1,9 @@
 {% extends "base.html" %}
 
-{% block name %}
-
-    <li> Отвечаем на набор тестов :  {{course}}  </li>
-
-{% endblock%}
-
-
-
 {% block index%}
+
+<li> Отвечаем на набор тестов :  {{course}}  </li>
+
 
 {% if questions_asked %}
  <h3> К сожалению в курсе {{course}} нет сохраненных вопросов </h3>

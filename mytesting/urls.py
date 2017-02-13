@@ -18,9 +18,12 @@ from django.conf import settings
 from django.conf.urls import url,  include
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.views.generic import DetailView
+
+from app.testing.models import AboutPage
 from mytesting import settings
 from app.result.views import result
-from app.testing.views import index      #, AboutPageList
+from app.testing.views import  AboutPageList
 
 urlpatterns = [
      url(r'^admin/', admin.site.urls),
@@ -28,9 +31,9 @@ urlpatterns = [
      url(r'^statistics/', result),     
      url(r'^auth/', include("core.urls")),
      #url(r'^profile/', index1),.
-     url (r'^ckeditor/', include('ckeditor.urls')),
-    # url(r'^about1/', AboutPageList.as_view(), name='list'),
-     url(r'^', index),
+     #url (r'^ckeditor/', include('ckeditor.urls')),
+     url(r'^', AboutPageList.as_view(), name='list'),
+    # url(r'^', index),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
