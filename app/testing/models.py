@@ -94,6 +94,11 @@ class Question(models.Model):
                     question_id = None
                     return question_id
 
+    def answers_question(self):
+        list_answer = self.answer_set.all()
+        return list_answer
+   # answers_question.allow_tags= True
+    #answers_question.short_description= "Ответы на вопрос"
 
     def __str__(self):
         return self.questionText

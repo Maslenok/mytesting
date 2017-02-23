@@ -1,9 +1,15 @@
 {% extends "base.html" %}
+{% load testing_tags %}
 
 {% block index%}
+
+{%test_tags "'Передаваемый текст в Tags'"%}
+
 <li> Вы смотрите курс : {{course}} </li>
 
 {{course.about}}
+
+
 
 {% if user.is_active %}
          <form action="/course/{{course.slug}}/testing/" method="POST" >

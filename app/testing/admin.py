@@ -1,6 +1,7 @@
 from ckeditor.widgets import CKEditorWidget
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
+from django.forms import modelformset_factory, inlineformset_factory
 
 from .models import Question, Course, Answer, AboutPage
 from django import forms
@@ -57,13 +58,14 @@ class QuestionInlines(admin.TabularInline):
     model = Question
     show_change_link = True
     extra = 3
-    fields = ("questionText", "curse", )
+    fields = ("questionText", "curse",  )
     readonly_fields = ('questionText', )
 
 class CourseAdmin(admin.ModelAdmin):
      inlines = [QuestionInlines,]
      fields = ("courseName", "about")
      list_display = ("courseName", "question_len")
+
 
      def add_view(self, request, form_url='', extra_context=None):
          extra_context = extra_context or {}
