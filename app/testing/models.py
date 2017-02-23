@@ -17,6 +17,7 @@ class AboutPage(models.Model):
     title=models.CharField("Заголовок",max_length=100,help_text="О нас")
     slug = models.SlugField(max_length=100, verbose_name='Короткое имя', blank=True)
 
+
     def save(self):
         super(AboutPage, self).save()
         self.slug = slugify(unidecode(self.title))
@@ -41,6 +42,7 @@ class Course(models.Model):
     courseName = models.CharField("Название курса", max_length=255, )
     slug = models.SlugField("Отображение в UrL", max_length=50, unique=False, blank=False)
     about=models.TextField("Описание курса ", blank=True)
+
 
     def questions_course(self):
         list_question = self.question_set.all()
@@ -69,6 +71,7 @@ class Question(models.Model):
 
     questionText = models.TextField("Вопрос")
     curse = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name="Курс")
+    position = models.TextField("Позиция",blank=True,null=True,default=None)
 
     def course_question(self):
         course_question = self.curse
@@ -113,7 +116,7 @@ class Answer(models.Model):
     answerText = models.TextField("Текст ответа")
     is_correct = models.BooleanField("Ответ правильный", default=False)
     question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name="Относиться к вопросу")
-
+    position = models.TextField("Позиция",blank=True,null=True,default=None)
 
     def __str__(self):
         return self.answerText

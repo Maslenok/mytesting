@@ -32,6 +32,7 @@ urlpatterns = [
      url(r'^auth/', include("core.urls")),
      #url(r'^profile/', index1),.
      #url (r'^ckeditor/', include('ckeditor.urls')),
+     url(r'^nested_admin/', include('nested_admin.urls')),
      url(r'^', AboutPageList.as_view(), name='list'),
     # url(r'^', index),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

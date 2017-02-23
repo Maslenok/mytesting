@@ -2,7 +2,7 @@ from ckeditor.widgets import CKEditorWidget
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
 from django.forms import modelformset_factory, inlineformset_factory
-
+import nested_admin
 from .models import Question, Course, Answer, AboutPage
 from django import forms
 
@@ -37,7 +37,7 @@ class QuestionAdmin(admin.ModelAdmin):
     inlines = [AnswerInlines, ]
     show_change_link = True
     list_display = ("questionText","course_question", )
-    fields = ("questionText", "curse")
+    fields = ("questionText", "curse","position",)
     list_filter=["curse",]
     list_per_page=10
 
@@ -94,4 +94,43 @@ class AboutPageAdmin(admin.ModelAdmin):
 
 admin.site.register(AboutPage, AboutPageAdmin)
 admin.site.register(Question, QuestionAdmin)
-admin.site.register(Course, CourseAdmin)
+#admin.site.register(Course, CourseAdmin)  # раскомитить  данную строку и закомитить последнюю для изменения функционала
+
+#  Переписываем Admin  на  django-nested-admin 3.0.13  https://pypi.python.org/pypi/django-nested-admin/3.0.13
+
+class AnswerInlinesNested(nested_admin.NestedTabularInline):
+    model = Answer
+    extra = 1
+    sortable_field_name = ""
+    fields=("answerText", "is_correct",)
+    formset= AnswerOrderInlineFormset
+
+class QuestionInlinesNested(nested_admin.NestedStackedInline):
+    model = Question
+    show_change_link = True
+    extra = 0
+
+    sortable_field_name = ""
+    fields = ("questionText",  )
+    inlines = [AnswerInlinesNested]
+
+class CourseAdminNested(nested_admin.NestedModelAdmin):
+    inlines = [QuestionInlinesNested]
+    fields = ("courseName", "about")
+    list_display = ("courseName", "question_len")
+    add_form_template="admin/testing/course/change_form_nested.html"
+    change_form_template="admin/testing/course/change_form_nested.html"
+
+    def add_view(self, request, form_url='', extra_context=None):
+        extra_context = extra_context or {}
+        extra_context['add_batton'] = False
+
+        return self.changeform_view(request, None, form_url, extra_context)
+
+    def change_view(self, request, object_id, form_url='', extra_context=None):
+        extra_context = extra_context or {}
+        extra_context['add_batton'] = True
+        extra_context['course_id'] = object_id
+        return self.changeform_view(request, object_id, form_url, extra_context)
+
+admin.site.register(Course, CourseAdminNested)

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
    # 'pilkit',
+    'nested_admin',
     'core',
     'app.result',
     'app.testing',
