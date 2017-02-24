@@ -71,7 +71,7 @@ class Question(models.Model):
 
     questionText = models.TextField("Вопрос")
     curse = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name="Курс")
-    position = models.TextField("Позиция",blank=True,null=True,default=None)
+
 
     def course_question(self):
         course_question = self.curse
@@ -116,7 +116,7 @@ class Answer(models.Model):
     answerText = models.TextField("Текст ответа")
     is_correct = models.BooleanField("Ответ правильный", default=False)
     question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name="Относиться к вопросу")
-    position = models.TextField("Позиция",blank=True,null=True,default=None)
+
 
     def __str__(self):
         return self.answerText

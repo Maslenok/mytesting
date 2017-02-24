@@ -7,7 +7,7 @@ from .models import Course, Question
 class QuestionAdminForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ("questionText","curse","position",)
+        fields = ("questionText","curse",)
 
 class CourseAdminForm(forms.ModelForm):
     class Meta:
