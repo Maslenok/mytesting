@@ -101,7 +101,7 @@ admin.site.register(Question, QuestionAdmin)
 class AnswerInlinesNested(nested_admin.NestedTabularInline):
     model = Answer
     extra = 1
-    sortable_field_name = ""
+   # sortable_field_name = ""
     fields=("answerText", "is_correct",)
     formset= AnswerOrderInlineFormset
 
@@ -110,7 +110,7 @@ class QuestionInlinesNested(nested_admin.NestedStackedInline):
     show_change_link = True
     extra = 0
 
-    sortable_field_name = ""
+   # sortable_field_name = ""
     fields = ("questionText",  )
     inlines = [AnswerInlinesNested]
 

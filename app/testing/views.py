@@ -15,8 +15,9 @@ from .models import Course ,   Question, Answer, AboutPage
 class AboutPageList(DetailView):
     model = AboutPage
     def get_object(self):
-        object = AboutPage.objects.all()[0]
-        return object
+        if AboutPage.objects.all().count()>=1:
+            object = AboutPage.objects.all()[0]
+            return object
 
 
 
